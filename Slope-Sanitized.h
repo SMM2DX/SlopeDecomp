@@ -7,494 +7,494 @@
 /* Enums */
 
 enum Skin {
-  Skin_M1 = 0x0,
-  Skin_M3 = 0x1,
-  Skin_MW = 0x2,
-  Skin_WU = 0x3,
-  Skin_3W = 0x4,
+	Skin_M1 = 0x0,
+	Skin_M3 = 0x1,
+	Skin_MW = 0x2,
+	Skin_WU = 0x3,
+	Skin_3W = 0x4,
 };
 
 enum EditKuriboAttr : __int8 {
-  EditKuriboAttr_Kuribo = 0x0,
-  EditKuriboAttr_Kakibo = 0x1,          /// -Extra Variants-
-                                        /// EditKuriboAttr_Kuribon = 0x2,
-                                        /// EditKuriboAttr_Kakibon = 0x3,
+	EditKuriboAttr_Kuribo = 0x0,
+	EditKuriboAttr_Kakibo = 0x1,				//	-Extra Variants-
+												//	EditKuriboAttr_Kuribon = 0x2,
+												//	EditKuriboAttr_Kakibon = 0x3,
 };
 
 enum EditKuriboFlag : __int64 {
-  EditKuriboFlag_Kuribo = 0xFFFFFFFBLL,
-  EditKuriboFlag_Kakibo = 0x4LL,
+	EditKuriboFlag_Kuribo = 0xFFFFFFFBLL,
+	EditKuriboFlag_Kakibo = 0x4LL,
 };
 
 enum EditMechaKoopaAttr : __int8 {
-  EditMechaKoopaAttr_0x0 = 0x0,
-  EditMechaKoopaAttr_0x1 = 0x1,
+	EditMechaKoopaAttr_0x0 = 0x0,
+	EditMechaKoopaAttr_0x1 = 0x1,
 };
 
 enum EditMechaKoopaFlag : __int64 {
-  EditMechaKoopaFlag_0xFFF3FFFF = 0xFFF3FFFFLL,
+	EditMechaKoopaFlag_0xFFF3FFFF = 0xFFF3FFFFLL,
 };
 
 enum EditNokoNokoAttr : __int8 {
-  EditNokoNokoAttr_0x0 = 0x0,
-  EditNokoNokoAttr_0x1 = 0x1,
+	EditNokoNokoAttr_0x0 = 0x0,
+	EditNokoNokoAttr_0x1 = 0x1,
 };
 
 enum EditNokoNokoFlag : __int64 {
-  EditNokoNokoFlag_0xFFFFFFFB = 0xFFFFFFFBLL,
-  EditNokoNokoFlag_0x4 = 0x4LL,
+	EditNokoNokoFlag_0xFFFFFFFB = 0xFFFFFFFBLL,
+	EditNokoNokoFlag_0x4 = 0x4LL,
 };
 
 enum EditBurnerAttr : __int8 {
-  EditBurnerAttr_0x0 = 0x0,
-  EditBurnerAttr_0x1 = 0x1,
+	EditBurnerAttr_0x0 = 0x0,
+	EditBurnerAttr_0x1 = 0x1,
 };
 
 enum EditBurnerFlag : __int64 {
-  EditBurnerFlag_0xFFFFFFFB = 0xFFFFFFFBLL,
-  EditBurnerFlag_0x4 = 0x4LL,
+	EditBurnerFlag_0xFFFFFFFB = 0xFFFFFFFBLL,
+	EditBurnerFlag_0x4 = 0x4LL,
 };
 
 /* sead */
 
 struct sead::Buffer {
-  int mSize;
-  void *mBuffer;
+	int mSize;
+	void *mBuffer;
 };
 
 struct sead::SafeString_vtbl{
-  _BYTE gap0[1];
+	_BYTE gap0[1];
 };
 struct sead::SafeString {
-  sead::SafeString_vtbl *__vftable;
-  const char *mStringTop;
+	sead::SafeString_vtbl *__vftable;
+	const char *mStringTop;
 };
 
 struct StringStruct {
-  sead::SafeString mSafeString;
-  unsigned int field_10;
-  unsigned int field_14;
-  unsigned int field_18;
-  unsigned int field_1C;
-  unsigned int field_20;
-  unsigned int field_24;
+	sead::SafeString mSafeString;
+	unsigned int field_10;
+	unsigned int field_14;
+	unsigned int field_18;
+	unsigned int field_1C;
+	unsigned int field_20;
+	unsigned int field_24;
 };
 
 
 /* UI */
 
 struct Lp::UI::BtnPartsCtrl {
-  _BYTE gap0[8];
+	_BYTE gap0[8];
 };
 
 struct Lp::UI::BtnPartsCtrl::BtnEventArg {
-  unsigned int dword0;
-  unsigned int dword4;
-  unsigned int dword8;
-  unsigned int dwordC;
-  unsigned __int64 qword10;
-  Lp::UI::BtnPartsCtrl btnPartsCtrl;
+	unsigned int dword0;
+	unsigned int dword4;
+	unsigned int dword8;
+	unsigned int dwordC;
+	unsigned __int64 qword10;
+	Lp::UI::BtnPartsCtrl btnPartsCtrl;
 };
 
 struct UISys::ButtonActionCallbackArg {
-  UISys::ViewPage *viewPage;
-  Lp::UI::BtnPartsCtrl btnPartsCtrl;
-  unsigned int buttonIndex;
-  unsigned int dword14;
-  unsigned int dword18;
-  unsigned int dword1C;
-  unsigned int dword20;
-  unsigned __int64 qword28;
+	UISys::ViewPage *viewPage;
+	Lp::UI::BtnPartsCtrl btnPartsCtrl;
+	unsigned int buttonIndex;
+	unsigned int dword14;
+	unsigned int dword18;
+	unsigned int dword1C;
+	unsigned int dword20;
+	unsigned __int64 qword28;
 };
 
 struct UISys::ViewPage_vtbl {
-  _BYTE gap0[424];
-  int (*getButtonIndex_)(UISys::ViewPage *, Lp::UI::BtnPartsCtrl *);
+	_BYTE gap0[424];
+	int (*getButtonIndex_)(UISys::ViewPage *, Lp::UI::BtnPartsCtrl *);
 };
 struct UISys::ViewPage {
-  UISys::ViewPage_vtbl *__vftable;
-  _BYTE gap0[1896];
-  unsigned __int64 BTN_PARTS_CTRL_NUM;
-  unsigned __int64 *pqword778;
+	UISys::ViewPage_vtbl *__vftable;
+	_BYTE gap0[1896];
+	unsigned __int64 BTN_PARTS_CTRL_NUM;
+	unsigned __int64 *pqword778;
 };
 
 struct __attribute__((packed)) __attribute__((aligned(1))) EditMain {
-  _QWORD qword0;                        /// Subclass of UISys::ViewPage
-  _BYTE gap8[64];
-  __int64 temp3;
-  _BYTE gap_2[928];
-  __int64 temp1;
-  unsigned __int64 temp2;
-  _BYTE gap_1[304];
-  _DWORD dword530;
-  _BYTE gap534[52];
-  _DWORD dword568;
-  _BYTE gap56C[4];
-  _DWORD dword570;
-  _BYTE gap574[4];
-  _QWORD qword578;
-  _DWORD dword580;
-  _BYTE gap584[4];
-  _QWORD qword588;
-  _QWORD qword590;
-  _QWORD qword598;
-  _QWORD qword5A0;
-  _DWORD dword5A8;
-  _QWORD qword5AC;
-  _BYTE byte5B4;
-  _BYTE gap5B5[3];
-  _DWORD dword5B8;
-  _BYTE gap5BC[4];
-  _QWORD qword5C0;
-  _DWORD dword5C8;
-  _BYTE gap5CC[4];
-  _QWORD qword5D0;
-  _QWORD qword5D8;
-  _DWORD dword5E0;
-  _BYTE gap5E4[4];
-  _QWORD qword5E8;
-  _DWORD dword5F0;
-  _BYTE gap5F4[4];
-  _QWORD qword5F8;
-  _DWORD dword600;
-  _BYTE gap604[4];
-  _QWORD qword608;
-  _DWORD dword610;
-  _BYTE gap614[4];
-  _QWORD qword618;
-  _QWORD qword620;
-  _QWORD qword628;
-  _QWORD qword630;
-  _QWORD qword638;
-  _QWORD qword640;
-  _QWORD qword648;
-  _QWORD qword650;
-  _QWORD qword658;
-  _DWORD dword660;
-  _BYTE gap664[4];
-  _DWORD dword668;
-  _BYTE gap66C[4];
-  _QWORD qword670;
-  _QWORD qword678;
-  _QWORD qword680;
-  _QWORD qword688;
-  _QWORD qword690;
-  _QWORD qword698;
-  _QWORD qword6A0;
-  _QWORD qword6A8;
-  _QWORD qword6B0;
-  _QWORD qword6B8;
-  _QWORD qword6C0;
-  _QWORD qword6C8;
-  _QWORD qword6D0;
-  _QWORD qword6D8;
-  _QWORD qword6E0;
-  _QWORD qword6E8;
-  _QWORD qword6F0;
-  _QWORD qword6F8;
-  _DWORD dword700;
-  _BYTE gap704[4];
-  _QWORD qword708;
-  _DWORD dword710;
-  _BYTE gap714[4];
-  _QWORD qword718;
-  _DWORD dword720;
-  _BYTE gap724[4];
-  _QWORD qword728;
-  _QWORD qword730;
-  _QWORD qword738;
-  _QWORD qword740;
-  _QWORD qword748;
-  _QWORD qword750;
-  _QWORD qword758;
-  _QWORD qword760;
-  _QWORD qword768;
-  sead::Buffer mBtnPartsCtrlBuffer;
-  unsigned int unsigned_int780;
-  _BYTE gap784[4];
-  _QWORD qword788;
-  _QWORD qword790;
-  _QWORD qword798;
-  _QWORD qword7A0;
-  unsigned int unsigned_int7A8;
-  _BYTE gap7AC[4];
-  _QWORD qword7B0;
-  unsigned int unsigned_int7B8;
-  _BYTE gap7BC[4];
-  _QWORD qword7C0;
-  unsigned int unsigned_int7C8;
-  _BYTE gap7CC[4];
-  _QWORD qword7D0;
-  _QWORD qword7D8;
-  _QWORD qword7E0;
-  _QWORD qword7E8;
-  _QWORD qword7F0;
-  _QWORD qword7F8;
-  _QWORD qword800;
-  _QWORD qword808;
-  _QWORD qword810;
-  _QWORD qword818;
-  _QWORD qword820;
-  _DWORD dword828;
-  _DWORD dword82C;
-  _QWORD qword830;
-  _QWORD qword838;
-  _QWORD qword840;
-  _QWORD qword848;
-  _QWORD qword850;
-  _QWORD qword858;
-  _QWORD qword860;
-  _QWORD qword868;
-  unsigned int unsigned_int870;
-  _BYTE gap874[4];
-  _QWORD qword878;
-  _DWORD dword880;
-  _BYTE byte884;
-  _BYTE gap885[3];
-  _QWORD qword888;
-  _QWORD qword890;
-  _QWORD qword898;
-  _QWORD qword8A0;
-  _QWORD qword8A8;
-  _QWORD qword8B0;
-  _QWORD qword8B8;
-  _BYTE gap8C0[40];
-  _QWORD qword8E8;
-  _QWORD qword8F0;
-  _QWORD qword8F8;
-  _QWORD qword900;
-  _QWORD qword908;
-  _QWORD qword910;
-  _QWORD qword918;
-  _QWORD qword920;
-  _QWORD qword928;
-  _QWORD qword930;
-  _QWORD qword938;
-  _QWORD qword940;
-  _QWORD qword948;
-  _QWORD qword950;
-  _QWORD qword958;
-  _QWORD qword960;
-  _QWORD qword968;
-  _QWORD qword970;
-  _QWORD qword978;
-  _QWORD qword980;
-  _QWORD qword988;
-  _QWORD qword990;
-  _QWORD qword998;
-  _QWORD qword9A0;
-  _QWORD qword9A8;
-  _QWORD qword9B0;
-  _QWORD qword9B8;
-  _QWORD qword9C0;
-  _QWORD qword9C8;
-  _QWORD qword9D0;
-  _QWORD qword9D8;
-  _QWORD qword9E0;
-  _QWORD qword9E8;
-  _QWORD qword9F0;
-  _BYTE byte9F8;
-  _BYTE gap9F9[7];
-  _QWORD qwordA00;
-  _BYTE gapA08[24];
-  _BYTE byteA20;
+	_QWORD qword0;								//	Subclass of UISys::ViewPage
+	_BYTE gap8[64];
+	__int64 temp3;
+	_BYTE gap_2[928];
+	__int64 temp1;
+	unsigned __int64 temp2;
+	_BYTE gap_1[304];
+	_DWORD dword530;
+	_BYTE gap534[52];
+	_DWORD dword568;
+	_BYTE gap56C[4];
+	_DWORD dword570;
+	_BYTE gap574[4];
+	_QWORD qword578;
+	_DWORD dword580;
+	_BYTE gap584[4];
+	_QWORD qword588;
+	_QWORD qword590;
+	_QWORD qword598;
+	_QWORD qword5A0;
+	_DWORD dword5A8;
+	_QWORD qword5AC;
+	_BYTE byte5B4;
+	_BYTE gap5B5[3];
+	_DWORD dword5B8;
+	_BYTE gap5BC[4];
+	_QWORD qword5C0;
+	_DWORD dword5C8;
+	_BYTE gap5CC[4];
+	_QWORD qword5D0;
+	_QWORD qword5D8;
+	_DWORD dword5E0;
+	_BYTE gap5E4[4];
+	_QWORD qword5E8;
+	_DWORD dword5F0;
+	_BYTE gap5F4[4];
+	_QWORD qword5F8;
+	_DWORD dword600;
+	_BYTE gap604[4];
+	_QWORD qword608;
+	_DWORD dword610;
+	_BYTE gap614[4];
+	_QWORD qword618;
+	_QWORD qword620;
+	_QWORD qword628;
+	_QWORD qword630;
+	_QWORD qword638;
+	_QWORD qword640;
+	_QWORD qword648;
+	_QWORD qword650;
+	_QWORD qword658;
+	_DWORD dword660;
+	_BYTE gap664[4];
+	_DWORD dword668;
+	_BYTE gap66C[4];
+	_QWORD qword670;
+	_QWORD qword678;
+	_QWORD qword680;
+	_QWORD qword688;
+	_QWORD qword690;
+	_QWORD qword698;
+	_QWORD qword6A0;
+	_QWORD qword6A8;
+	_QWORD qword6B0;
+	_QWORD qword6B8;
+	_QWORD qword6C0;
+	_QWORD qword6C8;
+	_QWORD qword6D0;
+	_QWORD qword6D8;
+	_QWORD qword6E0;
+	_QWORD qword6E8;
+	_QWORD qword6F0;
+	_QWORD qword6F8;
+	_DWORD dword700;
+	_BYTE gap704[4];
+	_QWORD qword708;
+	_DWORD dword710;
+	_BYTE gap714[4];
+	_QWORD qword718;
+	_DWORD dword720;
+	_BYTE gap724[4];
+	_QWORD qword728;
+	_QWORD qword730;
+	_QWORD qword738;
+	_QWORD qword740;
+	_QWORD qword748;
+	_QWORD qword750;
+	_QWORD qword758;
+	_QWORD qword760;
+	_QWORD qword768;
+	sead::Buffer mBtnPartsCtrlBuffer;
+	unsigned int unsigned_int780;
+	_BYTE gap784[4];
+	_QWORD qword788;
+	_QWORD qword790;
+	_QWORD qword798;
+	_QWORD qword7A0;
+	unsigned int unsigned_int7A8;
+	_BYTE gap7AC[4];
+	_QWORD qword7B0;
+	unsigned int unsigned_int7B8;
+	_BYTE gap7BC[4];
+	_QWORD qword7C0;
+	unsigned int unsigned_int7C8;
+	_BYTE gap7CC[4];
+	_QWORD qword7D0;
+	_QWORD qword7D8;
+	_QWORD qword7E0;
+	_QWORD qword7E8;
+	_QWORD qword7F0;
+	_QWORD qword7F8;
+	_QWORD qword800;
+	_QWORD qword808;
+	_QWORD qword810;
+	_QWORD qword818;
+	_QWORD qword820;
+	_DWORD dword828;
+	_DWORD dword82C;
+	_QWORD qword830;
+	_QWORD qword838;
+	_QWORD qword840;
+	_QWORD qword848;
+	_QWORD qword850;
+	_QWORD qword858;
+	_QWORD qword860;
+	_QWORD qword868;
+	unsigned int unsigned_int870;
+	_BYTE gap874[4];
+	_QWORD qword878;
+	_DWORD dword880;
+	_BYTE byte884;
+	_BYTE gap885[3];
+	_QWORD qword888;
+	_QWORD qword890;
+	_QWORD qword898;
+	_QWORD qword8A0;
+	_QWORD qword8A8;
+	_QWORD qword8B0;
+	_QWORD qword8B8;
+	_BYTE gap8C0[40];
+	_QWORD qword8E8;
+	_QWORD qword8F0;
+	_QWORD qword8F8;
+	_QWORD qword900;
+	_QWORD qword908;
+	_QWORD qword910;
+	_QWORD qword918;
+	_QWORD qword920;
+	_QWORD qword928;
+	_QWORD qword930;
+	_QWORD qword938;
+	_QWORD qword940;
+	_QWORD qword948;
+	_QWORD qword950;
+	_QWORD qword958;
+	_QWORD qword960;
+	_QWORD qword968;
+	_QWORD qword970;
+	_QWORD qword978;
+	_QWORD qword980;
+	_QWORD qword988;
+	_QWORD qword990;
+	_QWORD qword998;
+	_QWORD qword9A0;
+	_QWORD qword9A8;
+	_QWORD qword9B0;
+	_QWORD qword9B8;
+	_QWORD qword9C0;
+	_QWORD qword9C8;
+	_QWORD qword9D0;
+	_QWORD qword9D8;
+	_QWORD qword9E0;
+	_QWORD qword9E8;
+	_QWORD qword9F0;
+	_BYTE byte9F8;
+	_BYTE gap9F9[7];
+	_QWORD qwordA00;
+	_BYTE gapA08[24];
+	_BYTE byteA20;
 };
 
 /* MM2 */
 
 struct GameStateHolder {
-  _BYTE gap0[48];
-  GameSkinHolder *gameSkinHolder;
+	_BYTE gap0[48];
+	GameSkinHolder *gameSkinHolder;
 };
 
 struct GameSkinHolder {
-  _BYTE gap0[12];
-  __int32 tempA1;
-  __int32 temp2;                        /// compared to 2?
-  __int32 temp3;                        /// compared to many numbers
-  __int32 temp4;                        /// compared to 2
-  Skin mSkin;
-  _BYTE gap2[56];
-  __int32 temp6;
-  __int32 temp7;
-  __int32 temp8;
-  __int32 temp9;
-  struct_162 *temp1;
-  _BYTE gap3[16];
-  _BYTE temp5;
+	_BYTE gap0[12];
+	__int32 tempA1;
+	__int32 temp2;								//	compared to 2?
+	__int32 temp3;								//	compared to many numbers
+	__int32 temp4;								//	compared to 2
+	Skin mSkin;
+	_BYTE gap2[56];
+	__int32 temp6;
+	__int32 temp7;
+	__int32 temp8;
+	__int32 temp9;
+	struct_162 *temp1;
+	_BYTE gap3[16];
+	_BYTE temp5;
 };
 
 struct EditActor_vtbl {
-  _BYTE gap0[328];
-  int (*changeDir)(EditActor *, __int8 *);
-  _BYTE gap1[392];
-  int (*something)(EditActor *, long double *);
-  _BYTE gap2[712];
-  int (*getAttr_2)(EditActor *);
-  _BYTE gap3[40];
-  int (*getAttr)(EditActor *);
-  int (*getAttrNum)(EditActor *);
-  _BYTE gap4[16];
-  int (*changeAttr)(EditActor *, __int8 *);
+	_BYTE gap0[328];
+	int (*changeDir)(EditActor *, __int8 *);
+	_BYTE gap1[392];
+	int (*something)(EditActor *, long double *);
+	_BYTE gap2[712];
+	int (*getAttr_2)(EditActor *);
+	_BYTE gap3[40];
+	int (*getAttr)(EditActor *);
+	int (*getAttrNum)(EditActor *);
+	_BYTE gap4[16];
+	int (*changeAttr)(EditActor *, __int8 *);
 };
 struct EditActor {
-  EditActor_vtbl *__vftable;
-  _BYTE gap1[32];
-  EditActor_InnerClass2 *innerClass2;
-  _BYTE gap1A[56];
-  __int64 temp_1;
-  int temp_2;
-  int temp_3;
-  _BYTE gap2[16];
-  int temp_4;
-  _BYTE gap3[212];
-  __int64 temp_5;
-  _BYTE gap4[24];
-  __int64 temp_6;
-  __int64 temp_7;
-  __int64 temp_8;
-  _BYTE gap5[40];
-  __int64 temp_9;
-  _BYTE gap6[24];
-  __int64 temp_10;
-  _BYTE gap7[8];
-  __int64 temp_11;
-  _BYTE gap8[8];
-  __int64 temp_12;
-  _BYTE gap9[8];
-  _BYTE gap10[48];
-  __int64 temp_2A;
-  EditActor_InnerClass1 *innerClass1A;
-  EditActor_InnerClass1 *innerClass1B;
-  EditActor_InnerClass1 *innerClass1C;
-  EditActor_InnerClass1 *innerClass1D;
-  _BYTE gap11[92];
-  int temp_A;                           /// sub_148
-  int temp_B;
-  int temp_C;                           /// sub_148
-  float temp_D;                         /// sub_148
-  int temp_E;
-  int temp_F;                           /// sub_148
-  int temp_G;
-  _BYTE gap12[64];
-  ThingWithParentFlag *thingWithParentFlag;
-  _BYTE gap13[4];
-  int temp_13;
+	EditActor_vtbl *__vftable;
+	_BYTE gap1[32];
+	EditActor_InnerClass2 *innerClass2;
+	_BYTE gap1A[56];
+	__int64 temp_1;
+	int temp_2;
+	int temp_3;
+	_BYTE gap2[16];
+	int temp_4;
+	_BYTE gap3[212];
+	__int64 temp_5;
+	_BYTE gap4[24];
+	__int64 temp_6;
+	__int64 temp_7;
+	__int64 temp_8;
+	_BYTE gap5[40];
+	__int64 temp_9;
+	_BYTE gap6[24];
+	__int64 temp_10;
+	_BYTE gap7[8];
+	__int64 temp_11;
+	_BYTE gap8[8];
+	__int64 temp_12;
+	_BYTE gap9[8];
+	_BYTE gap10[48];
+	__int64 temp_2A;
+	EditActor_InnerClass1 *innerClass1A;
+	EditActor_InnerClass1 *innerClass1B;
+	EditActor_InnerClass1 *innerClass1C;
+	EditActor_InnerClass1 *innerClass1D;
+	_BYTE gap11[92];
+	int temp_A;									//	sub_148
+	int temp_B;
+	int temp_C;									//	sub_148
+	float temp_D;								//	sub_148
+	int temp_E;
+	int temp_F;									//	sub_148
+	int temp_G;
+	_BYTE gap12[64];
+	ThingWithParentFlag *thingWithParentFlag;
+	_BYTE gap13[4];
+	int temp_13;
 };
 
 struct ThingWithParentFlag {
-  _BYTE gap0[20];
-  int temp_1;
-  int temp_2;
-  unsigned int mParentFlag;
-  _BYTE gap1[232];
-  ThingWithAttrInfo *thingWithAttrInfo;
+	_BYTE gap0[20];
+	int temp_1;
+	int temp_2;
+	unsigned int mParentFlag;
+	_BYTE gap1[232];
+	ThingWithAttrInfo *thingWithAttrInfo;
 };
 
 struct ThingWithAttrInfo {
-  _BYTE gap0[48];
-  unsigned __int64 mAttrNum;            /// type unknown
-  _BYTE gap1[9];
-  bool mIsValidChangeAttr;              /// type assumed
+	_BYTE gap0[48];
+	unsigned __int64 mAttrNum;					//	type unknown
+	_BYTE gap1[9];
+	bool mIsValidChangeAttr;					//	type assumed
 };
 
 /* WIP */
 
 struct struct_v10 {
-  __int64 (__fastcall **ppfunc0)(__int64, __int64 *);
-  _BYTE gap8[5828];
-  unsigned int hopefully_not_theme_index;
+	__int64 (__fastcall **ppfunc0)(__int64, __int64 *);
+	_BYTE gap8[5828];
+	unsigned int hopefully_not_theme_index;
 };
 
 struct struct_a1 {
-  _BYTE gap0[72];
-  struct_v10 *a_struct_v10;
+	_BYTE gap0[72];
+	struct_v10 *a_struct_v10;
 };
 
 struct struct_162 {
-  __int32 temp1;
-  __int32 lessonModeSomething;
+	__int32 temp1;
+	__int32 lessonModeSomething;
 };
 
 struct EditActor_InnerClass2 {
-  __int64 *__vftable;
-  EditActor *editActor;
-  __int64 temp_1;
-  __int64 temp_2;
-  __int64 temp_3;
-  __int64 temp_4;
-  __int64 temp_5;
-  __int64 temp_6;
-  __int64 temp_7;
-  __int64 temp_8;
-  __int64 temp_9;
-  __int64 temp_10;
-  __int64 temp_11;
-  __int64 temp_12;
-  __int64 temp_13;
-  __int64 temp_14;
-  __int64 temp_15;
-  __int64 temp_16;
-  __int64 temp_17;
-  __int64 temp_18;
-  __int64 temp_19;
-  __int64 temp_20;
-  __int64 temp_21;
-  __int64 temp_22;
-  __int64 temp_23;
-  __int64 temp_24;
-  __int64 temp_25;
-  __int64 temp_26;
-  __int64 temp_27;
-  __int64 temp_28;
-  __int64 temp_29;
-  __int64 temp_30;
-  __int64 temp_31;
-  __int64 temp_32;
-  __int64 temp_33;
-  __int64 temp_34;
-  __int64 temp_35;
-  __int64 temp_36;
-  __int64 temp_37;
-  __int64 temp_38;
-  __int64 temp_39;
-  __int64 temp_40;
-  __int64 temp_41;
-  __int64 temp_42;
-  __int64 temp_43;
-  __int64 temp_44;
-  __int64 temp_45;
-  __int64 temp_46;
-  __int64 temp_47;
-  __int64 temp_48;
-  __int64 temp_49;
+	__int64 *__vftable;
+	EditActor *editActor;
+	__int64 temp_1;
+	__int64 temp_2;
+	__int64 temp_3;
+	__int64 temp_4;
+	__int64 temp_5;
+	__int64 temp_6;
+	__int64 temp_7;
+	__int64 temp_8;
+	__int64 temp_9;
+	__int64 temp_10;
+	__int64 temp_11;
+	__int64 temp_12;
+	__int64 temp_13;
+	__int64 temp_14;
+	__int64 temp_15;
+	__int64 temp_16;
+	__int64 temp_17;
+	__int64 temp_18;
+	__int64 temp_19;
+	__int64 temp_20;
+	__int64 temp_21;
+	__int64 temp_22;
+	__int64 temp_23;
+	__int64 temp_24;
+	__int64 temp_25;
+	__int64 temp_26;
+	__int64 temp_27;
+	__int64 temp_28;
+	__int64 temp_29;
+	__int64 temp_30;
+	__int64 temp_31;
+	__int64 temp_32;
+	__int64 temp_33;
+	__int64 temp_34;
+	__int64 temp_35;
+	__int64 temp_36;
+	__int64 temp_37;
+	__int64 temp_38;
+	__int64 temp_39;
+	__int64 temp_40;
+	__int64 temp_41;
+	__int64 temp_42;
+	__int64 temp_43;
+	__int64 temp_44;
+	__int64 temp_45;
+	__int64 temp_46;
+	__int64 temp_47;
+	__int64 temp_48;
+	__int64 temp_49;
 };
 
 struct EditActor_InnerClass1 {
-  _BYTE gap0[124];
-  int mParentFlag13and3;
+	_BYTE gap0[124];
+	int mParentFlag13and3;
 };
 
 struct EditActor_InnerClass3_vtbl {
-  _BYTE gap1[432];
-  int (*getIndex)(EditActor_InnerClass3 *); ///< speculative function name
+	_BYTE gap0[432];
+	int (*getIndex)(EditActor_InnerClass3 *);	//	speculative function name
 };
 struct EditActor_InnerClass3{
-  EditActor_InnerClass3_vtbl *__vftable;
-  sead::Buffer buffer;
-  __int64 temp_3;
-  __int64 temp_4;
+	EditActor_InnerClass3_vtbl *__vftable;
+	sead::Buffer buffer;
+	__int64 temp_3;
+	__int64 temp_4;
 };
 
 struct EditActor_InnerClass3_v7 {
-  _BYTE gap0[1];
+	_BYTE gap0[1];
 };
 
 struct EditActor_InnerClass3_v9_vtbl {
-  _BYTE gap1[440];
-  int (*temp_1)(char *);                ///< help where is this
+	_BYTE gap0[440];
+	int (*temp_1)(char *);						//	help where is this
 };
 struct EditActor_InnerClass3_v9 {
-  EditActor_InnerClass3_v9_vtbl *__vftable;
+	EditActor_InnerClass3_v9_vtbl *__vftable;
 };
 
