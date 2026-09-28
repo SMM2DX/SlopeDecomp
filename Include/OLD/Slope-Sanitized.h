@@ -4,9 +4,48 @@
    the type library 'Slope'
 */
 
+#define _BYTE unsigned char
+#define _DWORD int
+#define _QWORD long long
+#define __int8 char
+#define __int16 short
+#define __int32 int
+#define __int64 long long
+
 /* Enums */
 
-enum Skin {
+enum FieldValue : __int64 {
+	Empty				= 0x000,				//	Not Exhaustive.
+	Block				= 0x001,
+	QuestionBlock		= 0x002,
+	HiddenQuestionBlock	= 0x003,
+	NoteBlock			= 0x004,
+	EmptyBlock			= 0x005,
+	HardBlock			= 0x006,
+	Coin				= 0x007,
+	DonutBlock1			= 0x040,
+	DonutBlock2			= 0x041,
+	SpikeBlock			= 0x042,
+	MusicNoteBlock		= 0x056,
+	CloudBlock			= 0x066,
+	IceBlock			= 0x078,
+	PinkCoin			= 0x100,
+	TurnBlockFrame1		= 0x101,
+	TurnBlockFrame2		= 0x102,
+	TurnBlockFrame3		= 0x103,
+	FrozenCoin			= 0x110,
+	SolidOnBlock		= 0x152,
+	SolidOffBlock		= 0x153,
+	DottedOnBlock		= 0x162,
+	DottedOffBlock		= 0x163,
+	OnSwitch			= 0x172,
+	OffSwitch			= 0x173,
+	SolidPBlock			= 0x2B0,
+	DottedPBlock		= 0x2B1,
+	FrozenBlock			= 0x2B2,
+};
+
+enum Skin : __int8 {
 	Skin_M1 = 0x0,
 	Skin_M3 = 0x1,
 	Skin_MW = 0x2,
@@ -14,7 +53,7 @@ enum Skin {
 	Skin_3W = 0x4,
 };
 
-enum EditKuriboAttr : __int8 {
+enum EditKuriboAttr : __int64 {
 	EditKuriboAttr_Kuribo = 0x0,
 	EditKuriboAttr_Kakibo = 0x1,				//	-Extra Variants-
 												//	EditKuriboAttr_Kuribon = 0x2,
@@ -26,7 +65,7 @@ enum EditKuriboFlag : __int64 {
 	EditKuriboFlag_Kakibo = 0x4LL,
 };
 
-enum EditMechaKoopaAttr : __int8 {
+enum EditMechaKoopaAttr : __int64 {
 	EditMechaKoopaAttr_0x0 = 0x0,
 	EditMechaKoopaAttr_0x1 = 0x1,
 };
@@ -35,7 +74,7 @@ enum EditMechaKoopaFlag : __int64 {
 	EditMechaKoopaFlag_0xFFF3FFFF = 0xFFF3FFFFLL,
 };
 
-enum EditNokoNokoAttr : __int8 {
+enum EditNokoNokoAttr : __int64 {
 	EditNokoNokoAttr_0x0 = 0x0,
 	EditNokoNokoAttr_0x1 = 0x1,
 };
@@ -45,7 +84,7 @@ enum EditNokoNokoFlag : __int64 {
 	EditNokoNokoFlag_0x4 = 0x4LL,
 };
 
-enum EditBurnerAttr : __int8 {
+enum EditBurnerAttr : __int64 {
 	EditBurnerAttr_0x0 = 0x0,
 	EditBurnerAttr_0x1 = 0x1,
 };
@@ -322,6 +361,11 @@ struct GameSkinHolder {
 	struct_162 *temp1;
 	_BYTE gap3[16];
 	_BYTE temp5;
+};
+
+struct OnOffStateHolder {
+	_BYTE gap0[42];
+	bool onOffState;
 };
 
 struct EditActor_vtbl {
