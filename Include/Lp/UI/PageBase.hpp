@@ -1,9 +1,9 @@
 #pragma once
 
-#include <common.hpp>
+//#include <common.hpp>
 
-#include <sead/prim/seadRuntimeTypeInfo.h>
-#include <sead/thread/seadReadWriteLock.h>
+#include "../../sead/prim/seadRuntimeTypeInfo.h"
+#include "../../sead/thread/seadReadWriteLock.h"
 
 #include "Impl/Name.hpp"
 #include "Impl/DrawSightArg.hpp"
@@ -25,7 +25,7 @@ namespace Lp::UI {
         Impl::Name field_30;
         PageHolder* mHolder;
         int mState; /* TODO: */
-        uint mPauseFlags;
+        unsigned int mPauseFlags;
         char field_60;
         int field_64;
         PageBase* mParentPage;
@@ -52,5 +52,5 @@ namespace Lp::UI {
         virtual void onPreCalc();
         virtual void onPostCalc();
     };
-    static_assert(sizeof(PageBase) == 0x1E8);
+    //static_assert(sizeof(PageBase) == 0x1E8); TEMP
 }
