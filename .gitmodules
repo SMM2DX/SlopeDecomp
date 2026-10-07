@@ -1,3 +1,0 @@
-[submodule "Include/sead"]
-	path = Include/sead
-	url = git@github.com:SMM2DX/sead.git

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ActorBase.hxx"
-#include "StateMachine.hxx"
+#include "Lp/Utl/StateMachine.hpp"
 #include "model_objects.hxx"
 
 struct ThingWithAttrInfo

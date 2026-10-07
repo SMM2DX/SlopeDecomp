@@ -1,14 +1,14 @@
 #pragma once
 
 #include "Actor.hxx"
-#include "StateMachine.hxx"
+#include "Lp/Utl/StateMachine.hpp"
 
 class PlayerObject : public Actor {
 	SEAD_RTTI_OVERRIDE(PlayerObject, Actor)
 	char* getClassName() override;
 	~PlayerObject() override;
 
-	using StateMachine = Lp::Utl::StateMachine<PlayerObject>;
+	//using StateMachine = Lp::Utl::StateMachine<PlayerObject>;
 	enum State : int {
 		cState_None = 0,
 		cState_Walk = 1,

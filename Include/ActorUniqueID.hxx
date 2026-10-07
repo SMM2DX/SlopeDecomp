@@ -1,6 +1,6 @@
 #pragma once
 
-#include "sead/include/basis/seadTypes.h"
+#include "sead/basis/seadTypes.h"
 
 class ActorUniqueID
 {

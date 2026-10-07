@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Actor.hxx"
-#include "StateMachine.hxx"
+#include "Lp/Utl/StateMachine.hpp"
 
 class EnemyUber : public Actor {
 	SEAD_RTTI_OVERRIDE(EnemyUber, Actor)
