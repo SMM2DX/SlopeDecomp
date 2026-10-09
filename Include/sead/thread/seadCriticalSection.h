@@ -4,7 +4,7 @@
 #if defined(cafe)
 	#include <cafe.h>
 #elif defined(NNSDK)
-	#include "../../nn/os.h"
+	#include "../../nn/os/os_MutexTypes.h"
 #endif
 
 #include "../basis/seadTypes.h"

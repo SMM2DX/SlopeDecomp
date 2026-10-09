@@ -1,0 +1,17 @@
+Address	Length	Type	String
+.rodata.2:00000071022D683E	00000010	C	UISysSequeceMgr
+.rodata.2:00000071022F43D9	00000013	C	UISys::SequenceMgr
+.rodata.2:00000071022C0CA3	0000001D	C	UISys::SequenceMgr::preCalc_
+.rodata.2:00000071022B6948	00000020	C	UISys::SequenceMgr::referScene_
+.rodata.2:00000071022E4643	00000021	C	UISys::SequenceMgr::referLayout_
+
+.rodata.2:00000071022CC18E	00000015	C	UISys::ResidentUIMgr
+
+.rodata.2:00000071022F19F3	00000017	C	UISysBoundingUseCursor
+
+.rodata.2:000000710231147B	0000000E	C	UISysBounding
+.rodata.2:0000007102306986	00000013	C	UISysScrollBtnList
+.rodata.2:000000710230A269	00000010	C	UISysScrollSign
+
+.rodata.2:00000071022CF05D	00000011	C	UISystemSequence
+.rodata.2:0000007102318043	0000000D	C	UISystemPage
