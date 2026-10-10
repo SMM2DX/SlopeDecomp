@@ -2,8 +2,8 @@
 
 #include <utility>
 
-#include "basis/seadNew.h"
-#include "basis/seadTypes.h"
+#include "../basis/seadNew.h"
+#include "../basis/seadTypes.h"
 
 namespace sead
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "os.h"
+#include "../../nn/os.h"
 
 #include "../basis/seadTypes.h"
 #include "../prim/seadBitFlag.h"

@@ -2,7 +2,7 @@
 
 #include <utility>
 #ifdef NNSDK
-	#include "../../../nn/os.h"
+	#include "../../nn/os.h"
 #endif
 
 #include "../basis/seadRawPrint.h"

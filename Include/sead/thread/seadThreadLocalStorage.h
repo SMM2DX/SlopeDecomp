@@ -1,7 +1,7 @@
 #pragma once
 
 #ifdef NNSDK
-	#include "../../../nn/os.h"
+	#include "../../nn/os.h"
 #endif
 
 #include "../basis/seadTypes.h"

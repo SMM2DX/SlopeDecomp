@@ -1,7 +1,7 @@
 #ifndef SEAD_PTR_ARRAY_H_
 #define SEAD_PTR_ARRAY_H_
 
-#include <algorithm>
+//#include <algorithm> TEMP
 #include "../basis/seadRawPrint.h"
 #include "../basis/seadTypes.h"
 #include "../prim/seadMemUtil.h"

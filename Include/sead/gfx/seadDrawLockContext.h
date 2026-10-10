@@ -1,7 +1,7 @@
 #pragma once
 
-#include "hostio/seadHostIONode.h"
-#include "thread/seadCriticalSection.h"
+#include "../hostio/seadHostIONode.h"
+#include "../thread/seadCriticalSection.h"
 
 namespace sead
 {

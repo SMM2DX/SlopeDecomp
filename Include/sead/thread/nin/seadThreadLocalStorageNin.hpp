@@ -2,7 +2,7 @@
 #include "thread/seadThreadLocalStorage.h"
 #endif
 
-#include "basis/seadRawPrint.h"
+#include "../../basis/seadRawPrint.h"
 
 namespace sead
 {
