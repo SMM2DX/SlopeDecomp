@@ -2,10 +2,6 @@
 
 #include "ViewPage.hpp"
 
-namespace Lp::UI{
-	struct BtnPartsCtrl;
-}
-
 namespace UISys{
 	class ButtonActionCallbackArg {
 		UISys::ViewPage *viewPage;

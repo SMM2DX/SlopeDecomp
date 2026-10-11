@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../nn/gfx/gfx_CommandBuffer.h"
-#include "../nn/gfx/gfx_Types.h"
-#include "basis/seadTypes.h"
-#include "prim/seadRuntimeTypeInfo.h"
+//#include "../../nn/gfx/gfx_CommandBuffer.h" TEMP
+//#include "../../nn/gfx/gfx_Types.h" TEMP
+#include "../basis/seadTypes.h"
+#include "../prim/seadRuntimeTypeInfo.h"
 
 namespace sead
 {
@@ -14,11 +14,11 @@ public:
     DrawContext();
     virtual ~DrawContext();
 
-    nn::gfx::CommandBuffer* getCommandBuffer() { return &mCommandBuffer; }
+    //nn::gfx::CommandBuffer* getCommandBuffer() { return &mCommandBuffer; } TEMP
 
 private:
-    nn::gfx::CommandBuffer mCommandBuffer;
+    //nn::gfx::CommandBuffer mCommandBuffer; TEMP
 };
-static_assert(sizeof(DrawContext) == 0xF0);
+//static_assert(sizeof(DrawContext) == 0xF0); TEMP
 
 }  // namespace sead
