@@ -1,6 +1,6 @@
 #pragma once
 
-#include <sead/heap/seadHeap.h>
+#include "../../../sead/heap/seadHeap.h"
 #include "../Scene/Scene.hpp"
 
 #include <concepts>
@@ -16,7 +16,7 @@ namespace Lp::Sys {
         const char* mMeta;
 
         template<typename T>
-        requires std::derived_from<T, Scene>
+        //requires std::derived_from<T, Scene> TEMP
         CtorT<T>*& TypedCtor() {
             auto typed = reinterpret_cast<CtorT<T>**>(&mCtor);
             return *typed;

@@ -1,10 +1,10 @@
 #pragma once
 
-#include <common.hpp>
+// #include <common.hpp> TEMP
 
 namespace Lp::Utl {
     struct ProcInVain {
         /* TODO: ??? */
-        u64 mData;
+        unsigned long long mData;
     };
 }

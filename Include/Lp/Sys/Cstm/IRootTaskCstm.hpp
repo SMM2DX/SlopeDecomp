@@ -1,9 +1,9 @@
 #pragma once
 
-#include <sead/prim/seadRuntimeTypeInfo.h>
-#include <sead/framework/seadInfLoopChecker.h>
+#include "../../../sead/prim/seadRuntimeTypeInfo.h"
+#include "../../../sead/framework/seadInfLoopChecker.h"
 
-#include <gsys/SystemTask.hpp>
+//#include <gsys/SystemTask.hpp>
 
 #include "ISceneInfoCstm.hpp"
 
@@ -43,7 +43,8 @@ namespace Lp::Sys {
         virtual uintptr_t createCalcMethodTree_UserCb(CreateCalcMethodTree_UserCb);
         virtual void pushGfxPreCalc();
         virtual void pushGfxPostCalc();
-        virtual gsys::SystemTask::CreateArg getGsysCreateArg();
+        //virtual gsys::SystemTask::CreateArg getGsysCreateArg(); TEMP
+        virtual void getGsysCreateArg(); //TEMP
         virtual void parallelInitThreadFunc(int);
         virtual void printOnInfLoop(sead::InfLoopChecker::InfLoopParam const&);
         virtual void printOnAbort(sead::ExceptionHandler::Information const&);

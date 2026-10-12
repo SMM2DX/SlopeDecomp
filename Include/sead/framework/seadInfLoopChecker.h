@@ -1,9 +1,9 @@
 #pragma once
 
-#include "basis/seadTypes.h"
-#include "framework/seadCalculateTask.h"
-#include "framework/seadTaskMgr.h"
-#include "thread/seadAtomic.h"
+#include "../basis/seadTypes.h"
+#include "../framework/seadCalculateTask.h"
+#include "../framework/seadTaskMgr.h"
+#include "../thread/seadAtomic.h"
 
 namespace sead
 {
