@@ -16,6 +16,26 @@ namespace Lp::UI {
 
     struct PageBase {
         SEAD_RTTI_BASE(PageBase);
+        virtual ~PageBase();
+        
+        virtual uintptr_t getClassInfo();
+        virtual void endInitializeImpl();
+        virtual void finalizeImpl();
+        virtual void wakeImpl();
+        virtual void sleepImpl();
+        virtual void priorManipulateImpl(InputContext*, bool);
+        virtual void manipulateImpl(InputContext*, bool);
+        virtual void preCalcImpl();
+        virtual void postCalcImpl();
+        virtual void updateBindingImpl();
+        virtual void chainPostCalcImpl(Job*, bool);
+        virtual void drawLayoutImpl(Impl::DrawSightArg*);
+        virtual void onPreWake();
+        virtual void onPostWake();
+        virtual void onPreSleep();
+        virtual void onPostSleep();
+        virtual void onPreCalc();
+        virtual void onPostCalc();
 
         uintptr_t field_8;
         uintptr_t field_10;
@@ -32,25 +52,6 @@ namespace Lp::UI {
         sead::OffsetList<PageBase> mChildPages;
         DelegateJob mPostCalcJob;
         sead::ReadWriteLock mChildPagesRwLock;
-
-        virtual ~PageBase();
-        virtual uintptr_t getClassInfo();
-        virtual void endInitializeImpl();
-        virtual void finalizeImpl();
-        virtual void wakeImpl();
-        virtual void sleepImpl();
-        virtual void priorManipulateImpl(InputContext*, bool);
-        virtual void preCalcImpl();
-        virtual void postCalcImpl();
-        virtual void updateBindingImpl();
-        virtual void chainPostCalcImpl(Job*, bool);
-        virtual void drawLayoutImpl(Impl::DrawSightArg*);
-        virtual void onPreWake();
-        virtual void onPostWake();
-        virtual void onPreSleep();
-        virtual void onPostSleep();
-        virtual void onPreCalc();
-        virtual void onPostCalc();
     };
     //static_assert(sizeof(PageBase) == 0x1E8); TEMP
 }

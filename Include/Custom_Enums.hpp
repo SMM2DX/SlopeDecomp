@@ -4,6 +4,7 @@ enum Skin {
 	Skin_MW							= 0x2,
 	Skin_WU							= 0x3,
 	Skin_3W							= 0x4,
+	Skin_COUNT						= 0x5,
 };
 
 enum SceneHour {
@@ -22,8 +23,7 @@ enum Scene {
 	Scene_Desert					= 0x7,
 	Scene_Sky						= 0x8,
 	Scene_Forest					= 0x9,
-//	CUSTOM_Scene_Beach				= 0xA,
-//	CUSTOM_Scene_Volcano			= 0xB,
+	Scene_COUNT						= 0xA,
 };
 
 enum SceneButtonIndex {

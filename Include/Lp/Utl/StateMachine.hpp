@@ -38,15 +38,14 @@ namespace Lp::Utl {
         using DelegateDummy = Delegate<impl::Dummy>;
         static_assert(sizeof(DelegateDummy) == 0x40, "");
 
-        uintptr_t field_8;
         int mCurIndex;
         int mCurStateCounter;
         int mPrevIndex;
         int mPrevStateCounter;
         int mFirstIndex;
         int mMaxStateNum;
-        bool field_28;
-        bool field_29;
+        bool field_20;
+        bool field_21;
 
         sead::Buffer<DelegateDummy> mStateBuffer;
         sead::Buffer<sead::SafeString> mStateNameBuffer;
@@ -77,14 +76,6 @@ namespace Lp::Utl {
             *getDelegate<T>(index) = { ptr, enter, exec, exit };
         }
 
-        /* Debug-only functionality. */
-        struct DebugHandler {
-            StateMachine* mThis;
-            sead::Buffer<unsigned char> mEnterCounts;
-
-            void incEnterCount(int);
-            void decEnterCount(int);
-        };
 
         int field_50;
         char field_54;
@@ -92,22 +83,5 @@ namespace Lp::Utl {
         sead::BitFlag32 mDebugReportLayerFlag;
         sead::Vector3f mDebugReportPos;
         bool mDebugReportChangeStateConsole;
-        Sys::IHioNode *mDebugHioParentNode;
-        sead::IDelegate1<Sys::HioContext*> *mDebugHioGenMessageDelegate;
-        sead::IDelegate1<Sys::HioPropertyEvent const*> *mDebugHioListenPropertyEventDelegate;
-        sead::FixedSafeString<32> mUniqueName1;
-        sead::FixedSafeString<32> mUniqueName2;
-        Lp::Utl::StateMachine::DebugHandler *mDebugHandler;
-
-        void debugExecute_();
-        void debugSetUniqName(sead::SafeString const&, sead::SafeString const&);
-        void debugSetReportEnable(bool);
-        void debugSetReportLayerFlag(sead::BitFlag32 const&);
-        void debugSetReportPos(sead::Vector3f const&);
-        void debugSetReportChangeStateConsoleEnable(bool);
-        void debugSetHioParentNode(Sys::IHioNode*);
-        void debugSetHioGenMessageDelegate(sead::IDelegate1<Sys::HioContext*>*);
-        void debugSetHioListenPropertyEventDelegate(sead::IDelegate1<Sys::HioPropertyEvent const*>*);
-        void getDebugReportString(sead::BufferedSafeString*, char const*);
     };
 }
