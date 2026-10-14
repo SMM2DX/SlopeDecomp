@@ -1,8 +1,8 @@
 #pragma once
 
-#include "heap/seadHeap.h"
-#include "heap/seadMemBlock.h"
-#include "prim/seadSizedEnum.h"
+#include "seadHeap.h"
+#include "seadMemBlock.h"
+#include "../prim/seadSizedEnum.h"
 
 namespace sead
 {

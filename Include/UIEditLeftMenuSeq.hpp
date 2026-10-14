@@ -1,80 +1,20 @@
 #pragma once
 
-#include "EditUIClass.hpp"
+#include "EditUIClass_intermediate.hpp"
 
-class UIEditLeftMenuSeq : public EditUIClass {
-	SEAD_RTTI_OVERRIDE(UIEditLeftMenuSeq, EditUIClass)
+class UIEditLeftMenuSeq : public EditUIClass_intermediate {
+	SEAD_RTTI_OVERRIDE(UIEditLeftMenuSeq, EditUIClass_intermediate)
 	~UIEditLeftMenuSeq() override;
 
-	virtual void sub_36();
-	virtual void sub_37();
-	virtual void sub_38();
-	virtual void sub_39();
-	virtual void sub_40();
-	virtual void sub_41();
-	virtual void sub_42();
-	virtual void sub_43();
-	virtual void sub_44();
-	virtual void sub_45();
-	virtual void sub_46();
-	virtual void sub_47();
-	virtual void sub_48();
-	virtual void sub_49();
-	virtual void sub_50();
-	virtual void sub_51();
-	virtual void sub_52();
-	virtual void sub_53();
-	virtual void sub_54();
-	virtual void sub_55();
-	virtual void sub_56();
-	virtual void sub_57();
-	virtual void sub_58();
-	virtual void sub_59();
-	virtual void sub_60();
-	virtual void sub_61();
-	virtual void sub_62();
-	virtual void sub_63();
-	virtual void sub_64();
-	virtual void sub_65();
-	virtual void sub_66();
-	virtual void sub_67();
-	virtual void sub_68();
-	virtual void sub_69();
-	virtual void sub_70();
-	virtual void sub_71();
-	virtual void sub_72();
-	virtual void sub_73();
-	virtual void sub_74_button_index_handler_thing(UISys::ButtonActionCallbackArg *);
-	virtual void sub_75();
-	virtual void sub_76();
-	virtual void sub_77();
-	virtual void sub_78();
-	virtual void sub_79();
-	virtual void sub_80();
-	virtual void sub_81();
-	virtual void sub_82();
-	virtual void sub_83();
-	virtual void sub_84();
-	virtual void sub_85();
-	virtual void sub_86();
-	virtual void sub_87();
-	virtual void sub_88();
-	virtual void sub_89();
-	virtual void sub_90();
-	virtual void sub_91();
-	virtual void sub_92();
-	virtual void sub_93();
-	virtual void sub_94();
-	virtual void sub_95();
-	virtual void sub_96();
-	virtual void sub_97();
-	virtual void sub_98();
-	virtual void sub_99();
-	virtual void sub_100();
-	virtual void sub_101();
-	virtual void sub_102();
-	virtual void sub_103();
-	virtual void sub_104();
-	virtual void sub_105();
-	virtual void sub_106();
+	void sub_40() override;	// Lyt_E_Scene_[scene]_00
+	void sub_56() override;
+	void sub_59() override;	// stateMachine2.field_50 |= 1
+	void sub_60() override;	// nullsub
+	void sub_65() override;	// stateMachine2.field_50 |= 8
+	void sub_67() override;	// SIX SEVEEEN! I'm such a fat fucking chud.
+	void sub_68() override;
+	void sub_73() override;	// nullsub
+	void sub_74(UISys::ButtonActionCallbackArg *) override; // button_index_handler_thing
+	void sub_77() override;	// nullsub
+	void sub_101() override;
 };

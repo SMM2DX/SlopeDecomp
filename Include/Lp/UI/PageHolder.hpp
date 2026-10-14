@@ -1,9 +1,9 @@
 #pragma once
 
-#include <sead/heap/seadDisposer.h>
-#include <sead/container/seadOffsetList.h>
-#include <sead/heap/seadHeap.h>
-#include <sead/heap/seadExpHeap.h>
+#include "../../sead/heap/seadDisposer.h"
+#include "../../sead/container/seadOffsetList.h"
+#include "../../sead/heap/seadHeap.h"
+#include "../../sead/heap/seadExpHeap.h"
 
 #include "PageBase.hpp"
 
@@ -23,12 +23,12 @@ namespace Lp::UI {
         
         uintptr_t field_20;
         uintptr_t field_28;
-        Impl::Name field_30;
-        sead::Heap* field_48;
+        Impl::Name name;
+        sead::Heap* pHeap;
         sead::OffsetList<HeapSet> mHeapSetList;
         HeapSet* mRootHeapSet;
         bool field_70;
         sead::OffsetList<PageBase> mChildPages;
-        Impl::LayoutResourceAccessorHolder* field_90;
+        Impl::LayoutResourceAccessorHolder* pLayoutResourceAccessorHolder;
     };
 }
