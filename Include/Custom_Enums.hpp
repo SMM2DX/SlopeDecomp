@@ -12,6 +12,17 @@ enum SceneHour {
 	SceneHour_Night					= 0x1,
 };
 
+enum MyWorldScene {
+	MyWorldScene_Plain				= 0x0,
+	MyWorldScene_Underground		= 0x1,
+	MyWorldScene_Desert				= 0x2,
+	MyWorldScene_Woods				= 0x3,
+	MyWorldScene_Snow				= 0x4,
+	MyWorldScene_Athletic			= 0x5,
+	MyWorldScene_Magma				= 0x6,
+	MyWorldScene_Night				= 0x7,
+};
+
 enum Scene {
 	Scene_Plain						= 0x0,
 	Scene_Underground				= 0x1,

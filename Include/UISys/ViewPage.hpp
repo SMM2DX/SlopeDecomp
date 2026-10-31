@@ -7,19 +7,19 @@
 namespace Lp::UI{
 	struct PartsCtrl;
 	struct PartsCtrlBuilder{
-		struct PostCreatePartsArg;
-		struct CtrlInitArg;
+		struct PostCreatePartsArg{};
+		struct CtrlInitArg{};
 	};
 	struct BtnPartsCtrl{
-		struct BtnEventArg;
-		struct DisplayCursorEvent;
+		struct BtnEventArg{};
+		struct DisplayCursorEvent{};
 	};
 	struct KeyItem{
-		struct Event;
-		struct EventArg;
+		struct Event{};
+		struct EventArg{};
 	};
 	struct StickItem{
-		struct EventArg;
+		struct EventArg{};
 	};
 }
 
@@ -60,14 +60,13 @@ namespace UISys{
 	    virtual void sub_43();
 	    virtual void sub_44();
 	    virtual void sub_45();
-	    virtual void sub_46();
+	    virtual void getLayoutName();
 	    virtual void sub_47();
-	    virtual void sub_48();
-	    virtual void sub_49();
-	    virtual void sub_50();
-	    virtual void sub_51();
-	    virtual void sub_52();
-	    virtual void sub_53();
+	    virtual Lp::UI::BtnPartsCtrl* getButton(int);
+	    virtual Lp::UI::BtnPartsCtrl* getButtton(int)const;
+	    virtual Lp::UI::KeyItem* getKeyItem(int);
+	    virtual Lp::UI::KeyItem* getKeyItem(int)const;
+	    virtual int sub_52();
 	    virtual void ctrlInitCallback_(Lp::UI::PartsCtrlBuilder::CtrlInitArg const&);
 
 	    virtual unsigned int getButtonIndex_(Lp::UI::BtnPartsCtrl const*);
@@ -83,8 +82,8 @@ namespace UISys{
 	    virtual void checkKeyActionInvoke_(UISys::KeyActionCallbackArg const&);
 	    virtual void postKeyActionInvoke_(UISys::KeyActionCallbackArg const&);
 		
+	    virtual void sub_64();
 	    virtual void sub_65();
-	    virtual void sub_66();
 
 	    virtual void createCursorActionCallbackArg_(UISys::CursorActionCallbackArg &,Lp::UI::BtnPartsCtrl::DisplayCursorEvent,int);
 	    virtual void preCursorActionInvoke_(UISys::CursorActionCallbackArg const&);

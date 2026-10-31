@@ -1,5 +1,6 @@
 #pragma once
 
+#include "sead/container/seadBuffer.h"
 #include "sead/prim/seadRuntimeTypeInfo.h"
 #include "UISys/ViewPage.hpp"
 
@@ -7,6 +8,7 @@ class UIEditMainPage : public UISys::ViewPage {
 	SEAD_RTTI_OVERRIDE(UIEditMainPage, ViewPage)
 	~UIEditMainPage() override;
 
+    virtual void sub_75();
     virtual void sub_76();
     virtual void sub_77();
     virtual void sub_78();
@@ -25,7 +27,7 @@ class UIEditMainPage : public UISys::ViewPage {
     virtual void sub_91();
     virtual void sub_92();
     virtual void sub_93();
-    virtual void sub_94();
+    virtual void sub_94(); // fills buttonBuffer
     virtual void sub_95();
     virtual void sub_96();
     virtual void sub_97();
@@ -64,5 +66,9 @@ class UIEditMainPage : public UISys::ViewPage {
     virtual void sub_130();
     virtual void sub_131();
     virtual void sub_132();
-    virtual void sub_133();
+
+    char gap_z0[0x218];
+    sead::Buffer<Lp::UI::Control> controlBuffer;
+    char gap_z1[0x370];
+    sead::Buffer<Lp::UI::BtnPartsCtrl> buttonBuffer;
 };
