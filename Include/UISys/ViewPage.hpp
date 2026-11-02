@@ -38,9 +38,9 @@ namespace UISys{
 
 		struct ViewPageInitArg;
 
-	    virtual void sub_24();
-	    virtual void sub_25();
-	    virtual void sub_26();
+	    virtual void sub_24();	// onInitiailize_()
+	    virtual void sub_25();	// onCloneParts_()
+	    virtual void sub_26();	// onPostCreatePartsCtrl_
 	    virtual void sub_27();
 	    virtual void sub_28();
 	    virtual void sub_29();
@@ -60,8 +60,8 @@ namespace UISys{
 	    virtual void sub_43();
 	    virtual void sub_44();
 	    virtual void sub_45();
+	    virtual void getLayoutNameByIndex(int);
 	    virtual void getLayoutName();
-	    virtual void sub_47();
 	    virtual Lp::UI::BtnPartsCtrl* getButton(int);
 	    virtual Lp::UI::BtnPartsCtrl* getButtton(int)const;
 	    virtual Lp::UI::KeyItem* getKeyItem(int);

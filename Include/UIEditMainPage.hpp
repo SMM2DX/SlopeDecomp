@@ -27,7 +27,7 @@ class UIEditMainPage : public UISys::ViewPage {
     virtual void sub_91();
     virtual void sub_92();
     virtual void sub_93();
-    virtual void sub_94(); // fills buttonBuffer
+    virtual void sub_94(); // doInitialize_() ?
     virtual void sub_95();
     virtual void sub_96();
     virtual void sub_97();
