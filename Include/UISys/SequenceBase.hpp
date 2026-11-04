@@ -2,6 +2,7 @@
 
 #include "../sead/prim/seadRuntimeTypeInfo.h"
 #include "../sead/container/seadBuffer.h"
+#include "../sead/container/seadPtrArray.h"
 #include "../Lp/Utl/StateMachine.hpp"
 #include "ButtonActionCallbackArg.hpp"
 
@@ -72,7 +73,15 @@ namespace UISys {
 		long long unk_num2;
 		Lp::Utl::StateMachine stateMachine1;
 		Lp::Utl::StateMachine stateMachine2;
-		char gap_2d[192];
+
+		long long gap_2d;
+		
+		sead::PtrArrayImpl array_1;
+		sead::PtrArrayImpl array_2;
+		sead::PtrArrayImpl array_3;
+		sead::PtrArrayImpl array_4;
+
+		char gap_2f[120];
 		long long temp1;
 		unsigned long long temp2;
 		char gap_1[304];

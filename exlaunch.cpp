@@ -1,33 +1,17 @@
 #include "lib.hpp"
 
-void WriteInst(uintptr_t address, exl::armv8::InstBitSet inst) {
-	static exl::patch::CodePatcher sCodePatcher(0);
-	sCodePatcher.Seek(address);
-	sCodePatcher.WriteInst(inst);
-}
-
-static constexpr u16 s_BtnPartsCtrlBufferSize = 0x68;
-static constexpr u16 s_BtnPartsCtrlBufferNewSize = 0x6A;
-
-
 namespace Lp {
 	namespace UI {
 		struct BtnPartsCtrl;
 	} // namespace UI
 } // namespace Lp
 
-struct Difference {
-	uintptr_t m_Page;
-	uintptr_t m_Offset;
-};
-
-Difference GetDifference(uintptr_t source, uintptr_t destination) {
-	constexpr uintptr_t pageMask	= ~(PAGE_SIZE - 1);
-	constexpr uintptr_t offsetMask	=  (PAGE_SIZE - 1);
-	uintptr_t page		= (destination & pageMask) - (source & pageMask);
-	uintptr_t offset	= (destination & offsetMask);
-	return {page, offset};
-}
+namespace sead {
+	struct SafeString {
+		void *__vftable;
+		const char *mStringTop;
+	};
+} // namespace sead
 
 struct ButtonNameStruct {
 	void *__vftable;
@@ -39,21 +23,9 @@ struct ButtonNameStruct {
 	signed int int_24;
 };
 
-static std::array<ButtonNameStruct, s_BtnPartsCtrlBufferNewSize> s_NewArray;
-
 struct struct_UIEditMainPage {
 	u8 _0[0x770];
 	u32 m_BtnPartsCtrlBuffer;
-};
-
-struct struct_BtnPartsCtrl {
-	u8 _0[0x10];
-	u32 m_ButtonIndex;
-};
-
-struct SafeString {
-	void *__vftable;
-	const char *mStringTop;
 };
 
 struct ButtonActionCallbackArg {
@@ -68,14 +40,12 @@ struct ButtonActionCallbackArg {
 	unsigned long long qword28;
 };
 
-struct struct_v20
-{
+struct struct_v20 {
   u8 _0[84];
   int8_t byte54;
 };
 
-struct struct_v19
-{
+struct struct_v19 {
   u8 _0[528];
   struct_v20 *pstruct_v20;
 };
@@ -99,65 +69,91 @@ struct SequenceBase {
 	temp_9_t *temp_9;
 };
 
-void patchBtnPartsCtrlBufferSize() {
-	exl::patch::CodePatcher codePatcher(0x18CBAD8);
-	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W0, sizeof(Lp::UI::BtnPartsCtrl *) * s_BtnPartsCtrlBufferNewSize));
-	codePatcher.Seek(0x18CBB68);
-	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::X8, s_BtnPartsCtrlBufferNewSize % 4));
-	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W10, s_BtnPartsCtrlBufferNewSize));
+static constexpr u16 s_BtnPartsCtrlBufferSize		= 0x68;
+static constexpr u16 s_NewBtnPartsCtrlBufferSize	= 0x6A;
+static std::array<ButtonNameStruct, s_NewBtnPartsCtrlBufferSize> s_NewBtnPartsCtrlBuffer;
+
+class Difference final {
+	public:
+		constexpr Difference(uintptr_t source, uintptr_t destination) noexcept
+			: m_Source{source}, m_Destination{destination} {}
+		[[nodiscard]] constexpr uintptr_t GetPage() const noexcept {
+			return static_cast<intptr_t>(m_Destination & s_PageMask) - static_cast<intptr_t>(m_Source & s_PageMask);
+		}
+		[[nodiscard]] constexpr uintptr_t GetOffset() const noexcept {
+			return m_Destination & s_OffsetMask;
+		}
+	private:
+		static constexpr uintptr_t s_PageMask = ~(static_cast<uintptr_t>(PAGE_SIZE) - 1);
+		static constexpr uintptr_t s_OffsetMask = static_cast<uintptr_t>(PAGE_SIZE) - 1;
+		uintptr_t m_Source;
+		uintptr_t m_Destination;
+};
+
+class CodePatcher final : public exl::patch::CodePatcher {
+	public:
+		inline void WriteAdrlInst(exl::armv8::reg::Register reg, uintptr_t destination) {
+			Difference difference = Difference(RoFromAddr(m_Current), destination);
+			WriteInst(exl::armv8::inst::Adrp(reg, difference.GetPage()));
+			WriteInst(exl::armv8::inst::AddImmediate(reg, reg, difference.GetOffset()));
+		}
+};
+
+void WriteAdrlInst(exl::armv8::reg::Register reg, uintptr_t source, uintptr_t destination) {
+	CodePatcher s_CodePatcher = CodePatcher(source);
+	s_CodePatcher.WriteAdrlInst(reg, destination);
 }
 
 void patchGetButton() {
 	exl::patch::CodePatcher codePatcher(0x18CC450);
-	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::W1, s_BtnPartsCtrlBufferNewSize - 1));
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::W1, s_NewBtnPartsCtrlBufferSize - 1));
 }
 
 void patchGetButtonIndex() {
 	exl::patch::CodePatcher codePatcher(0x18CC514);
-	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X0, s_BtnPartsCtrlBufferNewSize));
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X0, s_NewBtnPartsCtrlBufferSize));
+}
+
+#pragma region BtnPartsCtrlBuffer
+
+void patchBtnPartsCtrlBufferSize() {
+	exl::patch::CodePatcher codePatcher(0x18CBAD8);
+	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W0, sizeof(Lp::UI::BtnPartsCtrl *) * s_NewBtnPartsCtrlBufferSize));
+	codePatcher.Seek(0x18CBB68);
+	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::X8, s_NewBtnPartsCtrlBufferSize % 4));
+	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W10, s_NewBtnPartsCtrlBufferSize));
 }
 
 void patchPopulateBtnPartsCtrlBuffer() {
 	exl::patch::CodePatcher codePatcher(0x18D02C0);
-	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X24, s_BtnPartsCtrlBufferNewSize));
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X24, s_NewBtnPartsCtrlBufferSize));
 	codePatcher.Seek(0x18D0548);
-	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X23, s_BtnPartsCtrlBufferNewSize));
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X23, s_NewBtnPartsCtrlBufferSize));
 }
 
-void patchArray() {
-	auto s_Array = exl::util::pointer_path::Follow<std::array<ButtonNameStruct, s_BtnPartsCtrlBufferSize>, 0x2CD99A8>();
+void patchBtnPartsCtrlBuffer() {
+	auto s_BtnPartsCtrlBuffer = exl::util::pointer_path::Follow<std::array<ButtonNameStruct, s_BtnPartsCtrlBufferSize>, 0x2CD99A8>();
 	for (auto i = 0; i < s_BtnPartsCtrlBufferSize; ++i) {
-		s_NewArray[i] = s_Array[i];
+		s_NewBtnPartsCtrlBuffer[i] = s_BtnPartsCtrlBuffer[i];
 	}
-	for (auto i = s_BtnPartsCtrlBufferSize; i < s_BtnPartsCtrlBufferNewSize; ++i) {
-		s_NewArray[i] = s_Array[0x4E];
-		if (i == 0x68)
-			s_NewArray[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_10";
-		if (i == 0x69)
-			s_NewArray[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_11";
-		Logging.Log("patchArray: %d %s", i, s_NewArray[i].mStringTop);
+	for (auto i = s_BtnPartsCtrlBufferSize; i < s_NewBtnPartsCtrlBufferSize; ++i) {
+		s_NewBtnPartsCtrlBuffer[i] = s_BtnPartsCtrlBuffer[0x4E];
+		if (i == 0x68) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_10";
+		if (i == 0x69) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_11";
+		Logging.Log("patchBtnPartsCtrlBuffer: %d %s", i, s_NewBtnPartsCtrlBuffer[i].mStringTop);
 	}
 
-	exl::patch::CodePatcher codePatcher(0x18CF7B4);
-	Difference difference = GetDifference(exl::util::modules::GetTargetOffset(0x18CF7B4), reinterpret_cast<uintptr_t>(s_NewArray.data()));
-	codePatcher.WriteInst(exl::armv8::inst::Adrp(exl::armv8::reg::X23, difference.m_Page));
-	codePatcher.WriteInst(exl::armv8::inst::AddImmediate(exl::armv8::reg::X23, exl::armv8::reg::X23, difference.m_Offset));
-
-	codePatcher.Seek(0x18CFA14);
-	difference = GetDifference(exl::util::modules::GetTargetOffset(0x18CFA14), reinterpret_cast<uintptr_t>(s_NewArray.data()));
-	codePatcher.WriteInst(exl::armv8::inst::Adrp(exl::armv8::reg::X23, difference.m_Page));
-	codePatcher.WriteInst(exl::armv8::inst::AddImmediate(exl::armv8::reg::X23, exl::armv8::reg::X23, difference.m_Offset));
-
-	codePatcher.Seek(0x18D0158);
-	difference = GetDifference(exl::util::modules::GetTargetOffset(0x18D0158), reinterpret_cast<uintptr_t>(s_NewArray.data()));
-	codePatcher.WriteInst(exl::armv8::inst::Adrp(exl::armv8::reg::X23, difference.m_Page));
-	codePatcher.WriteInst(exl::armv8::inst::AddImmediate(exl::armv8::reg::X23, exl::armv8::reg::X23, difference.m_Offset));
+	WriteAdrlInst(exl::armv8::reg::X23, 0x18CF7B4, reinterpret_cast<uintptr_t>(s_NewBtnPartsCtrlBuffer.data()));
+	WriteAdrlInst(exl::armv8::reg::X23, 0x18CFA14, reinterpret_cast<uintptr_t>(s_NewBtnPartsCtrlBuffer.data()));
+	WriteAdrlInst(exl::armv8::reg::X23, 0x18D0158, reinterpret_cast<uintptr_t>(s_NewBtnPartsCtrlBuffer.data()));
 }
+
+#pragma endregion
 
 HOOK_DEFINE_TRAMPOLINE(Init) {
 	static void Callback() {
 		Orig();
-		patchArray();
+		patchBtnPartsCtrlBuffer();
 	}
 };
 
@@ -172,17 +168,14 @@ HOOK_DEFINE_REPLACE(ThemeIndexSub) {
 		temp_9_t *temp_9 = thisPtr->temp_9;
 
 		if ( button_index - 0x59 > 4) {
-			Logging.Log("Button index is not a Skin button");
 			uint32_t new_theme_index = 0;
 			if (button_index >= s_BtnPartsCtrlBufferSize) {
-				Logging.Log("Button index is within Custom range");
 				uint32_t custom_button_index = button_index - s_BtnPartsCtrlBufferSize;
 				new_theme_index = custom_button_index + 10;
 			}
 			else {
 				uint32_t theme_button_index = button_index - 0x4E;
 				if (theme_button_index >= 10){
-					Logging.Log("Button index is not a theme button");
 					return;
 				}
 				new_theme_index = theme_button_index; // TEMP
@@ -238,18 +231,18 @@ HOOK_DEFINE_REPLACE(ThemeIndexSub) {
 
 
 extern "C" void exl_main(void *x0, void *x1) {
+	exl::patch::CodePatcher codePatcher(0);
 	exl::hook::Initialize();
-	patchBtnPartsCtrlBufferSize();
+
 	patchGetButton();
 	patchGetButtonIndex();
+	patchBtnPartsCtrlBufferSize();
 	patchPopulateBtnPartsCtrlBuffer();
+
 	Init::InstallAtOffset(0x30);
-
-
 	ThemeIndexSub::InstallAtOffset(0x18CA930);
 
-
-	exl::patch::CodePatcher codePatcher(0x00DA0B00); // Remap Theme Indexes
+	codePatcher.Seek(0x00DA0B00); // Remap Theme Indexes
 	codePatcher.Write(0x5280004A);
 	codePatcher.Seek(0x00DA0B04);
 	codePatcher.Write(0x1B0A2502);
