@@ -13,6 +13,158 @@ namespace sead {
 	};
 } // namespace sead
 
+#pragma region Enums
+
+enum Skin : uint32_t {
+	Skin_M1		= 0x0,
+	Skin_M3		= 0x1,
+	Skin_MW		= 0x2,
+	Skin_WU		= 0x3,
+	Skin_3W		= 0x4,
+	Skin_COUNT	= 0x5,
+};
+
+enum Scene : uint32_t {
+	Scene_Plain			= 0x0,
+	Scene_Underground	= 0x1,
+	Scene_Castle		= 0x2,
+	Scene_Airship		= 0x3,
+	Scene_Water			= 0x4,
+	Scene_GhostHouse	= 0x5,
+	Scene_Snow			= 0x6,
+	Scene_Desert		= 0x7,
+	Scene_Sky			= 0x8,
+	Scene_Woods			= 0x9,
+	Scene_COUNT			= 0xA,
+};
+
+enum SceneHour : uint32_t {
+	SceneHour_Day	= 0x0,
+	SceneHour_Night	= 0x1,
+};
+
+enum MyWorldScene : uint32_t {
+	MyWorldScene_Plain			= 0x0,
+	MyWorldScene_Underground	= 0x1,
+	MyWorldScene_Desert			= 0x2,
+	MyWorldScene_Woods			= 0x3,
+	MyWorldScene_Snow			= 0x4,
+	MyWorldScene_Athletic		= 0x5,
+	MyWorldScene_Magma			= 0x6,
+	MyWorldScene_Night			= 0x7,
+	MyWorldScene_COUNT			= 0x7,
+};
+
+enum ButtonIndex : uint32_t {
+	L_Btn_00 = 0x0,
+	L_Btn_01 = 0x1,
+	L_Btn_02 = 0x2,
+	L_Btn_03 = 0x3,
+	L_Btn_04 = 0x4,
+	L_Btn_05 = 0x5,
+	L_Btn_06 = 0x6,
+	L_Btn_07 = 0x7,
+	L_Btn_08 = 0x8,
+	L_Btn_09 = 0x9,
+	L_Btn_10 = 0xA,
+	L_BdBalloon_00 = 0xB,
+	L_BdBalloon_00_2 = 0xC,
+	L_RingMenu_00__L_BdRingIconSet_00 = 0xD,
+	L_RingMenu_00__L_BdRingIconSet_01 = 0xE,
+	L_RingMenu_00__L_BdRingIconSet_02 = 0xF,
+	L_RingMenu_00__L_Category_00__L_BdBase_00 = 0x10,
+	L_RingMenu_00__L_Category_00__L_BdBase_01 = 0x11,
+	L_RingMenu_00__L_Category_00__L_BdBase_02 = 0x12,
+	L_RingMenu_00__L_Category_00__L_BdBase_03 = 0x13,
+	L_RingMenu_00__L_Category_01__L_BdBase_00 = 0x14,
+	L_RingMenu_00__L_Category_01__L_BdBase_01 = 0x15,
+	L_RingMenu_00__L_Category_01__L_BdBase_02 = 0x16,
+	L_RingMenu_00__L_Category_01__L_BdBase_03 = 0x17,
+	L_RingMenu_00__L_Category_01__L_BdBase_04 = 0x18,
+	L_RingMenu_00__L_CloseBtn_00 = 0x19,
+	L_PaletteSet_00__L_SoundBtn_00 = 0x1A,
+	L_PaletteSet_00__L_SearchBtn_00 = 0x1B,
+	L_PaletteSet_00__L_PaletteBtn_00 = 0x1C,
+	L_PaletteSet_00__L_PaletteBtn_01 = 0x1D,
+	L_PaletteSet_00__L_PaletteBtn_02 = 0x1E,
+	L_PaletteSet_00__L_PaletteBtn_03 = 0x1F,
+	L_PaletteSet_00__L_PaletteBtn_04 = 0x20,
+	L_PaletteSet_00__L_PaletteBtn_05 = 0x21,
+	L_PaletteSet_00__L_PaletteBtn_06 = 0x22,
+	L_PaletteSet_00__L_PaletteBtn_07 = 0x23,
+	L_PaletteSet_00__L_PaletteBtn_08 = 0x24,
+	L_PaletteSet_00__L_PaletteBtn_09 = 0x25,
+	L_PaletteSet_00__L_PaletteBtn_10 = 0x26,
+	L_PaletteSet_00__L_PaletteBtn_11 = 0x27,
+	L_PaletteSet_00__L_BdPaletteSet_00 = 0x28,
+	L_Play_00__L_PlayBtn_00 = 0x29,
+	L_Slider_00__L_AreaBtn_01 = 0x2A,
+	L_Slider_00__L_VerticalBtn_01 = 0x2B,
+	L_Slider_00__L_SlideBarV_00 = 0x2C,
+	L_Slider_00__L_BtnG_01 = 0x2D,
+	L_Slider_00__L_BtnS_01 = 0x2E,
+	L_Slider_00__L_AreaBtn_00 = 0x2F,
+	L_Slider_00__L_VerticalBtn_00 = 0x30,
+	L_Slider_00__L_SlideBarH_00 = 0x31,
+	L_Slider_00__L_BtnG_00 = 0x32,
+	L_Slider_00__L_BtnS_00 = 0x33,
+	L_Slider_00__L_BdSlideBarV_00 = 0x34,
+	L_Slider_00__L_BdSlideBarH_00 = 0x35,
+	L_LeftParts_00__L_SkinBtn_00 = 0x36,
+	L_LeftParts_00__L_SceneBtn_00 = 0x37,
+	L_LeftParts_00__L_WaterLevelBtn_00 = 0x38,
+	L_LeftParts_00__L_ScrollBtn_00 = 0x39,
+	L_LeftParts_00__L_ScrollEditBtn_00 = 0x3A,
+	L_LeftParts_00__L_TimerBtn_00 = 0x3B,
+	L_LeftParts_00__L_MissionBtn_00 = 0x3C,
+	L_LeftParts_00__L_MultiEditBtn_00 = 0x3D,
+	L_LeftParts_00__L_ZanzoBtn_00 = 0x3E,
+	L_LeftParts_00__L_NoAutoScrollBtn_00 = 0x3F,
+	L_LeftParts_00__L_AutoScrollBtn_00 = 0x40,
+	L_LeftParts_00__L_AutoScrollBtn_01 = 0x41,
+	L_LeftParts_00__L_AutoScrollBtn_02 = 0x42,
+	L_LeftParts_00__L_AutoScrollBtn_06 = 0x43,
+	L_LeftParts_00__L_AutoScrollBtn_03 = 0x44,
+	L_LeftParts_00__L_AutoScrollBtn_04 = 0x45,
+	L_LeftParts_00__L_AutoScrollBtn_05 = 0x46,
+	L_LeftParts_00__L_ScrollUpBtn_00 = 0x47,
+	L_LeftParts_00__L_ScrollDownBtn_00 = 0x48,
+	L_LeftParts_00__L_ScrollDecideBtn_00 = 0x49,
+	L_LeftParts_00__L_Timer_00__L_UpBtn_00 = 0x4A,
+	L_LeftParts_00__L_Timer_00__L_DownBtn_00 = 0x4B,
+	L_LeftParts_00__L_Timer_00__L_CenterButton_00 = 0x4C,
+	L_LeftParts_00__L_TimerDecideBtn_00 = 0x4D,
+	L_LeftParts_00__L_SceneListBtn_00 = 0x4E,
+	L_LeftParts_00__L_SceneListBtn_01 = 0x4F,
+	L_LeftParts_00__L_SceneListBtn_02 = 0x50,
+	L_LeftParts_00__L_SceneListBtn_03 = 0x51,
+	L_LeftParts_00__L_SceneListBtn_04 = 0x52,
+	L_LeftParts_00__L_SceneListBtn_05 = 0x53,
+	L_LeftParts_00__L_SceneListBtn_06 = 0x54,
+	L_LeftParts_00__L_SceneListBtn_07 = 0x55,
+	L_LeftParts_00__L_SceneListBtn_08 = 0x56,
+	L_LeftParts_00__L_SceneListBtn_09 = 0x57,
+	L_LeftParts_00__L_ChangeHourBtn_00 = 0x58,
+	L_LeftParts_00__L_SkinListBtn_00 = 0x59,
+	L_LeftParts_00__L_SkinListBtn_01 = 0x5A,
+	L_LeftParts_00__L_SkinListBtn_02 = 0x5B,
+	L_LeftParts_00__L_SkinListBtn_03 = 0x5C,
+	L_LeftParts_00__L_SkinListBtn_04 = 0x5D,
+	L_LeftParts_00__L_CloseBtn_00 = 0x5E,
+	L_LeftParts_00__L_BdLeftParts_00 = 0x5F,
+	L_RightParts_00__L_MenuBtn_00 = 0x60,
+	L_RightParts_00__L_SaveBtn_00 = 0x61,
+	L_RightParts_00__L_EraserBtn_00 = 0x62,
+	L_RightParts_00__L_UndoBtn_00 = 0x63,
+	L_RightParts_00__L_ResetBtn_00 = 0x64,
+	L_RightParts_00__L_BdRightSet_00 = 0x65,
+	L_PullBtnSlider_00 = 0x66,
+	L_BdEdit_00 = 0x67,
+	ButtonIndex_SIZE = 0x68,
+};
+
+#pragma endregion
+
 struct ButtonNameStruct {
 	void *__vftable;
 	const char *mStringTop;
@@ -54,14 +206,14 @@ struct temp_9_t {
 	u8 _0[0x238];
 	struct_v19 *qword_238;
 	u8 _1[0xB0];
-	uintptr_t qword_2F0;
+	int64_t changeBitFlag;
 	u8 _2[0x13CC];
-	int32_t dword16C4;
-	int32_t dword16C8;
-	int32_t dword16CC;
-	int32_t dword16D0;
-	int32_t dword16D4;
-	int32_t dword16D8;
+	Skin prevSkin;
+	Skin nextSkin;
+	Scene prevScene;
+	SceneHour prevSceneHour;
+	Scene nextScene;
+	SceneHour nextSceneHour;
 };
 
 struct SequenceBase {
@@ -137,7 +289,7 @@ void patchBtnPartsCtrlBuffer() {
 		s_NewBtnPartsCtrlBuffer[i] = s_BtnPartsCtrlBuffer[i];
 	}
 	for (auto i = s_BtnPartsCtrlBufferSize; i < s_NewBtnPartsCtrlBufferSize; ++i) {
-		s_NewBtnPartsCtrlBuffer[i] = s_BtnPartsCtrlBuffer[0x4E];
+		s_NewBtnPartsCtrlBuffer[i] = s_BtnPartsCtrlBuffer[L_LeftParts_00__L_SceneListBtn_00];
 		if (i == 0x68) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_10";
 		if (i == 0x69) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_11";
 		Logging.Log("patchBtnPartsCtrlBuffer: %d %s", i, s_NewBtnPartsCtrlBuffer[i].mStringTop);
@@ -157,47 +309,85 @@ HOOK_DEFINE_TRAMPOLINE(Init) {
 	}
 };
 
-HOOK_DEFINE_REPLACE(ThemeIndexSub) {
+HOOK_DEFINE_TRAMPOLINE(printFromStartTime) {
+	static void Callback(sead::SafeString *a1) {
+		Orig(a1);
+		Logging.Log("[printFromStartTime] %s", a1->mStringTop);
+	}
+};
+
+HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_67) {
+	static void Callback(SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
+		Logging.Log("[UIEditLeftMenuSeq_sub_67] %u", buttonActionCallbackArg->buttonIndex);
+		Orig(thisPtr, buttonActionCallbackArg);
+	}
+};
+
+HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_68) {
+	static void Callback(SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
+		using sub_71018C7C10_t = void (void *);
+		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
+
+		Logging.Log("[UIEditLeftMenuSeq_sub_68] %u", buttonActionCallbackArg->buttonIndex);
+		
+		if (buttonActionCallbackArg->buttonIndex == L_LeftParts_00__L_ChangeHourBtn_00) {
+			//uint32_t button_index = buttonActionCallbackArg->buttonIndex;
+			temp_9_t *temp_9 = thisPtr->temp_9;
+
+			if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
+				temp_9->nextSceneHour = SceneHour_Night;
+				temp_9->nextScene = temp_9->prevScene;
+				temp_9->changeBitFlag = temp_9->changeBitFlag | 0x80000;
+			}
+
+			Logging.Log("Calling sub_71018C7C10");
+			sub_71018C7C10(thisPtr);
+		} else {
+			Orig(thisPtr, buttonActionCallbackArg);
+		}
+	}
+};
+
+HOOK_DEFINE_REPLACE(UIEditLeftMenuSeq_sub_74) {
 	static void Callback(SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
 		using sub_71018C7C10_t = void (void *);
 		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
 		
-		Logging.Log("ThemeIndexSub: %u", buttonActionCallbackArg->buttonIndex);
+		Logging.Log("[UIEditLeftMenuSeq_sub_74] %u", buttonActionCallbackArg->buttonIndex);
 
 		uint32_t button_index = buttonActionCallbackArg->buttonIndex;
 		temp_9_t *temp_9 = thisPtr->temp_9;
 
 		if ( button_index - 0x59 > 4) {
-			uint32_t new_theme_index = 0;
+			Scene new_theme_index = Scene_Plain;
 			if (button_index >= s_BtnPartsCtrlBufferSize) {
 				uint32_t custom_button_index = button_index - s_BtnPartsCtrlBufferSize;
-				new_theme_index = custom_button_index + 10;
+				new_theme_index = (Scene)(custom_button_index + 10);
 			}
 			else {
 				uint32_t theme_button_index = button_index - 0x4E;
 				if (theme_button_index >= 10){
 					return;
 				}
-				new_theme_index = theme_button_index; // TEMP
+				new_theme_index = (Scene) theme_button_index; // TEMP
 				//new_theme_index = button_index_theme_to_theme_index[theme_button_index]; // UNFINISHED
 			}
 
-			uint32_t previous_theme_index = 0;
+			Scene previous_theme_index = Scene_Plain;
 			if (temp_9) // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
-				previous_theme_index = temp_9->dword16CC;
+				previous_theme_index = temp_9->prevScene;
 			
 			Logging.Log("Theme was: %d", previous_theme_index);
 			Logging.Log("Changing theme to: %d", new_theme_index);
 
 			if (previous_theme_index != new_theme_index) {
 				if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
-					temp_9->dword16D8 = temp_9->dword16D0;
-					uintptr_t v17 = temp_9->qword_2F0 | 0x40000LL;
-					temp_9->dword16D4 = new_theme_index;
-					// JUMP TO LABEL 37
-					temp_9->qword_2F0 = v17;
+					temp_9->nextSceneHour = temp_9->prevSceneHour;
+					temp_9->nextScene = new_theme_index;
+					temp_9->changeBitFlag = temp_9->changeBitFlag | 0x40000LL;
 				}
 			} else {
+				// CLOSE MENU
 				if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
 					struct_v19 *v19 = temp_9->qword_238;
 					if (v19) {
@@ -209,17 +399,15 @@ HOOK_DEFINE_REPLACE(ThemeIndexSub) {
 				}
 			}
 		} else {
-			uint32_t new_style_index = button_index - 0x59;
-			uint32_t previous_style_index = 0;
+			Skin new_style_index = (Skin)(button_index - L_LeftParts_00__L_SkinListBtn_00);
+			Skin previous_style_index = Skin_M1;
 			if (temp_9) // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
-				previous_style_index = temp_9->dword16C4;
+				previous_style_index = temp_9->prevSkin;
 			
 			if (previous_style_index != new_style_index) {
 				if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
-					uintptr_t v16 = temp_9->qword_2F0;
-					temp_9->dword16C8 = new_style_index;
-					uintptr_t v17 = v16 | 0x10000;
-					temp_9->qword_2F0 = v17;
+					temp_9->nextSkin = new_style_index;
+					temp_9->changeBitFlag = temp_9->changeBitFlag | 0x10000;
 				}
 			}
 		}
@@ -228,7 +416,6 @@ HOOK_DEFINE_REPLACE(ThemeIndexSub) {
 		sub_71018C7C10(thisPtr);
 	}
 };
-
 
 extern "C" void exl_main(void *x0, void *x1) {
 	exl::patch::CodePatcher codePatcher(0);
@@ -240,7 +427,10 @@ extern "C" void exl_main(void *x0, void *x1) {
 	patchPopulateBtnPartsCtrlBuffer();
 
 	Init::InstallAtOffset(0x30);
-	ThemeIndexSub::InstallAtOffset(0x18CA930);
+	printFromStartTime::InstallAtOffset(0x620B90);
+	UIEditLeftMenuSeq_sub_67::InstallAtOffset(0x18C9280);
+	UIEditLeftMenuSeq_sub_68::InstallAtOffset(0x18C9E30);
+	UIEditLeftMenuSeq_sub_74::InstallAtOffset(0x18CA930);
 
 	codePatcher.Seek(0x00DA0B00); // Remap Theme Indexes
 	codePatcher.Write(0x5280004A);

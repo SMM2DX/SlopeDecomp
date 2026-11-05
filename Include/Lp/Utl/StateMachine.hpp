@@ -79,9 +79,9 @@ namespace Lp::Utl {
 
         int field_50;
         char field_54;
-        bool mDebugReportEnable;
-        sead::BitFlag32 mDebugReportLayerFlag;
-        sead::Vector3f mDebugReportPos;
-        bool mDebugReportChangeStateConsole;
+        //bool mDebugReportEnable;
+        //sead::BitFlag32 mDebugReportLayerFlag;
+        //sead::Vector3f mDebugReportPos;
+        //bool mDebugReportChangeStateConsole;
     };
 }
