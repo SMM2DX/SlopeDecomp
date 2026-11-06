@@ -1,6 +1,6 @@
 #pragma once
 
-#include "seadOG/container/seadBuffer.h"
+#include "sead/seadBuffer.h"
 #include "seadOG/container/seadPtrArray.h"
 #include "Lp/Utl/StateMachine.hpp"
 #include "UISys/ButtonActionCallbackArg.hpp"

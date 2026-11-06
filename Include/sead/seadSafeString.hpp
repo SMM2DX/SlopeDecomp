@@ -7,7 +7,7 @@ namespace sead {
 		virtual ~SafeStringBase();
 		virtual SafeStringBase &operator=(const SafeStringBase &);
 		virtual void assureTerminationImpl_() const;
-		const T *mStringTop;
+		T* mStringTop;
 	};
 	using SafeString = SafeStringBase<char>;
 	#endif	//	SEAD_SAFESTRING_HPP
@@ -18,7 +18,7 @@ namespace sead {
 		~BufferedSafeStringBase() override;
 		BufferedSafeStringBase &operator=(const BufferedSafeStringBase &) override;
 		void assureTerminationImpl_() const override;
-		const int mBufferSize;
+		int mBufferSize;
 	};
 	using BufferedSafeString = BufferedSafeStringBase<char>;
 	#endif	//	SEAD_BUFFEREDSAFESTRING_HPP
@@ -39,7 +39,7 @@ namespace sead {
 		~FixedSafeStringBase_32() override;
 		FixedSafeStringBase_32 &operator=(const FixedSafeStringBase_32 &) override;
 		void assureTerminationImpl_() const override;
-		const char mBuffer[32];
+		char mBuffer[32];
 	};
 	using FixedSafeString_32 = FixedSafeStringBase_32<char>;
 	#endif	//	SEAD_FIXEDSAFESTRING_HPP
