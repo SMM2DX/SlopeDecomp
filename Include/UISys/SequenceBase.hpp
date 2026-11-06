@@ -2,12 +2,14 @@
 
 #include "../sead/prim/seadRuntimeTypeInfo.h"
 #include "../sead/container/seadBuffer.h"
+#include "../sead/container/seadListImpl.h"
 #include "../sead/container/seadPtrArray.h"
 #include "../sead/thread/seadCriticalSection.h"
 #include "../Lp/Utl/StateMachine.hpp"
 #include "ButtonActionCallbackArg.hpp"
 #include "SequenceJobList.hpp"
 #include "SequenceJob.hpp"
+#include "SequenceHolder.hpp"
 
 namespace Lp::UI{
 	struct BtnPartsCtrl;
@@ -23,8 +25,8 @@ namespace UISys {
 		virtual void sub_8();	// sub_26()
 		virtual void sub_9();	// sub_27()
 		virtual void sub_10();	// nullsub
-		virtual void sub_11();	// nullsub
-		virtual void sub_12();	// nullsub
+		virtual void sub_11();	// nullsub Scenes?
+		virtual void sub_12();	// nullsub Layouts?
 		virtual void sub_13();	// nullsub
 		virtual void sub_14();	// nullsub
 		virtual void sub_15();	// nullsub
@@ -49,37 +51,33 @@ namespace UISys {
 		virtual void sub_34();	// returns 0
 		virtual void sub_35();	// nullsub
 
-		int temp_1;
-		void* temp_2;
-		long long temp_3;
-		long long temp_4;
-		long long temp_5;
-		long long temp_6;
-		long long temp_7;
-		long long temp_8;
-		long long temp_9;
-		void* temp_10;
-		void* temp_11;
-		int temp_12a;
-		int temp_12b;
-		void* temp_13;
-		void* temp_14;
-		int temp_15a;
-		int temp_15b;
+		int temp_01;
+		void* temp_02;
+		long long temp_03;
+		long long temp_04;
+		long long temp_05;
+		long long temp_06;
+		long long temp_07;
+		long long temp_08;
+		long long temp_09;
+		sead::ListImpl listImpl1;					// 0x50
+		sead::ListImpl listImpl2;					// 0x68
 		Lp::UI::Impl::Name name;					// 0x80
-		long long temp_16;							// MISSING IN LABO !
+		UISys::SequenceHolder* sequenceHolder;		// 0x98
 		Lp::UI::PageHolder* pageHolder;				// 0xA0
-		long long gapTemp1;
+		long long temp_10;							// MISSING IN LABO !
 		UISys::SequenceJob sequenceJob1;			// 0xB0
 		UISys::SequenceJob sequenceJob2;			// 0xE8
-		int gapTemp2;
-		UISys::SequenceJobList sequenceJobList1;	// 0x128
-		UISys::SequenceJobList sequenceJobList2;	// 0x140
-		int gapTemp3;
-		int gapTemp4;
-		int gapTemp5;
-		short gapTemp6;
-		char gapTemp7;
+		int temp_11;
+		UISys::SequenceJobList sequenceJobList1;	// 0x128 Scenes?
+		UISys::SequenceJobList sequenceJobList2;	// 0x140 Layouts?
+		int temp_12;
+		int temp_13;
+		int temp_14;
+		char temp_15;
+		char createLayoutResourceAccessorHolder;
+		char temp_16;
+		char temp_17;
 		sead::CriticalSection criticalsection;		// 0x168
 	};
 }

@@ -108,9 +108,11 @@ class EditUIClass_intermediate : public UISys::SequenceBase {
 	Lp::Utl::StateMachine stateMachine1;
 	char gapFill1[0x18];
 	Lp::Utl::StateMachine stateMachine2;
-	char gapFill2[0x08];
+	uint32_t gapFill2;
+	uint32_t gapFill3;
 	void* somethingBig;
-	char gapFill3[0x10];
+	int64_t gapFill4;
+	int64_t gapFill5;
 	
 	sead::PtrArrayImpl array_1;
 	sead::PtrArrayImpl array_2;
