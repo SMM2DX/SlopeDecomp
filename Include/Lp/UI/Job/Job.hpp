@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../../sead/container/seadOffsetList.h"
-#include "../../../sead/container/seadTList.h"
+#include "../../../seadOG/container/seadOffsetList.h"
+#include "../../../seadOG/container/seadTList.h"
 
 namespace Lp::UI {
     struct Job {

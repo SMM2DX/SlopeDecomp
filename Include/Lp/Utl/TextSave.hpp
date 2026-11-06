@@ -2,8 +2,8 @@
 
 #include <common.hpp>
 
-#include <sead/heap/seadHeap.h>
-#include <sead/prim/seadSafeString.hpp>
+#include <seadOG/heap/seadHeap.h>
+#include <sead/seadSafeString.hpp>
 
 namespace Lp::Utl {
     struct TextSave {

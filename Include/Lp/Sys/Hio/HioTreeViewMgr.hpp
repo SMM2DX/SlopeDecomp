@@ -1,10 +1,10 @@
 #pragma once
 
-#include <sead/heap/seadDisposer.h>
-#include <sead/thread/seadCriticalSection.h>
-#include <sead/thread/seadReadWriteLock.h>
-#include <sead/prim/seadSafeString.h>
-#include <sead/container/seadRingBuffer.h>
+#include <seadOG/heap/seadDisposer.h>
+#include <seadOG/thread/seadCriticalSection.h>
+#include <seadOG/thread/seadReadWriteLock.h>
+#include <sead/seadSafeString.hpp>
+#include <seadOG/container/seadRingBuffer.h>
 
 #include "HioTreeViewNode.hpp"
 #include "HioTreeViewAddNodeParam.hpp"

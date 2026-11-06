@@ -1,8 +1,8 @@
 #pragma once
 
 #include <agl/utl/param/ParameterObj.hpp>
-#include <sead/gfx/seadColor.h>
-#include <sead/prim/seadSafeString.hpp>
+#include <seadOG/gfx/seadColor.h>
+#include <sead/seadSafeString.hpp>
 
 #include <type_traits>
 

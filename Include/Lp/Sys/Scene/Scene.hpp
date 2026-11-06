@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../../sead/prim/seadRuntimeTypeInfo.h"
-#include "../../../sead/heap/seadHeap.h"
+#include "../../../seadOG/prim/seadRuntimeTypeInfo.h"
+#include "../../../seadOG/heap/seadHeap.h"
 
 //#include <agl/lyr/DrawMethod.hpp>
 //#include <agl/lyr/RenderInfo.hpp>

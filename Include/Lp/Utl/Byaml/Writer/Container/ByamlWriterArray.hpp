@@ -1,6 +1,6 @@
 #pragma once
 
-#include <sead/container/seadTList.h>
+#include <seadOG/container/seadTList.h>
 
 #include "ByamlWriterContainer.hpp"
 #include "../ByamlWriterStringTable.hpp"

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "sead/basis/seadTypes.h"
+#include "seadOG/basis/seadTypes.h"
 
 class Angle
 {

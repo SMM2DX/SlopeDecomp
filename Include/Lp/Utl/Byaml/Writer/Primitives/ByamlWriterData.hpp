@@ -1,6 +1,6 @@
 #pragma once
 
-#include <sead/stream/seadStream.h>
+#include <seadOG/stream/seadStream.h>
 
 namespace Lp::Utl {
     struct ByamlWriterData {

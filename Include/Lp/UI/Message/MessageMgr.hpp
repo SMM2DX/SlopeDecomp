@@ -1,8 +1,8 @@
 #pragma once
 
-#include <sead/container/seadPtrArray.h>
-#include <sead/prim/seadDelegate.h>
-#include <sead/resource/message/seadMesssageProject.h>
+#include <seadOG/container/seadPtrArray.h>
+#include <seadOG/prim/seadDelegate.h>
+#include <seadOG/resource/message/seadMesssageProject.h>
 #include <eui/message/MessageMgr.hpp>
 #include <eui/message/MessageSet.hpp>
 

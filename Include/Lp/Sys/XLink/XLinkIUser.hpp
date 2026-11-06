@@ -1,7 +1,7 @@
 #pragma once
 
-#include <sead/container/seadPtrArray.h>
-#include <sead/heap/seadHeap.h>
+#include <seadOG/container/seadPtrArray.h>
+#include <seadOG/heap/seadHeap.h>
 #include <XLink/LinkCommon/IUser.hpp>
 #include <XLink/LinkCommon/ToolConnectionContext.hpp>
 #include <XLink/LinkCommon/PropertyDefinition.hpp>

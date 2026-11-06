@@ -4,8 +4,8 @@
 #include "CtrlData200Hz.hpp"
 #include "CtrlType.hpp"
 
-#include <sead/prim/seadSafeString.hpp>
-#include <sead/controller/seadController.h>
+#include <sead/seadSafeString.hpp>
+#include <seadOG/controller/seadController.h>
 
 namespace Lp::Sys {
 

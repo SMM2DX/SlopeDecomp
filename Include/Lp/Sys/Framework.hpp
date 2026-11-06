@@ -1,6 +1,6 @@
 #pragma once
 
-#include <sead/framework/nx/seadGameFrameworkNx.h>
+#include <seadOG/framework/nx/seadGameFrameworkNx.h>
 
 namespace Lp::Sys {
     struct Framework : public sead::GameFrameworkNx {

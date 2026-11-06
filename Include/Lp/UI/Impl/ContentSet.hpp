@@ -1,6 +1,6 @@
 #pragma once
 
-#include <sead/container/seadOffsetList.h>
+#include <seadOG/container/seadOffsetList.h>
 
 #include "ContentBase.hpp"
 #include "Name.hpp"

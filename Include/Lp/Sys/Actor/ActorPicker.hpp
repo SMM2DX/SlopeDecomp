@@ -1,8 +1,8 @@
 #pragma once
 
-#include <sead/container/seadRingBuffer.h>
-#include <sead/prim/seadSafeString.hpp>
-#include <sead/prim/seadDelegate.h>
+#include <seadOG/container/seadRingBuffer.h>
+#include <sead/seadSafeString.hpp>
+#include <seadOG/prim/seadDelegate.h>
 
 #include <cstddef>
 #include <array>

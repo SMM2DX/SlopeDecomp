@@ -4,11 +4,11 @@
 #include "Ctrl.hpp"
 #include "CtrlType.hpp"
 
-#include <sead/thread/seadCriticalSection.h>
-#include <sead/thread/seadReadWriteLock.h>
-#include <sead/container/seadPtrArray.h>
-#include <sead/controller/seadController.h>
-#include <sead/controller/seadControllerMgr.h>
+#include <seadOG/thread/seadCriticalSection.h>
+#include <seadOG/thread/seadReadWriteLock.h>
+#include <seadOG/container/seadPtrArray.h>
+#include <seadOG/controller/seadController.h>
+#include <seadOG/controller/seadControllerMgr.h>
 
 namespace Lp::Sys {
 

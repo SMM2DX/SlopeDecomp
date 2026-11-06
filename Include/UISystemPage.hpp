@@ -1,7 +1,7 @@
 #pragma once
 
-#include "sead/prim/seadSafeString.hpp"
-#include "sead/prim/seadRuntimeTypeInfo.h"
+#include "sead/seadSafeString.hpp"
+#include "seadOG/prim/seadRuntimeTypeInfo.h"
 
 class UISystemPage {
 	SEAD_RTTI_BASE(UISystemPage)

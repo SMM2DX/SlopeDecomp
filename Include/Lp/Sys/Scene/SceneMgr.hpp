@@ -1,8 +1,8 @@
 #pragma once
 
-#include <sead/prim/seadSafeString.hpp>
-#include <sead/thread/seadCriticalSection.h>
-#include <sead/thread/seadReadWriteLock.h>
+#include <sead/seadSafeString.hpp>
+#include <seadOG/thread/seadCriticalSection.h>
+#include <seadOG/thread/seadReadWriteLock.h>
 #include "../Task/ProjTaskBase.hpp"
 #include "Scene.hpp"
 

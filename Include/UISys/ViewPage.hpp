@@ -2,7 +2,7 @@
 
 #include "../Lp/UI/PriorityPage.hpp"
 #include "../Lp/UI/Control.hpp"
-#include "../sead/math/seadVector.hpp"
+#include "../seadOG/math/seadVector.hpp"
 
 namespace Lp::UI{
 	struct PartsCtrl;

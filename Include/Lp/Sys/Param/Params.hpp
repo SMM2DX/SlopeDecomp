@@ -2,7 +2,7 @@
 
 #include <agl/utl/param/ParameterList.hpp>
 
-#include <sead/heap/seadHeap.h>
+#include <seadOG/heap/seadHeap.h>
 
 #include "ParamNode.hpp"
 

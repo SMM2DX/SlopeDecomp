@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../sead/heap/seadDisposer.h"
+#include "../seadOG/heap/seadDisposer.h"
 
 namespace UISys{
 	class ManipulateInterface {

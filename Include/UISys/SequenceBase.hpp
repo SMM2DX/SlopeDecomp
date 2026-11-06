@@ -1,19 +1,11 @@
 #pragma once
 
-#include "../sead/prim/seadRuntimeTypeInfo.h"
-#include "../sead/container/seadBuffer.h"
-#include "../sead/container/seadListImpl.h"
-#include "../sead/container/seadPtrArray.h"
-#include "../sead/thread/seadCriticalSection.h"
-#include "../Lp/Utl/StateMachine.hpp"
-#include "ButtonActionCallbackArg.hpp"
-#include "SequenceJobList.hpp"
-#include "SequenceJob.hpp"
+#include "../seadOG/prim/seadRuntimeTypeInfo.h"
+#include "../seadOG/container/seadListImpl.h"
+#include "../seadOG/thread/seadCriticalSection.h"
 #include "SequenceHolder.hpp"
-
-namespace Lp::UI{
-	struct BtnPartsCtrl;
-}
+#include "SequenceJob.hpp"
+#include "SequenceJobList.hpp"
 
 namespace UISys {
 	class SequenceBase {

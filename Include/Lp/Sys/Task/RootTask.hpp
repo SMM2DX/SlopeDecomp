@@ -1,7 +1,7 @@
 #pragma once
 
-#include <sead/framework/seadCalculateTask.h>
-#include <sead/framework/seadTaskMgr.h>
+#include <seadOG/framework/seadCalculateTask.h>
+#include <seadOG/framework/seadTaskMgr.h>
 #include "../Hio/IUseHioNode.hpp"
 
 namespace Lp::Sys {

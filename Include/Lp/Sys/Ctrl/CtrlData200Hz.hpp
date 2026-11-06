@@ -1,7 +1,7 @@
 #pragma once
 
-#include <sead/math/seadVector.hpp>
-#include <sead/math/seadMatrix.hpp>
+#include <seadOG/math/seadVector.hpp>
+#include <seadOG/math/seadMatrix.hpp>
 
 namespace Lp::Sys {
 

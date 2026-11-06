@@ -2,7 +2,7 @@
 
 #include "ActorBase.hxx"
 
-#include "sead/prim/seadRuntimeTypeInfo.h"
+#include "seadOG/prim/seadRuntimeTypeInfo.h"
 
 class UnknownClass {
 	SEAD_RTTI_BASE(ActorBase)

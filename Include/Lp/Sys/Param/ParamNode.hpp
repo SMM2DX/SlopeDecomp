@@ -2,11 +2,11 @@
 
 #include <common.hpp>
 
-#include <sead/container/seadTreeNode.h>
-#include <sead/prim/seadSafeString.hpp>
-#include <sead/prim/seadRuntimeTypeInfo.h>
-#include <sead/prim/seadFormatPrint.h>
-#include <sead/stream/seadStream.h>
+#include <seadOG/container/seadTreeNode.h>
+#include <sead/seadSafeString.hpp>
+#include <seadOG/prim/seadRuntimeTypeInfo.h>
+#include <seadOG/prim/seadFormatPrint.h>
+#include <seadOG/stream/seadStream.h>
 
 #include <Lp/Utl/Byaml/Iter/ByamlIter.hpp>
 #include <Lp/Utl/Byaml/Writer/ByamlWriter.hpp>

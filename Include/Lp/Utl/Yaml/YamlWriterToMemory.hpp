@@ -1,7 +1,7 @@
 #pragma once
 
-#include <sead/stream/seadStream.h>
-#include <sead/stream/seadRamStream.h>
+#include <seadOG/stream/seadStream.h>
+#include <seadOG/stream/seadRamStream.h>
 
 #include "YamlFormatter.hpp"
 

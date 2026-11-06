@@ -1,6 +1,6 @@
 #pragma once
 
-#include <sead/prim/seadSafeString.hpp>
+#include <sead/seadSafeString.hpp>
 
 #include <concepts>
 

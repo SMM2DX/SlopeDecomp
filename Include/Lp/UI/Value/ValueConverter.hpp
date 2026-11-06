@@ -1,7 +1,7 @@
 #pragma once
 
-#include <sead/container/seadListImpl.h>
-#include <sead/prim/seadSafeString.hpp>
+#include <seadOG/container/seadListImpl.h>
+#include <sead/seadSafeString.hpp>
 
 #include "../Impl/Name.hpp"
 #include "TotalValueConverter.hpp"

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ViewPage.hpp"
-#include "../sead/math/seadVector.h"
+#include "../seadOG/math/seadVector.h"
 
 namespace UISys{
 	class StickActionCallbackArg {

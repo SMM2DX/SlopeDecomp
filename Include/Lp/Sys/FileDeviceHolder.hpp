@@ -1,12 +1,12 @@
 #pragma once
 
-#include <sead/heap/seadDisposer.h>
-#include <sead/thread/seadCriticalSection.h>
-#include <sead/thread/seadReadWriteLock.h>
-#include <sead/filedevice/nin/seadNinContentFileDeviceNin.h>
-#include <sead/filedevice/nin/seadNinAocFileDeviceNin.h>
-#include <sead/filedevice/nin/seadNinHostIOFileDevice.h>
-#include <sead/filedevice/nin/seadNinSDFileDeviceNin.h>
+#include <seadOG/heap/seadDisposer.h>
+#include <seadOG/thread/seadCriticalSection.h>
+#include <seadOG/thread/seadReadWriteLock.h>
+#include <seadOG/filedevice/nin/seadNinContentFileDeviceNin.h>
+#include <seadOG/filedevice/nin/seadNinAocFileDeviceNin.h>
+#include <seadOG/filedevice/nin/seadNinHostIOFileDevice.h>
+#include <seadOG/filedevice/nin/seadNinSDFileDeviceNin.h>
 
 namespace Lp::Sys {
     struct FileDeviceHolder {

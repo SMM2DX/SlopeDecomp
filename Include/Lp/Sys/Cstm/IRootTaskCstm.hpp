@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../../sead/prim/seadRuntimeTypeInfo.h"
-#include "../../../sead/framework/seadInfLoopChecker.h"
+#include "../../../seadOG/prim/seadRuntimeTypeInfo.h"
+#include "../../../seadOG/framework/seadInfLoopChecker.h"
 
 //#include <gsys/SystemTask.hpp>
 

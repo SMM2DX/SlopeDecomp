@@ -1,7 +1,7 @@
 #pragma once
 
-#include <sead/prim/seadRuntimeTypeInfo.h>
-#include <sead/prim/seadSafeString.hpp>
+#include <seadOG/prim/seadRuntimeTypeInfo.h>
+#include <sead/seadSafeString.hpp>
 
 namespace Lp::Sys {
     struct XLinkActionSlotBase {

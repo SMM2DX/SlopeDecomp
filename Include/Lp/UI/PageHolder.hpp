@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../../sead/heap/seadDisposer.h"
-#include "../../sead/container/seadOffsetList.h"
-#include "../../sead/heap/seadHeap.h"
-#include "../../sead/heap/seadExpHeap.h"
+#include "../../seadOG/heap/seadDisposer.h"
+#include "../../seadOG/container/seadOffsetList.h"
+#include "../../seadOG/heap/seadHeap.h"
+#include "../../seadOG/heap/seadExpHeap.h"
 
 #include "PageBase.hpp"
 

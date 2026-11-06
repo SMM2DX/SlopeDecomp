@@ -1,7 +1,7 @@
 #pragma once
 
-#include <sead/hostio/seadHostIONode.h>
-#include <sead/container/seadTreeNode.h>
+#include <seadOG/hostio/seadHostIONode.h>
+#include <seadOG/container/seadTreeNode.h>
 
 #include "IUseHioNode.hpp"
 

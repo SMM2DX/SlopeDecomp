@@ -1,6 +1,14 @@
 #pragma once
 
+#include "seadOG/container/seadBuffer.h"
+#include "seadOG/container/seadPtrArray.h"
+#include "Lp/Utl/StateMachine.hpp"
+#include "UISys/ButtonActionCallbackArg.hpp"
 #include "UISys/SequenceBase.hpp"
+
+namespace Lp::UI{
+	struct BtnPartsCtrl;
+}
 
 class EditUIClass_intermediate : public UISys::SequenceBase {
 	SEAD_RTTI_OVERRIDE(EditUIClass_intermediate, UISys::SequenceBase)

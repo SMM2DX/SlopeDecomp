@@ -1,7 +1,7 @@
 #pragma once
 
-#include "sead/container/seadBuffer.h"
-#include "sead/prim/seadRuntimeTypeInfo.h"
+#include "seadOG/container/seadBuffer.h"
+#include "seadOG/prim/seadRuntimeTypeInfo.h"
 #include "UISys/ViewPage.hpp"
 
 class UIEditMainPage : public UISys::ViewPage {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../sead/prim/seadDelegate.h"
+#include "../../../seadOG/prim/seadDelegate.h"
 
 #include "Job.hpp"
 

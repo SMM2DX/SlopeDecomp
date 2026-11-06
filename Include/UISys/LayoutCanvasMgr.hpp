@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../sead/math/seadMatrix.h"
-#include "../sead/gfx/seadCamera.h"
-#include "../sead/heap/seadDisposer.h"
+#include "../seadOG/math/seadMatrix.h"
+#include "../seadOG/gfx/seadCamera.h"
+#include "../seadOG/heap/seadDisposer.h"
 
 namespace UISys{
 	class LayoutCanvasMgr {

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../../sead/container/seadBuffer.h"
-#include "../../sead/prim/seadSafeString.hpp"
-#include "../../sead/prim/seadDelegate.h"
-#include "../../sead/prim/seadBitFlag.h"
-#include "../../sead/math/seadVector.hpp"
+#include "../../seadOG/container/seadBuffer.h"
+#include "../../sead/seadSafeString.hpp"
+#include "../../seadOG/prim/seadDelegate.h"
+#include "../../seadOG/prim/seadBitFlag.h"
+#include "../../seadOG/math/seadVector.hpp"
 
 #include "../Sys/Hio/IHioNode.hpp"
 #include "../Sys/Hio/HioContext.hpp"

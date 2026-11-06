@@ -1,6 +1,6 @@
 #pragma once
 
-#include <sead/container/seadRingBuffer.h>
+#include <seadOG/container/seadRingBuffer.h>
 
 #include "TypeInfo.hpp"
 #include "../Impl/Observer.hpp"

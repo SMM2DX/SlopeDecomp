@@ -2,11 +2,11 @@
 
 #include "../Task/ProjTaskBase.hpp"
 
-#include <sead/container/seadTList.h>
-#include <sead/math/seadVector.hpp>
-#include <sead/gfx/seadColor.h>
-#include <sead/thread/seadCriticalSection.h>
-#include <sead/thread/seadReadWriteLock.h>
+#include <seadOG/container/seadTList.h>
+#include <seadOG/math/seadVector.hpp>
+#include <seadOG/gfx/seadColor.h>
+#include <seadOG/thread/seadCriticalSection.h>
+#include <seadOG/thread/seadReadWriteLock.h>
 
 namespace Lp::Sys {
 

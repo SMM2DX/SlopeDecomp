@@ -1,9 +1,9 @@
 #pragma once
 
-#include <sead/heap/seadDisposer.h>
-#include <sead/prim/seadSafeString.hpp>
-#include <sead/mc/seadJobQueue.h>
-#include <sead/mc/seadJob.h>
+#include <seadOG/heap/seadDisposer.h>
+#include <sead/seadSafeString.hpp>
+#include <seadOG/mc/seadJobQueue.h>
+#include <seadOG/mc/seadJob.h>
 
 #include <gsys/ISystemTaskCallback.hpp>
 

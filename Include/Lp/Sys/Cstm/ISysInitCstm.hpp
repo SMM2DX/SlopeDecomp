@@ -1,8 +1,8 @@
 #pragma once
 
-#include <sead/framework/nx/seadGameFrameworkNx.h>
-#include <sead/math/seadVector.hpp>
-#include <sead/heap/seadHeap.h>
+#include <seadOG/framework/nx/seadGameFrameworkNx.h>
+#include <seadOG/math/seadVector.hpp>
+#include <seadOG/heap/seadHeap.h>
 
 namespace Lp::Sys {
 

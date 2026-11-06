@@ -1,8 +1,8 @@
 #pragma once
 
-#include <sead/prim/seadSafeString.hpp>
-#include <sead/mc/seadJobQueue.h>
-#include <sead/mc/seadCoreInfo.h>
+#include <sead/seadSafeString.hpp>
+#include <seadOG/mc/seadJobQueue.h>
+#include <seadOG/mc/seadCoreInfo.h>
 #include "Actor.hpp"
 #include "ActorWorkderMgrKind.hpp"
 

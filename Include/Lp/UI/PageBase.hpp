@@ -2,8 +2,8 @@
 
 //#include <common.hpp>
 
-#include "../../sead/prim/seadRuntimeTypeInfo.h"
-#include "../../sead/thread/seadReadWriteLock.h"
+#include "../../seadOG/prim/seadRuntimeTypeInfo.h"
+#include "../../seadOG/thread/seadReadWriteLock.h"
 
 #include "Impl/Name.hpp"
 #include "Impl/DrawSightArg.hpp"

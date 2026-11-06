@@ -2,7 +2,7 @@
 
 //#include <common.hpp>
 
-#include "../../../sead/prim/seadSafeString.hpp"
+#include "../../../sead/seadSafeString.hpp"
 
 namespace Lp::UI::Impl {
     struct Name {
