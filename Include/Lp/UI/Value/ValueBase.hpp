@@ -1,7 +1,6 @@
 #pragma once
 
-#include <seadOG/container/seadOffsetList.h>
-
+#include <sead/seadListImpl.hpp>
 #include "../Impl/Observer.hpp"
 #include "TypeInfo.hpp"
 #include "ContentBase.hpp"

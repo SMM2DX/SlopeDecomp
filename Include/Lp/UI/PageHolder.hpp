@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../seadOG/heap/seadDisposer.h"
-#include "../../seadOG/container/seadOffsetList.h"
+#include <sead/seadDisposer.hpp>
+#include <sead/seadListImpl.hpp>
 #include "../../seadOG/heap/seadHeap.h"
 #include "../../seadOG/heap/seadExpHeap.h"
 

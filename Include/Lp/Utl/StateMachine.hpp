@@ -1,14 +1,11 @@
 #pragma once
 
-#include "../../sead/seadBuffer.h"
-#include "../../sead/seadSafeString.hpp"
-#include "../../seadOG/prim/seadDelegate.h"
-#include "../../seadOG/prim/seadBitFlag.h"
-#include "../../seadOG/math/seadVector.hpp"
-
-#include "../Sys/Hio/IHioNode.hpp"
-#include "../Sys/Hio/HioContext.hpp"
-#include "../Sys/Hio/HioPropertyEvent.hpp"
+#include <sead/seadBuffer.hpp>
+#include <sead/seadSafeString.hpp>
+//#include <sead/seadHeap.hpp>
+namespace sead{
+	struct Heap{};
+}
 
 namespace Lp::Utl {
 	

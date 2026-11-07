@@ -2,10 +2,10 @@
 
 #include "ActorCreateParam.hxx"
 
-#include "seadOG/container/seadOffsetList.h"
+#include <sead/seadListImpl.hpp>
 #include "seadOG/heap/seadHeap.h"
 #include "seadOG/prim/seadBitFlag.h"
-#include "seadOG/prim/seadRuntimeTypeInfo.h"
+#include <sead/seadRuntimeTypeInfo.hpp>
 
 class ActorMgr;
 #ifndef UnknownClass

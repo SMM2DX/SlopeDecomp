@@ -2,9 +2,10 @@
 
 //#include <common.hpp>
 
-#include "../../seadOG/prim/seadRuntimeTypeInfo.h"
+#include <sead/seadRuntimeTypeInfo.hpp>
 #include "../../seadOG/thread/seadReadWriteLock.h"
 
+#include <sead/seadListImpl.hpp>
 #include "Impl/Name.hpp"
 #include "Impl/DrawSightArg.hpp"
 #include "Input/InputContext.hpp"

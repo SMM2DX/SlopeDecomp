@@ -1,8 +1,7 @@
 #pragma once
 
 #include "../../../seadOG/thread/seadCriticalSection.h"
-#include "../../../seadOG/container/seadOffsetList.h"
-
+#include <sead/seadListImpl.hpp>
 namespace Lp::UI::Impl {
     struct LayoutResourceAccessor;
     struct LayoutResourceAccessorHolder {

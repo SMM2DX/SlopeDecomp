@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../sead/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 
 namespace Lp::Utl  {
     struct Meta {

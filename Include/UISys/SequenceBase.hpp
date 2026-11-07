@@ -1,11 +1,20 @@
 #pragma once
 
-#include "../seadOG/prim/seadRuntimeTypeInfo.h"
-#include "../seadOG/container/seadListImpl.h"
-#include "../seadOG/thread/seadCriticalSection.h"
-#include "SequenceHolder.hpp"
-#include "SequenceJob.hpp"
-#include "SequenceJobList.hpp"
+#include <sead/seadRuntimeTypeInfo.hpp>
+#include <sead/seadListImpl.hpp>
+#include <sead/seadCriticalSection.hpp>
+
+#include <Lp/UI/Impl/Name.hpp>
+//#include <Lp/UI/PageHolder.hpp>
+#ifndef		LP_UI_PAGEHOLDER_HPP
+namespace Lp::UI {
+	class PageHolder {};
+}
+#endif	//	LP_UI_PAGEHOLDER_HPP
+
+#include <UISys/SequenceHolder.hpp>
+#include <UISys/SequenceJob.hpp>
+#include <UISys/SequenceJobList.hpp>
 
 namespace UISys {
 	class SequenceBase {

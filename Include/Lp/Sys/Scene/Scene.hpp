@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../seadOG/prim/seadRuntimeTypeInfo.h"
+#include <sead/seadRuntimeTypeInfo.hpp>
 #include "../../../seadOG/heap/seadHeap.h"
 
 //#include <agl/lyr/DrawMethod.hpp>

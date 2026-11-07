@@ -1,8 +1,6 @@
 #pragma once
 
-//#include <common.hpp>
-
-#include "../../../sead/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 
 namespace Lp::UI::Impl {
     struct Name {

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../seadOG/prim/seadRuntimeTypeInfo.h"
-#include "../../seadOG/container/seadOffsetList.h"
+#include <sead/seadRuntimeTypeInfo.hpp>
+#include <sead/seadListImpl.hpp>
 
 #include "Impl/LayoutSight.hpp"
 #include "Impl/Name.hpp"

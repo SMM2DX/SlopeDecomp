@@ -1,7 +1,6 @@
 #pragma once
 
-#include <seadOG/container/seadOffsetList.h>
-
+#include <sead/seadListImpl.hpp>
 #include "../Impl/Name.hpp"
 #include "ValueConverter.hpp"
 

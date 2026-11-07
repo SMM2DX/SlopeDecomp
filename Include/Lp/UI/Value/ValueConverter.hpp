@@ -1,6 +1,6 @@
 #pragma once
 
-#include <seadOG/container/seadListImpl.h>
+#include <sead/seadListImpl.hpp>
 #include <sead/seadSafeString.hpp>
 
 #include "../Impl/Name.hpp"
