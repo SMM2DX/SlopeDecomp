@@ -1,3 +1,12 @@
+Exlaunch/.vscode/*
+Exlaunch/build/*
+Exlaunch/out/*
+Exlaunch/deploy/*
+
+Exlaunch/*.elf
+Exlaunch/*.nso
+Exlaunch/*.npdm
+
 Backup/
 Backup (Original)/
 
