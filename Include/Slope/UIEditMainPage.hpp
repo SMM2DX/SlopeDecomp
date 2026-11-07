@@ -2,7 +2,7 @@
 
 #include <sead/seadBuffer.hpp>
 #include <sead/seadRuntimeTypeInfo.hpp>
-#include "UISys/ViewPage.hpp"
+#include <UISys/ViewPage.hpp>
 
 class UIEditMainPage : public UISys::ViewPage {
 	SEAD_RTTI_OVERRIDE(UIEditMainPage, ViewPage)

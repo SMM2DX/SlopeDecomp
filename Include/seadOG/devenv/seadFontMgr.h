@@ -4,7 +4,7 @@
 #include "../gfx/seadColor.h"
 #include "../gfx/seadDrawContext.h"
 #include "../gfx/seadProjection.h"
-#include "../heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #include "nvn/nvn.h"
 #include "thread/seadAtomic.h"
 

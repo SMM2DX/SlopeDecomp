@@ -1,7 +1,7 @@
 #pragma once
 
 #include "basis/seadTypes.h"
-#include "prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 #include "stream/seadBufferStream.h"
 
 namespace sead

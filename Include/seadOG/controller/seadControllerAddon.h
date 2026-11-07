@@ -1,6 +1,6 @@
 #pragma once
 
-#include "container/seadListImpl.h"
+#include <sead/seadListImpl.hpp>
 #include "controller/seadControllerDefine.h"
 #include "prim/seadRuntimeTypeInfo.h"
 

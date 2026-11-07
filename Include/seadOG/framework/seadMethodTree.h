@@ -2,7 +2,7 @@
 #define SEAD_METHODTREE_H_
 
 #include "../container/seadTreeNode.h"
-#include "../heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #include "../prim/seadBitFlag.h"
 #include "../prim/seadDelegate.h"
 #include "../prim/seadNamable.h"

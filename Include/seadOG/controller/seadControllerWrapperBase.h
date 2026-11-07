@@ -1,7 +1,7 @@
 #pragma once
 
 #include "controller/seadController.h"
-#include "heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #include "prim/seadRuntimeTypeInfo.h"
 
 namespace sead

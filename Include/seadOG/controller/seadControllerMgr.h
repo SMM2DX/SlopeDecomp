@@ -1,12 +1,12 @@
 #pragma once
 
-#include "container/seadOffsetList.h"
+#include <sead/seadListImpl.hpp>
 #include "container/seadPtrArray.h"
 #include "controller/seadController.h"
 #include "framework/seadCalculateTask.h"
 #include "framework/seadTaskMgr.h"
 #include "framework/seadTaskParameter.h"
-#include "heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #include "prim/seadRuntimeTypeInfo.h"
 
 namespace sead

@@ -1,8 +1,7 @@
 #pragma once
 
-#include "../Lp/UI/PriorityPage.hpp"
-#include "../Lp/UI/Control.hpp"
-#include "../seadOG/math/seadVector.hpp"
+#include <Lp/UI/PriorityPage.hpp>
+#include <Lp/UI/Control.hpp>
 
 namespace Lp::UI{
 	struct PartsCtrl;

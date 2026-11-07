@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ActorBase.hxx"
+#include <ActorBase.hpp>
 
 class Actor : public ActorBase {
 	SEAD_RTTI_OVERRIDE(Actor, ActorBase)

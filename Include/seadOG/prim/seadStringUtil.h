@@ -6,7 +6,7 @@
 
 #include "../basis/seadTypes.h"
 #include "../container/seadBuffer.h"
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 
 namespace sead
 {

@@ -3,7 +3,7 @@
 #include "../framework/seadFramework.h"
 #include "../heap/seadHeap.h"
 #include "../prim/seadRuntimeTypeInfo.h"
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 
 namespace sead
 {

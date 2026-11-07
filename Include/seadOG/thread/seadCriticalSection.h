@@ -8,7 +8,7 @@
 #endif
 
 #include "../basis/seadTypes.h"
-#include "../heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 
 namespace sead
 {

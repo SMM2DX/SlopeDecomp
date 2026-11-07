@@ -2,7 +2,7 @@
 
 #include "../hostio/seadHostIOEventListener.h"
 #include "../prim/seadBitFlag.h"
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 
 namespace sead
 {

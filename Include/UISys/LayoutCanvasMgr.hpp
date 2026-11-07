@@ -2,7 +2,7 @@
 
 #include "../seadOG/math/seadMatrix.h"
 #include "../seadOG/gfx/seadCamera.h"
-#include "../seadOG/heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 
 namespace UISys{
 	class LayoutCanvasMgr {

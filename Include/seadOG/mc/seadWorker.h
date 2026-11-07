@@ -3,7 +3,7 @@
 #include "container/seadRingBuffer.h"
 #include "mc/seadJobQueue.h"
 #include "prim/seadEnum.h"
-#include "prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 #include "thread/seadEvent.h"
 #include "thread/seadThread.h"
 #include "time/seadTickTime.h"

@@ -2,7 +2,7 @@
 
 #include <seadOG/thread/seadCriticalSection.h>
 #include <sead/seadSafeString.hpp>
-#include <seadOG/heap/seadDisposer.h>
+#include <sead/seadDisposer.hpp>
 #include <seadOG/container/seadTList.h>
 
 namespace Lp::Sys {

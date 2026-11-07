@@ -4,7 +4,7 @@ Placeholder
 
 ## Headers
 
-Some headers in this repo have been copied from pre-existing repos.
+Some headers in this repo are copied or recreated from pre-existing repos.
 
 * sead - from [open-ead/sead](https://github.com/open-ead/sead)
 * nn - from [open-ead/nnsdk](https://github.com/open-ead/nnsdk)

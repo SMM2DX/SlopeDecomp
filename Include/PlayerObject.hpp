@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Actor.hxx"
-#include "Lp/Utl/StateMachine.hpp"
+#include <Actor.hpp>
+#include <Lp/Utl/StateMachine.hpp>
 
 class PlayerObject : public Actor {
 	SEAD_RTTI_OVERRIDE(PlayerObject, Actor)

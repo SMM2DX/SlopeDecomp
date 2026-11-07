@@ -5,7 +5,7 @@
 #include "../container/seadTreeNode.h"
 #include "../framework/seadHeapPolicies.h"
 #include "../framework/seadTaskID.h"
-#include "../heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #include "../prim/seadBitFlag.h"
 #include "../prim/seadDelegateEventSlot.h"
 #include "../prim/seadNamable.h"

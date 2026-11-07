@@ -1,0 +1,13 @@
+#pragma once
+
+#include <sead/seadSafeString.hpp>
+
+namespace Lp::UI::Impl {
+    struct Name {
+        sead::SafeString mStr;
+        unsigned int mHash;
+        unsigned short mStrLen;
+        char field_16;
+        char field_17;
+    };
+}

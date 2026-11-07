@@ -2,15 +2,15 @@
 
 #include <sead/seadDisposer.hpp>
 #include <sead/seadListImpl.hpp>
-#include "../../seadOG/heap/seadHeap.h"
-#include "../../seadOG/heap/seadExpHeap.h"
+#include <sead/seadHeap.hpp>
+#include <seadOG/heap/seadExpHeap.h>
 
-#include "PageBase.hpp"
+#include <Lp/UI/PageBase.hpp>
 
-#include "Impl/DualHeapAdapter.hpp"
-#include "Impl/LayoutResourceMgr.hpp"
-#include "Impl/Name.hpp"
-#include "Impl/LayoutResourceAccessorHolder.hpp"
+#include <LpOG/UI/Impl/DualHeapAdapter.hpp>
+#include <LpOG/UI/Impl/LayoutResourceMgr.hpp>
+#include <Lp/UI/Impl/Name.hpp>
+#include <LpOG/UI/Impl/LayoutResourceAccessorHolder.hpp>
 
 namespace Lp::UI {
     struct PageHolder : public sead::IDisposer {

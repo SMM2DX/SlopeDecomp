@@ -3,7 +3,7 @@
 #include <type_traits>
 
 #include "../basis/seadTypes.h"
-#include "../heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #ifdef SEAD_DEBUG
 #include "../prim/seadStorageFor.h"
 #endif

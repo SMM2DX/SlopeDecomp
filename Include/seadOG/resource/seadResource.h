@@ -4,7 +4,7 @@
 #include "../basis/seadNew.h"
 #include "../basis/seadTypes.h"
 #include "../container/seadTList.h"
-#include "../heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #include "../heap/seadHeap.h"
 #include "../prim/seadBitFlag.h"
 #include "../resource/seadDecompressor.h"

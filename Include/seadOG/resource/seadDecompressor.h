@@ -3,8 +3,8 @@
 
 #include "../basis/seadTypes.h"
 #include "../container/seadTList.h"
-#include "../heap/seadDisposer.h"
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadDisposer.hpp>
+#include <sead/seadSafeString.hpp>
 #include "../resource/seadResource.h"
 #include "../resource/seadResourceMgr.h"
 

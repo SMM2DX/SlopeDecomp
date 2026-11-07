@@ -6,7 +6,7 @@
 #include "../heap/seadHeap.h"
 #include "../hostio/seadHostIONode.h"
 #include "../prim/seadDelegate.h"
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 #include "../thread/seadAtomic.h"
 #include "../thread/seadCriticalSection.h"
 #include "../time/seadTickSpan.h"

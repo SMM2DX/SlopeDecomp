@@ -4,7 +4,7 @@
 #include "container/seadFreeList.h"
 #include "prim/seadBitUtil.h"
 #include "prim/seadDelegate.h"
-#include "prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 
 namespace sead
 {

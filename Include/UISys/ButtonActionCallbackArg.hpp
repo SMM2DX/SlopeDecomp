@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ViewPage.hpp"
+#include <UISys/ViewPage.hpp>
 
 namespace UISys{
 	class ButtonActionCallbackArg {

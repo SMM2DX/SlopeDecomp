@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ActorBase.hxx"
+#include <ActorBase.hpp>
 
 #include <sead/seadRuntimeTypeInfo.hpp>
 

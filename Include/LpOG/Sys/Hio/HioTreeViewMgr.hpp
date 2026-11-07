@@ -1,6 +1,6 @@
 #pragma once
 
-#include <seadOG/heap/seadDisposer.h>
+#include <sead/seadDisposer.hpp>
 #include <seadOG/thread/seadCriticalSection.h>
 #include <seadOG/thread/seadReadWriteLock.h>
 #include <sead/seadSafeString.hpp>

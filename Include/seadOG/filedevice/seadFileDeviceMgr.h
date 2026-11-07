@@ -9,8 +9,8 @@
 #include "../container/seadTList.h"
 #include "../filedevice/seadFileDevice.h"
 #include "../filedevice/seadMainFileDevice.h"
-#include "../heap/seadDisposer.h"
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadDisposer.hpp>
+#include <sead/seadSafeString.hpp>
 
 namespace sead
 {

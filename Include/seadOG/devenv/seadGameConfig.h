@@ -1,8 +1,8 @@
 #pragma once
 
-#include "heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #include "hostio/seadHostIONode.h"
-#include "prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 
 namespace sead
 {

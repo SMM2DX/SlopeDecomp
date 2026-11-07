@@ -4,7 +4,7 @@
 #include "container/seadFreeList.h"
 #include "container/seadTreeMap.h"
 #include "prim/seadDelegate.h"
-#include "prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 
 namespace sead
 {

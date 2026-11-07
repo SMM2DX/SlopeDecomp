@@ -5,14 +5,14 @@
 
 #include "../basis/seadRawPrint.h"
 #include "../basis/seadTypes.h"
-#include "../container/seadOffsetList.h"
-#include "../heap/seadDisposer.h"
+#include <sead/seadListImpl.hpp>
+#include <sead/seadDisposer.hpp>
 #include "../hostio/seadHostIOReflexible.h"
 #include "../prim/seadBitFlag.h"
 #include "../prim/seadEnum.h"
 #include "../prim/seadNamable.h"
 #include "../prim/seadRuntimeTypeInfo.h"
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 #include "../thread/seadCriticalSection.h"
 
 namespace sead

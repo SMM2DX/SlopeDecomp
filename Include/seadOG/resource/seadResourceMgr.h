@@ -4,9 +4,9 @@
 #include "../basis/seadTypes.h"
 #include "../container/seadTList.h"
 #include "../filedevice/seadFileDevice.h"
-#include "../heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #include "../heap/seadHeap.h"
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 
 namespace sead
 {

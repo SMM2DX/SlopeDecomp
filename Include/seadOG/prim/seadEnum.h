@@ -3,7 +3,7 @@
 #include "../basis/seadRawPrint.h"
 #include "../basis/seadTypes.h"
 #include "../container/seadSafeArray.h"
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 #include "../prim/seadScopedLock.h"
 #include "../thread/seadCriticalSection.h"
 

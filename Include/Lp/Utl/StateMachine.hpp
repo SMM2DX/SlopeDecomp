@@ -2,10 +2,7 @@
 
 #include <sead/seadBuffer.hpp>
 #include <sead/seadSafeString.hpp>
-//#include <sead/seadHeap.hpp>
-namespace sead{
-	struct Heap{};
-}
+#include <sead/seadHeap.hpp>
 
 namespace Lp::Utl {
 	

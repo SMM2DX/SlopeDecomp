@@ -3,14 +3,14 @@
 //#include <common.hpp>
 
 #include <sead/seadRuntimeTypeInfo.hpp>
-#include "../../seadOG/thread/seadReadWriteLock.h"
+#include <seadOG/thread/seadReadWriteLock.h>
 
 #include <sead/seadListImpl.hpp>
-#include "Impl/Name.hpp"
-#include "Impl/DrawSightArg.hpp"
-#include "Input/InputContext.hpp"
-#include "Job/Job.hpp"
-#include "Job/DelegateJob.hpp"
+#include <Lp/UI/Impl/Name.hpp>
+#include <LpOG/UI/Impl/DrawSightArg.hpp>
+#include <LpOG/UI/Input/InputContext.hpp>
+#include <LpOG/UI/Job/Job.hpp>
+#include <LpOG/UI/Job/DelegateJob.hpp>
 
 namespace Lp::UI {
     struct PageHolder;

@@ -2,7 +2,7 @@
 
 #include "../gfx/seadColor.h"
 #include "../gfx/seadDrawLockContext.h"
-#include "../heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 
 namespace sead
 {

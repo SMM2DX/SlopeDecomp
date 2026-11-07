@@ -1,6 +1,6 @@
 #pragma once
 
-#include <seadOG/heap/seadDisposer.h>
+#include <sead/seadDisposer.hpp>
 #include <sead/seadSafeString.hpp>
 #include <seadOG/mc/seadJobQueue.h>
 #include <seadOG/mc/seadJob.h>

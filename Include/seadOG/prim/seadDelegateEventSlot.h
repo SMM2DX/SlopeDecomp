@@ -3,7 +3,7 @@
 // DelegateEvent is used to implement a Qt-style signal/slot mechanism.
 
 #include "../container/seadTList.h"
-#include "../heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #include "../prim/seadDelegate.h"
 #include "../prim/seadStorageFor.h"
 

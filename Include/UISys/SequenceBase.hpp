@@ -6,11 +6,9 @@
 
 #include <Lp/UI/Impl/Name.hpp>
 //#include <Lp/UI/PageHolder.hpp>
-#ifndef		LP_UI_PAGEHOLDER_HPP
 namespace Lp::UI {
-	class PageHolder {};
+	struct PageHolder{};
 }
-#endif	//	LP_UI_PAGEHOLDER_HPP
 
 #include <UISys/SequenceHolder.hpp>
 #include <UISys/SequenceJob.hpp>

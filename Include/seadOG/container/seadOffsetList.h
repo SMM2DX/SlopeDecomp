@@ -3,7 +3,7 @@
 
 #include "../basis/seadRawPrint.h"
 #include "../basis/seadTypes.h"
-#include "../container/seadListImpl.h"
+#include <sead/seadListImpl.hpp>
 #include "../prim/seadPtrUtil.h"
 
 namespace sead

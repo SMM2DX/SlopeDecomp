@@ -1,6 +1,6 @@
 #pragma once
 
-#include "container/seadOffsetList.h"
+#include <sead/seadListImpl.hpp>
 #include "controller/seadControllerBase.h"
 #include "controller/seadControllerDefine.h"
 

@@ -2,7 +2,7 @@
 
 #include "../nn/fs/fs_types.h"
 #include "filedevice/seadFileDevice.h"
-#include "prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 
 namespace sead
 {

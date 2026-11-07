@@ -2,11 +2,11 @@
 #define SEAD_PRIMITIVE_RENDERER_H_
 
 #include "../gfx/seadColor.h"
-#include "../heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #include "../math/seadBoundBox.h"
 #include "../math/seadMatrix.h"
 #include "../math/seadVector.h"
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 
 namespace sead
 {

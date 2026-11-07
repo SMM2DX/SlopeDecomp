@@ -1,6 +1,6 @@
 #pragma once
 
-#include "EditUIClass_intermediate.hpp"
+#include <Slope/EditUIClass_intermediate.hpp>
 
 class UIEditLeftMenuSeq : public EditUIClass_intermediate {
 	SEAD_RTTI_OVERRIDE(UIEditLeftMenuSeq, EditUIClass_intermediate)

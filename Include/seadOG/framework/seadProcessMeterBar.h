@@ -3,9 +3,9 @@
 #include "container/seadBuffer.h"
 #include "container/seadSafeArray.h"
 #include "gfx/seadColor.h"
-#include "heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #include "prim/seadNamable.h"
-#include "prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 #include "time/seadTickTime.h"
 
 namespace sead

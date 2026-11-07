@@ -2,7 +2,7 @@
 
 #include <seadOG/thread/seadCriticalSection.h>
 #include <seadOG/thread/seadReadWriteLock.h>
-#include <seadOG/heap/seadDisposer.h>
+#include <sead/seadDisposer.hpp>
 
 #include "ActorReserveList.hpp"
 #include "ActorCalculator.hpp"

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PageBase.hpp"
+#include <Lp/UI/PageBase.hpp>
 
 namespace Lp::UI {
     struct PriorityPage : public PageBase {

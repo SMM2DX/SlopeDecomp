@@ -1,10 +1,10 @@
 #pragma once
 
-#include "ActorCreateParam.hxx"
+#include <ActorCreateParam.hpp>
 
 #include <sead/seadListImpl.hpp>
-#include "seadOG/heap/seadHeap.h"
-#include "seadOG/prim/seadBitFlag.h"
+#include <seadOG/heap/seadHeap.h>
+#include <seadOG/prim/seadBitFlag.h>
 #include <sead/seadRuntimeTypeInfo.hpp>
 
 class ActorMgr;

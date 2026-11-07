@@ -1,7 +1,7 @@
 #ifndef SEAD_NAMABLE_H_
 #define SEAD_NAMABLE_H_
 
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 
 namespace sead
 {

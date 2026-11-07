@@ -5,7 +5,7 @@
 #include "../container/seadBuffer.h"
 #include "../filedevice/seadFileDevice.h"
 #include "../prim/seadEndian.h"
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 #include "../resource/seadArchiveRes.h"
 
 namespace sead

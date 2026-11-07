@@ -1,10 +1,10 @@
 #pragma once
 
-#include "ActorUniqueID.hxx"
-#include "Angle.hxx"
+#include <ActorUniqueID.hpp>
+#include <Angle.hpp>
 
-#include "seadOG/math/seadVector.h"
-#include "seadOG/prim/seadMemUtil.h"
+#include <seadOG/math/seadVector.h>
+#include <seadOG/prim/seadMemUtil.h>
 
 struct ActorParamEx0
 {

@@ -4,7 +4,7 @@
 	#include "../../nn/os.h"
 #endif
 
-#include "../heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 
 namespace sead
 {

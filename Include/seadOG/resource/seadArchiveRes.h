@@ -6,7 +6,7 @@
 #include "../container/seadSafeArray.h"
 #include "../filedevice/seadFileDevice.h"
 #include "../heap/seadHeap.h"
-#include "../prim/seadSafeString.hpp"
+#include <sead/seadSafeString.hpp>
 #include "../resource/seadResource.h"
 
 namespace sead

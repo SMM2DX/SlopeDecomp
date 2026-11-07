@@ -3,7 +3,7 @@
 #include <array>
 #include "container/seadBuffer.h"
 #include "framework/seadInfLoopChecker.h"
-#include "heap/seadDisposer.h"
+#include <sead/seadDisposer.hpp>
 #include "hostio/seadHostIONode.h"
 #include "mc/seadCoreInfo.h"
 #include "mc/seadJobQueue.h"

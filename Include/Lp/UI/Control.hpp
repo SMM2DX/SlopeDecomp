@@ -3,8 +3,8 @@
 #include <sead/seadRuntimeTypeInfo.hpp>
 #include <sead/seadListImpl.hpp>
 
-#include "Impl/LayoutSight.hpp"
-#include "Impl/Name.hpp"
+#include <LpOG/UI/Impl/LayoutSight.hpp>
+#include <Lp/UI/Impl/Name.hpp>
 
 namespace Lp::UI {
     struct Page;

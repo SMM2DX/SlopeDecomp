@@ -1,10 +1,18 @@
 #pragma once
 
 #include <sead/seadBuffer.hpp>
-#include "seadOG/container/seadPtrArray.h"
-#include "Lp/Utl/StateMachine.hpp"
-#include "UISys/ButtonActionCallbackArg.hpp"
-#include "UISys/SequenceBase.hpp"
+//#include <sead/container/seadPtrArray.h>
+#include <Lp/Utl/StateMachine.hpp>
+#include <UISys/ButtonActionCallbackArg.hpp>
+#include <UISys/SequenceBase.hpp>
+
+namespace sead{
+	struct PtrArrayImpl{
+		int mPtrNum;
+		int mPtrNumMax;
+		void **mPtrs;
+	}
+}
 
 namespace Lp::UI{
 	struct BtnPartsCtrl;
