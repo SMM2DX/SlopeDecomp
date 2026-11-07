@@ -1,10 +1,15 @@
 #pragma once
 
+#include "../IDAClangDestructorFix.hpp"
+
 namespace sead {
 	#ifndef		SEAD_SAFESTRING_HPP
 	#define		SEAD_SAFESTRING_HPP
 	template <typename T> struct SafeStringBase {
 		virtual ~SafeStringBase();
+		#ifndef		IDACLANG_DESTRUCTOR_FIX
+		virtual void destructor_2();
+		#endif	//	IDACLANG_DESTRUCTOR_FIX
 		virtual SafeStringBase &operator=(const SafeStringBase &);
 		virtual void assureTerminationImpl_() const;
 		T* mStringTop;
@@ -17,7 +22,6 @@ namespace sead {
 	template <typename T> struct BufferedSafeStringBase : public SafeStringBase<T> {
 		~BufferedSafeStringBase() override;
 		BufferedSafeStringBase &operator=(const BufferedSafeStringBase &) override;
-		void assureTerminationImpl_() const override;
 		int mBufferSize;
 	};
 	using BufferedSafeString = BufferedSafeStringBase<char>;
@@ -28,7 +32,6 @@ namespace sead {
 	template <typename T> struct HeapSafeStringBase : public BufferedSafeStringBase<T> {
 		~HeapSafeStringBase() override;
 		HeapSafeStringBase &operator=(const HeapSafeStringBase &) override;
-		void assureTerminationImpl_() const override;
 	};
 	using HeapSafeString = HeapSafeStringBase<char>;
 	#endif	//	SEAD_HEAPSAFESTRING_HPP
@@ -38,7 +41,6 @@ namespace sead {
 	template <typename T> struct FixedSafeStringBase_32 : public BufferedSafeStringBase<T> {
 		~FixedSafeStringBase_32() override;
 		FixedSafeStringBase_32 &operator=(const FixedSafeStringBase_32 &) override;
-		void assureTerminationImpl_() const override;
 		char mBuffer[32];
 	};
 	using FixedSafeString_32 = FixedSafeStringBase_32<char>;
