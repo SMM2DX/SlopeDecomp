@@ -2,25 +2,10 @@
 
 #include <Lp/UI/PriorityPage.hpp>
 #include <Lp/UI/Control.hpp>
-
-namespace Lp::UI{
-	struct PartsCtrl;
-	struct PartsCtrlBuilder{
-		struct PostCreatePartsArg{};
-		struct CtrlInitArg{};
-	};
-	struct BtnPartsCtrl{
-		struct BtnEventArg{};
-		struct DisplayCursorEvent{};
-	};
-	struct KeyItem{
-		struct Event{};
-		struct EventArg{};
-	};
-	struct StickItem{
-		struct EventArg{};
-	};
-}
+#include <Lp/UI/PartsCtrl.hpp>
+#include <Lp/UI/BtnPartsCtrl.hpp>
+#include <Lp/UI/KeyItem.hpp>
+#include <Lp/UI/StickItem.hpp>
 
 namespace UISys{
 	struct ButtonActionCallbackArg;

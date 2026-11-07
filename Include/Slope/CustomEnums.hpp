@@ -1,4 +1,4 @@
-enum Skin {
+enum Skin : unsigned int {
 	Skin_M1							= 0x0,
 	Skin_M3							= 0x1,
 	Skin_MW							= 0x2,
@@ -7,12 +7,12 @@ enum Skin {
 	Skin_COUNT						= 0x5,
 };
 
-enum SceneHour {
+enum SceneHour : unsigned int {
 	SceneHour_Day					= 0x0,
 	SceneHour_Night					= 0x1,
 };
 
-enum MyWorldScene {
+enum MyWorldScene : unsigned int {
 	MyWorldScene_Plain				= 0x0,
 	MyWorldScene_Underground		= 0x1,
 	MyWorldScene_Desert				= 0x2,
@@ -23,7 +23,7 @@ enum MyWorldScene {
 	MyWorldScene_Night				= 0x7,
 };
 
-enum Scene {
+enum Scene : unsigned int {
 	Scene_Plain						= 0x0,
 	Scene_Underground				= 0x1,
 	Scene_Castle					= 0x2,
@@ -37,7 +37,7 @@ enum Scene {
 	Scene_COUNT						= 0xA,
 };
 
-enum SceneButtonIndex {
+enum SceneButtonIndex : unsigned int {
 	ButtonIndexScene_Plain			= 0x0,
 	ButtonIndexScene_Underground	= 0x1,
 	ButtonIndexScene_Water			= 0x2,
@@ -50,7 +50,7 @@ enum SceneButtonIndex {
 	ButtonIndexScene_Castle			= 0x9,
 };
 
-enum ButtonIndex {
+enum ButtonIndex : unsigned int {
 	L_Btn_00										= 0x00,
 	L_Btn_01										= 0x01,
 	L_Btn_02										= 0x02,
@@ -155,11 +155,9 @@ enum ButtonIndex {
 	L_RightParts_00__L_BdRightSet_00				= 0x65,
 	L_PullBtnSlider_00								= 0x66,
 	L_BdEdit_00										= 0x67,
-//	CUSTOM_L_LeftParts_00__L_SceneListBtn_10		= 0x68,
-//	CUSTOM_L_LeftParts_00__L_SceneListBtn_11		= 0x69,
 };
 
-enum TilemapIndex {
+enum TilemapIndex : unsigned int {
 	TilemapIndex_Empty				= 0x000,	// Not Exhaustive.
 	TilemapIndex_Block				= 0x001,
 	TilemapIndex_QuestionBlock		= 0x002,
@@ -190,7 +188,7 @@ enum TilemapIndex {
 	TilemapIndex_FrozenBlock		= 0x2B2,
 };
 
-enum Actor_Flag {
+enum Actor_Flag : unsigned int {
 	Flag_AltVariant					= 0x00000004,
 	Flag_AltVariant_Mask			= 0xFFFFFFFB,
 	Flag_Size_Medium				= 0x00002000,
@@ -201,7 +199,7 @@ enum Actor_Flag {
 	Flag_TriVariant_Mask			= 0xFFF3FFFF,
 };
 
-enum Collision_Flag {
+enum Collision_Flag : unsigned int {
 	Flag_CatClimb					= 0x00000010,	// 1 << 4
 	Flag_Solid						= 0x00100000,	// 1 << 20
 	Flag_Vertical_OneWay			= 0x00200000,	// 1 << 21

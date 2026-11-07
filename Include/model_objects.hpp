@@ -1,6 +1,6 @@
 #pragma
 
-#include <Slope/Custom_Enums.hpp>
+#include <Slope/CustomEnums.hpp>
 
 struct object_base {
 	virtual ~object_base();

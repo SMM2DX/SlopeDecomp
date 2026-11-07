@@ -1,7 +1,5 @@
 #pragma once
 
-//#include <common.hpp>
-
 #include <sead/seadRuntimeTypeInfo.hpp>
 #include <seadOG/thread/seadReadWriteLock.h>
 

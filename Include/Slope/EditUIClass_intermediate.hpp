@@ -1,22 +1,13 @@
 #pragma once
 
 #include <sead/seadBuffer.hpp>
-//#include <sead/container/seadPtrArray.h>
+#include <sead/container/seadPtrArray.hpp>
+
 #include <Lp/Utl/StateMachine.hpp>
+#include <Lp/UI/BtnPartsCtrl.hpp>
+
 #include <UISys/ButtonActionCallbackArg.hpp>
 #include <UISys/SequenceBase.hpp>
-
-namespace sead{
-	struct PtrArrayImpl{
-		int mPtrNum;
-		int mPtrNumMax;
-		void **mPtrs;
-	}
-}
-
-namespace Lp::UI{
-	struct BtnPartsCtrl;
-}
 
 class EditUIClass_intermediate : public UISys::SequenceBase {
 	SEAD_RTTI_OVERRIDE(EditUIClass_intermediate, UISys::SequenceBase)
