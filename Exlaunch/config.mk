@@ -20,7 +20,7 @@ NPDM_JSON := qlaunch.json
 
 # Additional C/C++ flags to use.
 C_FLAGS :=
-CXX_FLAGS := -I"../Include/"
+CXX_FLAGS := -I"../../Include/"
 
 # AsRtld settings
 #------------------------
