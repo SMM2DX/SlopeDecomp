@@ -1,8 +1,10 @@
 #pragma once
 
-#include <UISys/ViewPage.hpp>
+//#include <UISys/ViewPage.hpp>
 
 namespace UISys{
+	struct ViewPage;
+
 	class ButtonActionCallbackArg {
 		UISys::ViewPage *viewPage;
 		Lp::UI::BtnPartsCtrl *btnPartsCtrl;

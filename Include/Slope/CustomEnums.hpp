@@ -7,6 +7,16 @@ enum Skin : unsigned int {
 	Skin_COUNT						= 0x5,
 };
 
+enum seadSkin : unsigned int {
+	sSkin_Invalid					= 0x0,
+	sSkin_M1							= 0x1,
+	sSkin_M3							= 0x2,
+	sSkin_MW							= 0x3,
+	sSkin_WU							= 0x4,
+	sSkin_3W							= 0x5,
+	sSkin_COUNT						= 0x6,
+};
+
 enum SceneHour : unsigned int {
 	SceneHour_Day					= 0x0,
 	SceneHour_Night					= 0x1,
@@ -21,6 +31,7 @@ enum MyWorldScene : unsigned int {
 	MyWorldScene_Athletic			= 0x5,
 	MyWorldScene_Magma				= 0x6,
 	MyWorldScene_Night				= 0x7,
+	MyWorldScene_COUNT				= 0x8,
 };
 
 enum Scene : unsigned int {
@@ -203,4 +214,10 @@ enum Collision_Flag : unsigned int {
 	Flag_CatClimb					= 0x00000010,	// 1 << 4
 	Flag_Solid						= 0x00100000,	// 1 << 20
 	Flag_Vertical_OneWay			= 0x00200000,	// 1 << 21
+};
+
+enum LeftPartsState : unsigned int {
+	LeftPartsState_ChangeSkin		= 0x10000,
+	LeftPartsState_ChangeSceneSet	= 0x40000,
+	LeftPartsState_ChangeSceneHour	= 0x80000,
 };

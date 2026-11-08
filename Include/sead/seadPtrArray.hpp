@@ -7,6 +7,6 @@ namespace sead{
 		int mPtrNum;
 		int mPtrNumMax;
 		void **mPtrs;
-	}
+	};
 	#endif	//	SEAD_PTRARRAYIMPL_HPP
 }

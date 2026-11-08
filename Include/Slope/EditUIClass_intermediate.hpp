@@ -1,13 +1,15 @@
 #pragma once
 
 #include <sead/seadBuffer.hpp>
-#include <sead/container/seadPtrArray.hpp>
+#include <sead/seadPtrArray.hpp>
 
 #include <Lp/Utl/StateMachine.hpp>
 #include <Lp/UI/BtnPartsCtrl.hpp>
 
 #include <UISys/ButtonActionCallbackArg.hpp>
 #include <UISys/SequenceBase.hpp>
+
+#include <Slope/SomethingBig.hpp>
 
 class EditUIClass_intermediate : public UISys::SequenceBase {
 	SEAD_RTTI_OVERRIDE(EditUIClass_intermediate, UISys::SequenceBase)
@@ -117,16 +119,22 @@ class EditUIClass_intermediate : public UISys::SequenceBase {
 	Lp::Utl::StateMachine stateMachine2;
 	uint32_t gapFill2;
 	uint32_t gapFill3;
-	void* somethingBig;
+	struct_pSomethingBig* somethingBig;
 	int64_t gapFill4;
 	int64_t gapFill5;
 	
 	sead::PtrArrayImpl array_1;
 	sead::PtrArrayImpl array_2;
-	sead::PtrArrayImpl array_3;
-	sead::PtrArrayImpl array_4;
+	sead::PtrArrayImpl array_3; // mhm
+	sead::PtrArrayImpl array_4; // mhm
+	void *ptr_5; // mhm
+	long long temp_6; // what are you?
+	long long temp_7; // what are you?
+	long long temp_8; // what are you?
+	void *ptr_9; // mhm
+	long long temp_10; // what are you?
 
-	char gap_2f[120];
+	char gap_2f[0x48];
 	long long temp1;
 	unsigned long long temp2;
 	char gap_1[304];

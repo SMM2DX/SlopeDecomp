@@ -163,6 +163,7 @@ HOOK_DEFINE_TRAMPOLINE(printFromStartTime) {
 HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_67) {
 	static void Callback(SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
 		Logging.Log("[UIEditLeftMenuSeq_sub_67] %u", buttonActionCallbackArg->buttonIndex);
+		
 		Orig(thisPtr, buttonActionCallbackArg);
 	}
 };
@@ -175,16 +176,14 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_68) {
 		Logging.Log("[UIEditLeftMenuSeq_sub_68] %u", buttonActionCallbackArg->buttonIndex);
 		
 		if (buttonActionCallbackArg->buttonIndex == L_LeftParts_00__L_ChangeHourBtn_00) {
-			//uint32_t button_index = buttonActionCallbackArg->buttonIndex;
 			temp_9_t *temp_9 = thisPtr->temp_9;
 
 			if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
-				temp_9->nextSceneHour = SceneHour_Night;
+				temp_9->nextSceneHour = (SceneHour)(temp_9->prevSceneHour ^ 1);
 				temp_9->nextScene = temp_9->prevScene;
-				temp_9->changeBitFlag = temp_9->changeBitFlag | 0x80000;
+				temp_9->changeBitFlag = temp_9->changeBitFlag | LeftPartsState_ChangeSceneHour;
 			}
 
-			Logging.Log("Calling sub_71018C7C10");
 			sub_71018C7C10(thisPtr);
 		} else {
 			Orig(thisPtr, buttonActionCallbackArg);
@@ -192,7 +191,43 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_68) {
 	}
 };
 
-HOOK_DEFINE_REPLACE(UIEditLeftMenuSeq_sub_74) {
+HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_74) {
+	static void Callback(SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
+		using sub_71018C7C10_t = void (void *);
+		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
+
+		Logging.Log("[UIEditLeftMenuSeq_sub_74] %u", buttonActionCallbackArg->buttonIndex);
+		
+		if (buttonActionCallbackArg->buttonIndex >= s_BtnPartsCtrlBufferSize) {
+			temp_9_t *temp_9 = thisPtr->temp_9;
+
+			if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
+				Scene new_theme_index = (Scene)(buttonActionCallbackArg->buttonIndex - s_BtnPartsCtrlBufferSize + 0xA);
+				
+				if (temp_9->prevScene != new_theme_index) {
+					temp_9->nextSceneHour = temp_9->prevSceneHour;
+					temp_9->nextScene = new_theme_index;
+					temp_9->changeBitFlag = temp_9->changeBitFlag | LeftPartsState_ChangeSceneSet;
+				} else {
+					// CLOSE MENU
+					struct_v19 *v19 = temp_9->qword_238;
+					if (v19) {
+						struct_v20 *v20 = v19->pstruct_v20;
+						if (v20) {
+							v20->byte54 = 0;
+						}
+					}
+				}
+			}
+
+			sub_71018C7C10(thisPtr);
+		} else {
+			Orig(thisPtr, buttonActionCallbackArg);
+		}
+	}
+};
+
+/*HOOK_DEFINE_REPLACE(UIEditLeftMenuSeq_sub_74) {
 	static void Callback(SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
 		using sub_71018C7C10_t = void (void *);
 		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
@@ -259,7 +294,7 @@ HOOK_DEFINE_REPLACE(UIEditLeftMenuSeq_sub_74) {
 		Logging.Log("Calling sub_71018C7C10");
 		sub_71018C7C10(thisPtr);
 	}
-};
+};*/
 
 extern "C" void exl_main(void *x0, void *x1) {
 	exl::patch::CodePatcher codePatcher(0);
