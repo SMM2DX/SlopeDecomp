@@ -12,7 +12,6 @@ namespace Lp::UI {
 
 #include <UISys/SequenceHolder.hpp>
 #include <UISys/SequenceJob.hpp>
-#include <UISys/SequenceJobList.hpp>
 
 namespace UISys {
 	class SequenceBase {

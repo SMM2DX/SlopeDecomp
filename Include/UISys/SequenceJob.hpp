@@ -1,13 +1,23 @@
 #pragma once
 
+#include <sead/seadListImpl.hpp>
+#include <seadOG/prim/seadDelegate.h>
+
 namespace UISys{
+	#ifndef		UISYS_SEQUENCEJOB_HPP
+	#define		UISYS_SEQUENCEJOB_HPP
 	class SequenceJob {
-		long long temp_1;
-		long long temp_2;
-		void* vtable; //?
-		long long temp_3;
-		long long temp_4;
-		long long temp_5;
-		long long temp_6;
+		sead::ListNode m_ListNode;
+		sead::AnyDelegate::UnbindDummy m_UnbindDummy;
+		int m_Third;	// See UISys::SequenceJobList::insert()
+		int m_Fourth;	// See UISys::SequenceJobList::insert()
 	};
+	#endif	//	UISYS_SEQUENCEJOB_HPP
+
+	#ifndef		UISYS_SEQUENCEJOBLIST_HPP
+	#define		UISYS_SEQUENCEJOBLIST_HPP
+	class SequenceJobList {
+		sead::OffsetList<SequenceJob> m_OffsetList;
+	};
+	#endif	//	UISYS_SEQUENCEJOBLIST_HPP
 }
