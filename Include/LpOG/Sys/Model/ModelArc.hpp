@@ -1,8 +1,8 @@
 #pragma once
 
 #include <sead/seadSafeString.hpp>
-#include <seadOG/resource/seadResource.h>
-#include <seadOG/heap/seadHeap.h>
+#include <oead/resource/seadResource.h>
+#include <oead/heap/seadHeap.h>
 
 #include <gsys/Model/ModelResource.hpp>
 

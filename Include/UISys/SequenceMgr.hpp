@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Lp/Sys/Task/ProjTaskBase.hpp>
-#include <seadOG/framework/seadMethodTree.h>
+#include <oead/framework/seadMethodTree.h>
 
 namespace UISys{
 	class SequenceMgr : public Lp::Sys::ProjTaskBase {

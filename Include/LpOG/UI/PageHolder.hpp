@@ -2,8 +2,8 @@
 
 #include <sead/seadDisposer.hpp>
 #include <sead/seadListImpl.hpp>
-#include "../../seadOG/heap/seadHeap.h"
-#include "../../seadOG/heap/seadExpHeap.h"
+#include "../../oead/heap/seadHeap.h"
+#include "../../oead/heap/seadExpHeap.h"
 
 #include "PageBase.hpp"
 

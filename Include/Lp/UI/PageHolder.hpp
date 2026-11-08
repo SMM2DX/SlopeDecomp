@@ -3,7 +3,7 @@
 #include <sead/seadDisposer.hpp>
 #include <sead/seadListImpl.hpp>
 #include <sead/seadHeap.hpp>
-#include <seadOG/heap/seadExpHeap.h>
+#include <oead/heap/seadExpHeap.h>
 
 #include <Lp/UI/PageBase.hpp>
 

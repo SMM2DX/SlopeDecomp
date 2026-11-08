@@ -1,7 +1,7 @@
 #pragma once
 
-#include <seadOG/thread/seadCriticalSection.h>
-#include <seadOG/thread/seadReadWriteLock.h>
+#include <oead/thread/seadCriticalSection.h>
+#include <oead/thread/seadReadWriteLock.h>
 #include <sead/seadDisposer.hpp>
 
 #include "ActorReserveList.hpp"

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <seadOG/container/seadTList.h>
+#include <oead/container/seadTList.h>
 
 #include "Primitives/ByamlWriterBigData.hpp"
 

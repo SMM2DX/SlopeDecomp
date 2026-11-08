@@ -1,7 +1,7 @@
 #pragma once
 
 #include <sead/seadListImpl.hpp>
-#include <seadOG/prim/seadDelegate.h>
+#include <oead/prim/seadDelegate.h>
 
 namespace UISys{
 	#ifndef		UISYS_SEQUENCEJOB_HPP

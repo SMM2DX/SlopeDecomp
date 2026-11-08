@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../seadOG/heap/seadHeap.h"
+#include "../../../oead/heap/seadHeap.h"
 #include "../Scene/Scene.hpp"
 
 #include <concepts>

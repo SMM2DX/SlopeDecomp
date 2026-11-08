@@ -1,7 +1,7 @@
 #pragma once
 
 #include <sead/seadRuntimeTypeInfo.hpp>
-#include <seadOG/thread/seadReadWriteLock.h>
+#include <oead/thread/seadReadWriteLock.h>
 
 #include <sead/seadListImpl.hpp>
 #include <Lp/UI/Impl/Name.hpp>

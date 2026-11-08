@@ -1,7 +1,7 @@
 #pragma once
 
-#include <seadOG/container/seadTList.h>
-#include <seadOG/stream/seadStream.h>
+#include <oead/container/seadTList.h>
+#include <oead/stream/seadStream.h>
 
 namespace Lp::Utl {
     struct ByamlWriterStringTable {

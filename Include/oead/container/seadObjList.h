@@ -1,12 +1,12 @@
 #pragma once
 
 //#include <algorithm> TEMP
-#include <seadOG/basis/seadNew.h>
-#include <seadOG/basis/seadRawPrint.h>
-#include <seadOG/basis/seadTypes.h>
-#include <seadOG/container/seadFreeList.h>
+#include <oead/basis/seadNew.h>
+#include <oead/basis/seadRawPrint.h>
+#include <oead/basis/seadTypes.h>
+#include <oead/container/seadFreeList.h>
 #include <sead/seadListImpl.hpp>
-#include <seadOG/prim/seadPtrUtil.h>
+#include <oead/prim/seadPtrUtil.h>
 
 namespace sead
 {

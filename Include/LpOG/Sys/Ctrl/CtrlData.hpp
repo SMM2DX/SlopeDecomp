@@ -1,7 +1,7 @@
 #pragma once
 
 #include <common.hpp>
-#include <seadOG/math/seadVector.hpp>
+#include <oead/math/seadVector.hpp>
 
 namespace Lp::Sys {
 

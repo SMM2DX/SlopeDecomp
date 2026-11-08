@@ -1,6 +1,6 @@
 #pragma once
 
-#include <seadOG/prim/seadRuntimeTypeInfo.h>
+#include <oead/prim/seadRuntimeTypeInfo.h>
 #include <sead/seadSafeString.hpp>
 
 namespace Lp::Sys {

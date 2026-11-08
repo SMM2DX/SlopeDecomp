@@ -1,6 +1,6 @@
 #pragma once
 
-#include <seadOG/container/seadSafeArray.h>
+#include <oead/container/seadSafeArray.h>
 #include "../../Utl/BigBitsT.hpp"
 #include "../Hio/IUseHioNode.hpp"
 #include "ActorCalcList.hpp"

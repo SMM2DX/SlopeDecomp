@@ -3,7 +3,7 @@
 //#include <common.hpp>
 
 #include <sead/seadRuntimeTypeInfo.hpp>
-#include "../../seadOG/thread/seadReadWriteLock.h"
+#include "../../oead/thread/seadReadWriteLock.h"
 
 #include <sead/seadListImpl.hpp>
 #include "Impl/Name.hpp"

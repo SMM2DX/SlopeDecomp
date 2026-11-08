@@ -1,14 +1,14 @@
 #pragma once
 
 #include <agl/lyr/RenderInfo.hpp>
-#include <seadOG/math/seadMatrix.hpp>
-#include <seadOG/gfx/seadColor.h>
-#include <seadOG/container/seadTList.h>
-#include <seadOG/container/seadTreeNode.h>
-#include <seadOG/heap/seadHeapMgr.h>
-#include <seadOG/prim/seadScopedLock.h>
-#include <seadOG/mc/seadJob.h>
-#include <seadOG/mc/seadCoreInfo.h>
+#include <oead/math/seadMatrix.hpp>
+#include <oead/gfx/seadColor.h>
+#include <oead/container/seadTList.h>
+#include <oead/container/seadTreeNode.h>
+#include <oead/heap/seadHeapMgr.h>
+#include <oead/prim/seadScopedLock.h>
+#include <oead/mc/seadJob.h>
+#include <oead/mc/seadCoreInfo.h>
 #include "ActorSystem.hpp"
 #include "ActorJobPriority.hpp"
 #include "ActorMemProfilerAutoVal.hpp"

@@ -2,8 +2,8 @@
 
 #include <sead/seadDisposer.hpp>
 #include <sead/seadSafeString.hpp>
-#include <seadOG/mc/seadJobQueue.h>
-#include <seadOG/mc/seadJob.h>
+#include <oead/mc/seadJobQueue.h>
+#include <oead/mc/seadJob.h>
 
 #include <gsys/ISystemTaskCallback.hpp>
 

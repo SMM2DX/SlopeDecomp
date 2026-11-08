@@ -1,7 +1,7 @@
 #pragma once
 
 #include <common.hpp>
-#include <seadOG/prim/seadLongBitFlag.h>
+#include <oead/prim/seadLongBitFlag.h>
 
 namespace Lp::Utl {
     template<size_t BitCount>

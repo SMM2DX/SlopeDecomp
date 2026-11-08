@@ -1,9 +1,9 @@
 #pragma once
 
-#include <seadOG/heap/seadHeap.h>
-#include <seadOG/hostio/seadHostIOCurve.h>
-#include <seadOG/container/seadTList.h>
-#include <seadOG/time/seadCalendarTime.h>
+#include <oead/heap/seadHeap.h>
+#include <oead/hostio/seadHostIOCurve.h>
+#include <oead/container/seadTList.h>
+#include <oead/time/seadCalendarTime.h>
 
 #include "../Iter/ByamlIter.hpp"
 #include "ByamlWriterStringTable.hpp"

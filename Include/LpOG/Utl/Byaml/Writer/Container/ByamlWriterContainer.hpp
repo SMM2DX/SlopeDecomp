@@ -1,6 +1,6 @@
 #pragma once
 
-#include <seadOG/stream/seadStream.h>
+#include <oead/stream/seadStream.h>
 
 #include "../Primitives/ByamlWriterData.hpp"
 #include "../ByamlWriterBigDataList.hpp"

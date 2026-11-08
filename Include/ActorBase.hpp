@@ -3,8 +3,8 @@
 #include <ActorCreateParam.hpp>
 
 #include <sead/seadListImpl.hpp>
-#include <seadOG/heap/seadHeap.h>
-#include <seadOG/prim/seadBitFlag.h>
+#include <oead/heap/seadHeap.h>
+#include <oead/prim/seadBitFlag.h>
 #include <sead/seadRuntimeTypeInfo.hpp>
 
 class ActorMgr;

@@ -2,7 +2,7 @@
 
 #include <common.hpp>
 
-#include <seadOG/heap/seadHeap.h>
+#include <oead/heap/seadHeap.h>
 #include <sead/seadSafeString.hpp>
 
 namespace Lp::Utl {

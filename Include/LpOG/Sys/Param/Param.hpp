@@ -1,7 +1,7 @@
 #pragma once
 
 #include <agl/utl/param/ParameterObj.hpp>
-#include <seadOG/gfx/seadColor.h>
+#include <oead/gfx/seadColor.h>
 #include <sead/seadSafeString.hpp>
 
 #include <type_traits>

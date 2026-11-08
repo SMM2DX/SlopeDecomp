@@ -1,11 +1,11 @@
 #pragma once
 
 #include <sead/seadSafeString.hpp>
-#include <seadOG/container/seadTreeNode.h>
-#include <seadOG/container/seadTList.h>
-#include <seadOG/prim/seadRuntimeTypeInfo.h>
-#include <seadOG/thread/seadCriticalSection.h>
-#include <seadOG/prim/seadScopedLock.h>
+#include <oead/container/seadTreeNode.h>
+#include <oead/container/seadTList.h>
+#include <oead/prim/seadRuntimeTypeInfo.h>
+#include <oead/thread/seadCriticalSection.h>
+#include <oead/prim/seadScopedLock.h>
 #include <concepts>
 #include <type_traits>
 

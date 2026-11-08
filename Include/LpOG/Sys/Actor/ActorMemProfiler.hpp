@@ -1,9 +1,9 @@
 #pragma once
 
-#include <seadOG/thread/seadCriticalSection.h>
+#include <oead/thread/seadCriticalSection.h>
 #include <sead/seadSafeString.hpp>
 #include <sead/seadDisposer.hpp>
-#include <seadOG/container/seadTList.h>
+#include <oead/container/seadTList.h>
 
 namespace Lp::Sys {
     

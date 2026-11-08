@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../../seadOG/heap/seadHeap.h"
-#include "../../../seadOG/heap/seadExpHeap.h"
+#include "../../../oead/heap/seadHeap.h"
+#include "../../../oead/heap/seadExpHeap.h"
 
 namespace Lp::UI::Impl {
     struct DualHeapAdapter : public sead::Heap {

@@ -2,11 +2,11 @@
 
 #include <common.hpp>
 
-#include <seadOG/math/seadVector.hpp>
-#include <seadOG/math/seadBoundBox.hpp>
-#include <seadOG/gfx/seadColor.h>
-#include <seadOG/hostio/seadHostIOCurve.h>
-#include <seadOG/stream/seadStream.h>
+#include <oead/math/seadVector.hpp>
+#include <oead/math/seadBoundBox.hpp>
+#include <oead/gfx/seadColor.h>
+#include <oead/hostio/seadHostIOCurve.h>
+#include <oead/stream/seadStream.h>
 
 namespace Lp::Utl {
     struct YamlFormatter {

@@ -5,7 +5,7 @@
 #include "CtrlType.hpp"
 
 #include <sead/seadSafeString.hpp>
-#include <seadOG/controller/seadController.h>
+#include <oead/controller/seadController.h>
 
 namespace Lp::Sys {
 

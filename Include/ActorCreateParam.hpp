@@ -3,8 +3,8 @@
 #include <ActorUniqueID.hpp>
 #include <Angle.hpp>
 
-#include <seadOG/math/seadVector.h>
-#include <seadOG/prim/seadMemUtil.h>
+#include <oead/math/seadVector.h>
+#include <oead/prim/seadMemUtil.h>
 
 struct ActorParamEx0
 {

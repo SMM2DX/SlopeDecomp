@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../seadOG/thread/seadCriticalSection.h"
+#include "../../../oead/thread/seadCriticalSection.h"
 #include <sead/seadListImpl.hpp>
 namespace Lp::UI::Impl {
     struct LayoutResourceAccessor;
