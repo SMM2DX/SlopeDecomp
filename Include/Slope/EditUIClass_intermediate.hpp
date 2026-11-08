@@ -1,10 +1,13 @@
 #pragma once
 
+#include <agl/TextureData.hpp>
+
 #include <sead/seadBuffer.hpp>
 #include <sead/seadPtrArray.hpp>
 
 #include <Lp/Utl/StateMachine.hpp>
 #include <Lp/UI/BtnPartsCtrl.hpp>
+#include <Lp/UI/TextureInfo.hpp>
 
 #include <UISys/ButtonActionCallbackArg.hpp>
 #include <UISys/SequenceBase.hpp>
@@ -115,7 +118,7 @@ class EditUIClass_intermediate : public UISys::SequenceBase {
 	bool unk_bool;
 	long long unk_num2;
 	Lp::Utl::StateMachine stateMachine1;
-	char gapFill1[0x18];
+	char gapFill1[0x58];
 	Lp::Utl::StateMachine stateMachine2;
 	uint32_t gapFill2;
 	uint32_t gapFill3;
@@ -123,15 +126,15 @@ class EditUIClass_intermediate : public UISys::SequenceBase {
 	int64_t gapFill4;
 	int64_t gapFill5;
 	
-	sead::PtrArrayImpl array_1;
-	sead::PtrArrayImpl array_2;
-	sead::PtrArrayImpl array_3; // mhm
-	sead::PtrArrayImpl array_4; // mhm
-	void *ptr_5; // mhm
+	sead::PtrArray<Lp::UI::TextureInfo>	SkinButtons_TextureInfo;
+	sead::PtrArray<agl::TextureData>	SkinButtons_TextureData;
+	sead::PtrArray<Lp::UI::TextureInfo>	SceneButtons_TextureInfo;
+	sead::PtrArray<agl::TextureData>	SceneButtons_TextureData;
+	Lp::UI::TextureInfo*				SceneSmallButton_TextureInfo;
 	long long temp_6; // what are you?
 	long long temp_7; // what are you?
 	long long temp_8; // what are you?
-	void *ptr_9; // mhm
+	agl::TextureData*					SceneSmallButton_TextureData;
 	long long temp_10; // what are you?
 
 	char gap_2f[0x48];

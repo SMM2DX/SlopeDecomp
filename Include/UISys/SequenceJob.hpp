@@ -8,9 +8,9 @@ namespace UISys{
 	#define		UISYS_SEQUENCEJOB_HPP
 	class SequenceJob {
 		sead::ListNode m_ListNode;
-		sead::AnyDelegate::UnbindDummy m_UnbindDummy;
-		int m_Third;	// See UISys::SequenceJobList::insert()
-		int m_Fourth;	// See UISys::SequenceJobList::insert()
+		//sead::AnyDelegate::UnbindDummy *m_UnbindDummy;
+		//int m_Third;	// See UISys::SequenceJobList::insert()
+		//int m_Fourth;	// See UISys::SequenceJobList::insert()
 	};
 	#endif	//	UISYS_SEQUENCEJOB_HPP
 

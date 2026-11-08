@@ -2,6 +2,7 @@
 
 #include <sead/seadBuffer.hpp>
 
+#include <Lp/UI/TempItemHandle.hpp>
 #include <Lp/UI/TextSetter.hpp>
 
 struct struct_pSomethingBig
@@ -54,8 +55,8 @@ struct struct_pSomethingBig
 	virtual void sub_46_getMessageSetName(int);
 
 	char _0[1952];
-	sead::Buffer<void> smallIconBuffer;
+	sead::Buffer<Lp::UI::TempItemHandle> smallIconBuffer;
 	char _1[480];
-	sead::Buffer<void> iconBuffer;
+	sead::Buffer<Lp::UI::TempItemHandle> iconBuffer;
 	sead::Buffer<Lp::UI::TextSetter> textSetterBuffer;
 };
