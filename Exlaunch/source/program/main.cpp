@@ -3,9 +3,10 @@
 #include <sead/seadSafeString.hpp>
 
 #include <Lp/UI/BtnPartsCtrl.hpp>
+#include <Lp/UI/TextSetter.hpp>
 
 //#include <UISys/ButtonActionCallbackArg.hpp>
-//#include <UISys/SequenceBase.hpp>
+#include <UISys/SequenceBase.hpp>
 
 #include <Slope/CustomEnums.hpp>
 
@@ -35,39 +36,6 @@ struct ButtonActionCallbackArg {
 	unsigned int dword24;
 	unsigned long long qword28;
 };
-
-struct struct_v20 {
-  u8 _0[84];
-  int8_t byte54;
-};
-
-struct struct_v19 {
-  u8 _0[528];
-  struct_v20 *pstruct_v20;
-};
-
-struct temp_9_t {
-	u8 _0[0x238];
-	struct_v19 *qword_238;
-	u8 _1[0xB0];
-	int64_t changeBitFlag;
-	u8 _2[0x13CC];
-	Skin prevSkin;
-	Skin nextSkin;
-	Scene prevScene;
-	SceneHour prevSceneHour;
-	Scene nextScene;
-	SceneHour nextSceneHour;
-};
-
-struct SequenceBase {
-	u8 _0[0x48];
-	temp_9_t *temp_9;
-};
-
-static constexpr u16 s_BtnPartsCtrlBufferSize		= 0x68;
-static constexpr u16 s_NewBtnPartsCtrlBufferSize	= 0x6A;
-static std::array<ButtonNameStruct, s_NewBtnPartsCtrlBufferSize> s_NewBtnPartsCtrlBuffer;
 
 class Difference final {
 	public:
@@ -100,21 +68,34 @@ void WriteAdrlInst(exl::armv8::reg::Register reg, uintptr_t source, uintptr_t de
 	s_CodePatcher.WriteAdrlInst(reg, destination);
 }
 
+static constexpr u16 s_NewButtonIndexMax					= 0x72;
+static constexpr u16 s_NewSceneCount						= 0x14;
+
 void patchGetButton() {
 	exl::patch::CodePatcher codePatcher(0x18CC450);
-	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::W1, s_NewBtnPartsCtrlBufferSize - 1));
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::W1, s_NewButtonIndexMax - 1));
 }
 
 void patchGetButtonIndex() {
 	exl::patch::CodePatcher codePatcher(0x18CC514);
-	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X0, s_NewBtnPartsCtrlBufferSize));
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X0, s_NewButtonIndexMax));
+}
+
+void patchGetButtonLabelLoop() {
+	exl::patch::CodePatcher codePatcher(0x18C9168);
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X20, s_NewSceneCount));
 }
 
 #pragma region BtnPartsCtrlBuffer
 
+static constexpr u16 s_BtnPartsCtrlBufferSize				= 0x68;
+static constexpr u16 s_NewBtnPartsCtrlBufferSize			= s_NewButtonIndexMax;
+static std::array<ButtonNameStruct, s_NewBtnPartsCtrlBufferSize> s_NewBtnPartsCtrlBuffer;
+
 void patchBtnPartsCtrlBufferSize() {
 	exl::patch::CodePatcher codePatcher(0x18CBAD8);
 	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W0, sizeof(Lp::UI::BtnPartsCtrl *) * s_NewBtnPartsCtrlBufferSize));
+
 	codePatcher.Seek(0x18CBB68);
 	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::X8, s_NewBtnPartsCtrlBufferSize % 4));
 	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W10, s_NewBtnPartsCtrlBufferSize));
@@ -123,20 +104,30 @@ void patchBtnPartsCtrlBufferSize() {
 void patchPopulateBtnPartsCtrlBuffer() {
 	exl::patch::CodePatcher codePatcher(0x18D02C0);
 	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X24, s_NewBtnPartsCtrlBufferSize));
+
 	codePatcher.Seek(0x18D0548);
 	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X23, s_NewBtnPartsCtrlBufferSize));
 }
 
 void patchBtnPartsCtrlBuffer() {
-	auto s_BtnPartsCtrlBuffer = exl::util::pointer_path::Follow<std::array<ButtonNameStruct, s_BtnPartsCtrlBufferSize>, 0x2CD99A8>();
+	auto BtnPartsCtrlBuffer = exl::util::pointer_path::Follow<std::array<ButtonNameStruct, s_BtnPartsCtrlBufferSize>, 0x2CD99A8>();
 	for (auto i = 0; i < s_BtnPartsCtrlBufferSize; ++i) {
-		s_NewBtnPartsCtrlBuffer[i] = s_BtnPartsCtrlBuffer[i];
+		s_NewBtnPartsCtrlBuffer[i] = BtnPartsCtrlBuffer[i];
+		//Logging.Log("[patchBtnPartsCtrlBuffer] %d: %s", i, s_NewBtnPartsCtrlBuffer[i].mStringTop);
 	}
 	for (auto i = s_BtnPartsCtrlBufferSize; i < s_NewBtnPartsCtrlBufferSize; ++i) {
-		s_NewBtnPartsCtrlBuffer[i] = s_BtnPartsCtrlBuffer[L_LeftParts_00__L_SceneListBtn_00];
+		s_NewBtnPartsCtrlBuffer[i] = BtnPartsCtrlBuffer[L_LeftParts_00__L_SceneListBtn_00];
 		if (i == 0x68) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_10";
 		if (i == 0x69) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_11";
-		Logging.Log("patchBtnPartsCtrlBuffer: %d %s", i, s_NewBtnPartsCtrlBuffer[i].mStringTop);
+		if (i == 0x6A) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_12";
+		if (i == 0x6B) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_13";
+		if (i == 0x6C) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_14";
+		if (i == 0x6D) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_15";
+		if (i == 0x6E) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_16";
+		if (i == 0x6F) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_17";
+		if (i == 0x70) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_18";
+		if (i == 0x71) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_19";
+		Logging.Log("[patchBtnPartsCtrlBuffer] %d: %s", i, s_NewBtnPartsCtrlBuffer[i].mStringTop);
 	}
 
 	WriteAdrlInst(exl::armv8::reg::X23, 0x18CF7B4, reinterpret_cast<uintptr_t>(s_NewBtnPartsCtrlBuffer.data()));
@@ -145,11 +136,90 @@ void patchBtnPartsCtrlBuffer() {
 }
 
 #pragma endregion
+#pragma region TextSetterBuffer
+
+static constexpr u16 s_TextSetterBufferSize				= 0x0A;
+static constexpr u16 s_NewTextSetterBufferSize			= s_NewSceneCount;
+//static std::array<Lp::UI::TextSetter *, s_NewTextSetterBufferSize> s_NewTextSetterBuffer;
+
+void patchTextSetterBufferSize() {
+	exl::patch::CodePatcher codePatcher(0x18CBFD0);
+	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W1, s_NewTextSetterBufferSize));
+}
+
+/*void patchPopulateTextSetterBuffer() {
+	exl::patch::CodePatcher codePatcher(0x18D02C0);
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X24, s_NewTextSetterBufferSize));
+
+	codePatcher.Seek(0x18D0548);
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X23, s_NewTextSetterBufferSize));
+}*/
+
+/*void patchTextSetterBuffer() {
+	auto TextSetterBuffer = exl::util::pointer_path::Follow<std::array<Lp::UI::TextSetter *, s_TextSetterBufferSize>, 0x2CD99A8>();
+	for (auto i = 0; i < s_TextSetterBufferSize; ++i) {
+		s_NewTextSetterBuffer[i] = TextSetterBuffer[i];
+		//Logging.Log("[patchTextSetterBuffer] %d: %s", i, s_NewTextSetterBuffer[i].mStringTop);
+	}
+	for (auto i = s_TextSetterBufferSize; i < s_NewTextSetterBufferSize; ++i) {
+		s_NewTextSetterBuffer[i] = TextSetterBuffer[L_LeftParts_00__L_SceneListBtn_00];
+		Logging.Log("[patchTextSetterBuffer] %d: %s", i, s_NewTextSetterBuffer[i].mStringTop);
+	}
+
+	WriteAdrlInst(exl::armv8::reg::X23, 0x18CF7B4, reinterpret_cast<uintptr_t>(s_NewTextSetterBuffer.data()));
+}*/
+
+#pragma endregion
+#pragma region SceneSetToSceneNameArray
+
+static constexpr u16 s_SceneSetToSceneNameArraySize		= 0x0A;
+static constexpr u16 s_NewSceneSetToSceneNameArraySize	= 0x14;
+static std::array<sead::SafeString, s_NewSceneSetToSceneNameArraySize> s_NewSceneSetToSceneNameArray;
+
+void patchSceneSetToSceneNameArray() {
+	auto SceneSetToSceneNameArray = exl::util::pointer_path::Follow<std::array<sead::SafeString, s_SceneSetToSceneNameArraySize>, 0x2CDAF28>();
+	for (auto i = 0; i < s_SceneSetToSceneNameArraySize; ++i) {
+		s_NewSceneSetToSceneNameArray[i] = SceneSetToSceneNameArray[i];
+		//Logging.Log("[patchSceneSetToSceneNameArray] %02d: %s", i, s_NewSceneSetToSceneNameArray[i].mStringTop);
+	}
+	for (auto i = s_SceneSetToSceneNameArraySize; i < s_NewSceneSetToSceneNameArraySize; ++i) {
+		s_NewSceneSetToSceneNameArray[i] = SceneSetToSceneNameArray[0];
+		if (i == 0x0A) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Plain";
+		Logging.Log("[patchSceneSetToSceneNameArray] %02d: %s", i, s_NewSceneSetToSceneNameArray[i].mStringTop);
+	}
+
+	WriteAdrlInst(exl::armv8::reg::X22, 0x18C90F4, reinterpret_cast<uintptr_t>(s_NewSceneSetToSceneNameArray.data()));
+}
+
+#pragma endregion
+#pragma region ButtonIndexToSceneSetArray
+
+static constexpr u16 s_ButtonIndexToSceneSetArraySize		= 0x0A;
+static constexpr u16 s_NewButtonIndexToSceneSetArraySize	= 0x14;
+static std::array<SceneSet, s_NewButtonIndexToSceneSetArraySize> s_NewButtonIndexToSceneSetArray;
+
+void patchButtonIndexToSceneSetArray() {
+	auto ButtonIndexToSceneSetArray = exl::util::pointer_path::Follow<std::array<SceneSet, s_ButtonIndexToSceneSetArraySize>, 0x2CEA780>();
+	for (auto i = 0; i < s_ButtonIndexToSceneSetArraySize; ++i) {
+		s_NewButtonIndexToSceneSetArray[i] = ButtonIndexToSceneSetArray[i];
+		//Logging.Log("[patchButtonIndexToSceneSetArray] %02d: %02d", i, s_NewButtonIndexToSceneSetArray[i]);
+	}
+	for (auto i = s_ButtonIndexToSceneSetArraySize; i < s_NewButtonIndexToSceneSetArraySize; ++i) {
+		s_NewButtonIndexToSceneSetArray[i] = (SceneSet)i;
+		Logging.Log("[patchButtonIndexToSceneSetArray] %02d: %02d", i, s_NewButtonIndexToSceneSetArray[i]);
+	}
+
+	WriteAdrlInst(exl::armv8::reg::X27, 0x18C8F20, reinterpret_cast<uintptr_t>(s_NewButtonIndexToSceneSetArray.data()));
+}
+
+#pragma endregion
 
 HOOK_DEFINE_TRAMPOLINE(Init) {
 	static void Callback() {
 		Orig();
 		patchBtnPartsCtrlBuffer();
+		patchSceneSetToSceneNameArray();
+		patchButtonIndexToSceneSetArray();
 	}
 };
 
@@ -161,7 +231,7 @@ HOOK_DEFINE_TRAMPOLINE(printFromStartTime) {
 };
 
 HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_67) {
-	static void Callback(SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
+	static void Callback(UISys::SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
 		Logging.Log("[UIEditLeftMenuSeq_sub_67] %u", buttonActionCallbackArg->buttonIndex);
 		
 		Orig(thisPtr, buttonActionCallbackArg);
@@ -169,18 +239,18 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_67) {
 };
 
 HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_68) {
-	static void Callback(SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
+	static void Callback(UISys::SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
 		using sub_71018C7C10_t = void (void *);
 		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
 
 		Logging.Log("[UIEditLeftMenuSeq_sub_68] %u", buttonActionCallbackArg->buttonIndex);
 		
 		if (buttonActionCallbackArg->buttonIndex == L_LeftParts_00__L_ChangeHourBtn_00) {
-			temp_9_t *temp_9 = thisPtr->temp_9;
+			temp_9_t *temp_9 = thisPtr->temp_09;
 
 			if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
 				temp_9->nextSceneHour = (SceneHour)(temp_9->prevSceneHour ^ 1);
-				temp_9->nextScene = temp_9->prevScene;
+				temp_9->nextSceneSet = temp_9->prevSceneSet;
 				temp_9->changeBitFlag = temp_9->changeBitFlag | LeftPartsState_ChangeSceneHour;
 			}
 
@@ -192,21 +262,21 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_68) {
 };
 
 HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_74) {
-	static void Callback(SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
+	static void Callback(UISys::SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
 		using sub_71018C7C10_t = void (void *);
 		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
 
 		Logging.Log("[UIEditLeftMenuSeq_sub_74] %u", buttonActionCallbackArg->buttonIndex);
 		
 		if (buttonActionCallbackArg->buttonIndex >= s_BtnPartsCtrlBufferSize) {
-			temp_9_t *temp_9 = thisPtr->temp_9;
+			temp_9_t *temp_9 = thisPtr->temp_09;
 
 			if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
-				Scene new_theme_index = (Scene)(buttonActionCallbackArg->buttonIndex - s_BtnPartsCtrlBufferSize + 0xA);
+				SceneSet new_theme_index = s_NewButtonIndexToSceneSetArray[buttonActionCallbackArg->buttonIndex - s_BtnPartsCtrlBufferSize + 0xA];
 				
-				if (temp_9->prevScene != new_theme_index) {
+				if (temp_9->prevSceneSet != new_theme_index) {
 					temp_9->nextSceneHour = temp_9->prevSceneHour;
-					temp_9->nextScene = new_theme_index;
+					temp_9->nextSceneSet = new_theme_index;
 					temp_9->changeBitFlag = temp_9->changeBitFlag | LeftPartsState_ChangeSceneSet;
 				} else {
 					// CLOSE MENU
@@ -227,74 +297,11 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_74) {
 	}
 };
 
-/*HOOK_DEFINE_REPLACE(UIEditLeftMenuSeq_sub_74) {
-	static void Callback(SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
-		using sub_71018C7C10_t = void (void *);
-		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
-		
-		Logging.Log("[UIEditLeftMenuSeq_sub_74] %u", buttonActionCallbackArg->buttonIndex);
-
-		uint32_t button_index = buttonActionCallbackArg->buttonIndex;
-		temp_9_t *temp_9 = thisPtr->temp_9;
-
-		if ( button_index - 0x59 > 4) {
-			Scene new_theme_index = Scene_Plain;
-			if (button_index >= s_BtnPartsCtrlBufferSize) {
-				uint32_t custom_button_index = button_index - s_BtnPartsCtrlBufferSize;
-				new_theme_index = (Scene)(custom_button_index + 10);
-			}
-			else {
-				uint32_t theme_button_index = button_index - 0x4E;
-				if (theme_button_index >= 10){
-					return;
-				}
-				new_theme_index = (Scene) theme_button_index; // TEMP
-				//new_theme_index = button_index_theme_to_theme_index[theme_button_index]; // UNFINISHED
-			}
-
-			Scene previous_theme_index = Scene_Plain;
-			if (temp_9) // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
-				previous_theme_index = temp_9->prevScene;
-			
-			Logging.Log("Theme was: %d", previous_theme_index);
-			Logging.Log("Changing theme to: %d", new_theme_index);
-
-			if (previous_theme_index != new_theme_index) {
-				if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
-					temp_9->nextSceneHour = temp_9->prevSceneHour;
-					temp_9->nextScene = new_theme_index;
-					temp_9->changeBitFlag = temp_9->changeBitFlag | 0x40000LL;
-				}
-			} else {
-				// CLOSE MENU
-				if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
-					struct_v19 *v19 = temp_9->qword_238;
-					if (v19) {
-						struct_v20 *v20 = v19->pstruct_v20;
-						if (v20) {
-							v20->byte54 = 0;
-						}
-					}
-				}
-			}
-		} else {
-			Skin new_style_index = (Skin)(button_index - L_LeftParts_00__L_SkinListBtn_00);
-			Skin previous_style_index = Skin_M1;
-			if (temp_9) // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
-				previous_style_index = temp_9->prevSkin;
-			
-			if (previous_style_index != new_style_index) {
-				if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
-					temp_9->nextSkin = new_style_index;
-					temp_9->changeBitFlag = temp_9->changeBitFlag | 0x10000;
-				}
-			}
-		}
-
-		Logging.Log("Calling sub_71018C7C10");
-		sub_71018C7C10(thisPtr);
+HOOK_DEFINE_INLINE(DebugHook) {
+	static void Callback(exl::hook::InlineCtx* ctx) {
+		Logging.Log("[DebugHook] %d", ctx->X[8]);
 	}
-};*/
+};
 
 extern "C" void exl_main(void *x0, void *x1) {
 	exl::patch::CodePatcher codePatcher(0);
@@ -302,14 +309,20 @@ extern "C" void exl_main(void *x0, void *x1) {
 
 	patchGetButton();
 	patchGetButtonIndex();
+	patchGetButtonLabelLoop();
+
 	patchBtnPartsCtrlBufferSize();
 	patchPopulateBtnPartsCtrlBuffer();
+
+	patchTextSetterBufferSize();
 
 	Init::InstallAtOffset(0x30);
 	printFromStartTime::InstallAtOffset(0x620B90);
 	UIEditLeftMenuSeq_sub_67::InstallAtOffset(0x18C9280);
 	UIEditLeftMenuSeq_sub_68::InstallAtOffset(0x18C9E30);
 	UIEditLeftMenuSeq_sub_74::InstallAtOffset(0x18CA930);
+
+	DebugHook::InstallAtOffset(0x18C9120);
 
 	codePatcher.Seek(0x00DA0B00); // Remap Theme Indexes
 	codePatcher.Write(0x5280004A);

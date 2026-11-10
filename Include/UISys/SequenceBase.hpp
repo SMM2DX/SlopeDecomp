@@ -13,6 +13,8 @@ namespace Lp::UI {
 #include <UISys/SequenceHolder.hpp>
 #include <UISys/SequenceJob.hpp>
 
+#include <UISys/struct_temp_09.hpp>
+
 namespace UISys {
 	class SequenceBase {
 		SEAD_RTTI_BASE(SequenceBase)
@@ -57,7 +59,7 @@ namespace UISys {
 		long long temp_06;
 		long long temp_07;
 		long long temp_08;
-		long long temp_09;
+		temp_9_t *temp_09;
 		sead::ListImpl listImpl1;					// 0x50
 		sead::ListImpl listImpl2;					// 0x68
 		Lp::UI::Impl::Name name;					// 0x80

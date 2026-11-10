@@ -6,14 +6,14 @@ namespace sead {
 	#ifndef		SEAD_SAFESTRING_HPP
 	#define		SEAD_SAFESTRING_HPP
 	template <typename T> struct SafeStringBase {
-		virtual ~SafeStringBase();
+		virtual ~SafeStringBase() = default;
 		#ifndef		IDACLANG_DESTRUCTOR_FIX
 		virtual void destructor_2();
 		#endif	//	IDACLANG_DESTRUCTOR_FIX
-		virtual SafeStringBase &operator=(const SafeStringBase &);
-		virtual void assureTerminationImpl_() const;
+		virtual SafeStringBase &operator=(const SafeStringBase &) = default;
+		virtual void assureTerminationImpl_() const {};
 		
-		T* mStringTop;
+		const T* mStringTop;
 	};
 	using SafeString = SafeStringBase<char>;
 	#endif	//	SEAD_SAFESTRING_HPP

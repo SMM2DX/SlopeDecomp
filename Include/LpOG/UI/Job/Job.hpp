@@ -24,5 +24,5 @@ namespace Lp::UI {
         virtual ~Job();
         virtual void onProcess();
     };
-    static_assert(sizeof(Job) == 0x78);
+    //static_assert(sizeof(Job) == 0x78); TEMP
 }

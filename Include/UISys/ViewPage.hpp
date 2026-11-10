@@ -74,7 +74,7 @@ namespace UISys{
 	    virtual void checkCursorActionInvoke_(UISys::CursorActionCallbackArg const&);
 	    virtual void postCursorActionInvoke_(UISys::CursorActionCallbackArg const&);
 		
-	    virtual void createStickActionCallbackArg_(UISys::StickActionCallbackArg &,sead::Vector2<float> const&,Lp::UI::StickItem::EventArg const&);
+	    virtual void createStickActionCallbackArg_();//UISys::StickActionCallbackArg &,sead::Vector2<float> const&,Lp::UI::StickItem::EventArg const&);
 	    virtual void preStickActionInvoke_(UISys::StickActionCallbackArg const&);
 	    virtual void checkStickActionInvoke_(UISys::StickActionCallbackArg const&);
 	    virtual void postStickActionInvoke_(UISys::StickActionCallbackArg const&);

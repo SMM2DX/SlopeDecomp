@@ -1,3 +1,5 @@
+#ifndef		CUSTOMENUMS_HPP
+#define		CUSTOMENUMS_HPP
 enum Skin : unsigned int {
 	Skin_M1							= 0x0,
 	Skin_M3							= 0x1,
@@ -9,11 +11,11 @@ enum Skin : unsigned int {
 
 enum seadSkin : unsigned int {
 	sSkin_Invalid					= 0x0,
-	sSkin_M1							= 0x1,
-	sSkin_M3							= 0x2,
-	sSkin_MW							= 0x3,
-	sSkin_WU							= 0x4,
-	sSkin_3W							= 0x5,
+	sSkin_M1						= 0x1,
+	sSkin_M3						= 0x2,
+	sSkin_MW						= 0x3,
+	sSkin_WU						= 0x4,
+	sSkin_3W						= 0x5,
 	sSkin_COUNT						= 0x6,
 };
 
@@ -22,30 +24,30 @@ enum SceneHour : unsigned int {
 	SceneHour_Night					= 0x1,
 };
 
-enum MyWorldScene : unsigned int {
-	MyWorldScene_Plain				= 0x0,
-	MyWorldScene_Underground		= 0x1,
-	MyWorldScene_Desert				= 0x2,
-	MyWorldScene_Woods				= 0x3,
-	MyWorldScene_Snow				= 0x4,
-	MyWorldScene_Athletic			= 0x5,
-	MyWorldScene_Magma				= 0x6,
-	MyWorldScene_Night				= 0x7,
-	MyWorldScene_COUNT				= 0x8,
+enum MyWorldSceneSkin : unsigned int {
+	MyWorldSceneSkin_Plain			= 0x0,
+	MyWorldSceneSkin_Underground	= 0x1,
+	MyWorldSceneSkin_Desert			= 0x2,
+	MyWorldSceneSkin_Woods			= 0x3,
+	MyWorldSceneSkin_Snow			= 0x4,
+	MyWorldSceneSkin_Athletic		= 0x5,
+	MyWorldSceneSkin_Magma			= 0x6,
+	MyWorldSceneSkin_Night			= 0x7,
+	MyWorldSceneSkin_COUNT			= 0x8,
 };
 
-enum Scene : unsigned int {
-	Scene_Plain						= 0x0,
-	Scene_Underground				= 0x1,
-	Scene_Castle					= 0x2,
-	Scene_Airship					= 0x3,
-	Scene_Water						= 0x4,
-	Scene_GhostHouse				= 0x5,
-	Scene_Snow						= 0x6,
-	Scene_Desert					= 0x7,
-	Scene_Sky						= 0x8,
-	Scene_Forest					= 0x9,
-	Scene_COUNT						= 0xA,
+enum SceneSet : unsigned int {
+	SceneSet_Plain					= 0x0,
+	SceneSet_Underground			= 0x1,
+	SceneSet_Castle					= 0x2,
+	SceneSet_Airship				= 0x3,
+	SceneSet_Water					= 0x4,
+	SceneSet_GhostHouse				= 0x5,
+	SceneSet_Snow					= 0x6,
+	SceneSet_Desert					= 0x7,
+	SceneSet_Sky					= 0x8,
+	SceneSet_Forest					= 0x9,
+	SceneSet_COUNT					= 0xA,
 };
 
 enum SceneButtonIndex : unsigned int {
@@ -221,3 +223,4 @@ enum LeftPartsState : unsigned int {
 	LeftPartsState_ChangeSceneSet	= 0x40000,
 	LeftPartsState_ChangeSceneHour	= 0x80000,
 };
+#endif	//	CUSTOMENUMS_HPP

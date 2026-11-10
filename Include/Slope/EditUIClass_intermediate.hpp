@@ -12,7 +12,7 @@
 #include <UISys/ButtonActionCallbackArg.hpp>
 #include <UISys/SequenceBase.hpp>
 
-#include <Slope/SomethingBig.hpp>
+#include <Slope/UIEditMainPage.hpp>
 
 class EditUIClass_intermediate : public UISys::SequenceBase {
 	SEAD_RTTI_OVERRIDE(EditUIClass_intermediate, UISys::SequenceBase)
@@ -122,7 +122,7 @@ class EditUIClass_intermediate : public UISys::SequenceBase {
 	Lp::Utl::StateMachine stateMachine2;
 	uint32_t gapFill2;
 	uint32_t gapFill3;
-	struct_pSomethingBig* somethingBig;
+	UISys::ViewPage* parentViewPage;
 	int64_t gapFill4;
 	int64_t gapFill5;
 	

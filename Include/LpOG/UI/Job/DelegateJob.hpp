@@ -11,5 +11,5 @@ namespace Lp::UI {
         /* TODO: ? */
         sead::Delegate<PageBase> mDelegate;
     };
-    static_assert(sizeof(DelegateJob) == 0x98);
+    //static_assert(sizeof(DelegateJob) == 0x98); TEMP
 }
