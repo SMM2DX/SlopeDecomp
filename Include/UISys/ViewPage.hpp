@@ -80,5 +80,9 @@ namespace UISys{
 	    virtual void postStickActionInvoke_(UISys::StickActionCallbackArg const&);
 		
 	    virtual void checkDecidedButton_(Lp::UI::Control const*);
+
+		char _0[0x218];
+		sead::Buffer<Lp::UI::Control> controlBuffer;			//	0x3F0
+		char _1[0x170];
 	};
 }

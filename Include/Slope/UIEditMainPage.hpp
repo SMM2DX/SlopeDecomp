@@ -1,6 +1,7 @@
 #pragma once
 
 #include <sead/seadBuffer.hpp>
+#include <sead/seadPtrArray.hpp>
 #include <sead/seadRuntimeTypeInfo.hpp>
 
 #include <Lp/UI/TempItemHandle.hpp>
@@ -34,9 +35,9 @@ class UIEditMainPage : public UISys::ViewPage {
 	virtual void sub_94(); // doInitialize_() ?
 	virtual void sub_95();
 	virtual void sub_96();
-	virtual void sub_97();
+	virtual void sub_97(); // smallIconBuffer
 	virtual void sub_98();
-	virtual void sub_99();
+	virtual void sub_99(); // sets up textSetterPtrArray 
 	virtual void sub_100();
 	virtual void sub_101();
 	virtual void sub_102();
@@ -71,12 +72,23 @@ class UIEditMainPage : public UISys::ViewPage {
 	virtual void sub_131();
 	virtual void sub_132();
 
-	char _0[0x218];
-	sead::Buffer<Lp::UI::Control> controlBuffer;			// 0x3F0
-	char _1[0x370];
-	sead::Buffer<Lp::UI::BtnPartsCtrl> buttonBuffer;		// 0x770
-	sead::Buffer<Lp::UI::TempItemHandle> smallIconBuffer;	// 0x7A8
-	char _2[0x208];
-	sead::Buffer<Lp::UI::TempItemHandle> iconBuffer;		// 0x998
-	sead::Buffer<Lp::UI::TextSetter> textSetterBuffer;		// 0x9A8
+	char _2[0x200];
+	sead::Buffer<Lp::UI::BtnPartsCtrl> buttonBuffer;		//	0x770	//	104	Elements
+	sead::Buffer<Lp::UI::TempItemHandle> smallIconBuffer;	//	0x780	//	30	Elements
+	char _3[0x18];
+	sead::Buffer<void> UNKBuffer_7A8;						//	0x7A8	//	16	Elements
+	sead::Buffer<void> UNKBuffer_7BB;						//	0x7B8	//	6	Elements
+	sead::Buffer<void> UNKBuffer_7CB;						//	0x7C8	//	10	Elements
+	char _4[0x40];
+	sead::PtrArrayImpl UNKPtrArray_818;						//	0x818	//	4	Ptrs
+	char _5[0x48];
+	sead::Buffer<void> UNKBuffer_870;						//	0x870	//	5	Elements
+	char _6[0x108];
+	sead::PtrArrayImpl UNKPtrArray_988;						//	0x988	//	6	Ptrs
+	sead::PtrArray<Lp::UI::TempItemHandle> iconPtrArray;	//	0x998	//	10	Ptrs
+	sead::PtrArray<Lp::UI::TextSetter> textSetterPtrArray;	//	0x9A8	//	10	Ptrs
+	sead::PtrArrayImpl UNKPtrArray_9B8;						//	0x9B8	//	11	Ptrs
+	sead::PtrArrayImpl UNKPtrArray_9C8;						//	0x9C8	//	11	Ptrs
+	sead::PtrArrayImpl UNKPtrArray_9D8;						//	0x9D8	//	11	Ptrs
+	sead::PtrArrayImpl UNKPtrArray_9E8;						//	0x9E8	//	11	Ptrs
 };

@@ -1,4 +1,4 @@
-
+#pragma once
 
 namespace sead{
 	#ifndef		SEAD_PTRARRAYIMPL_HPP

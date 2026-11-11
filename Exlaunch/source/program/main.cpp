@@ -1,6 +1,7 @@
 #include "lib.hpp"
 
 #include <sead/seadSafeString.hpp>
+#include <sead/seadPtrArray.hpp>
 
 #include <Lp/UI/BtnPartsCtrl.hpp>
 #include <Lp/UI/TextSetter.hpp>
@@ -9,6 +10,7 @@
 #include <UISys/SequenceBase.hpp>
 
 #include <Slope/CustomEnums.hpp>
+//#include <Slope/UIEditMainPage.hpp>
 
 struct ButtonNameStruct {
 	void *__vftable;
@@ -70,6 +72,7 @@ void WriteAdrlInst(exl::armv8::reg::Register reg, uintptr_t source, uintptr_t de
 
 static constexpr u16 s_NewButtonIndexMax					= 0x72;
 static constexpr u16 s_NewSceneCount						= 0x14;
+static bool s_TEMP	= false;
 
 void patchGetButton() {
 	exl::patch::CodePatcher codePatcher(0x18CC450);
@@ -136,37 +139,37 @@ void patchBtnPartsCtrlBuffer() {
 }
 
 #pragma endregion
-#pragma region TextSetterBuffer
+#pragma region TextSetterPtrArray
 
-static constexpr u16 s_TextSetterBufferSize				= 0x0A;
-static constexpr u16 s_NewTextSetterBufferSize			= s_NewSceneCount;
-//static std::array<Lp::UI::TextSetter *, s_NewTextSetterBufferSize> s_NewTextSetterBuffer;
+static constexpr u16 s_TextSetterPtrArraySize				= 0x0A;
+static constexpr u16 s_NewTextSetterPtrArraySize			= s_NewSceneCount;
+//static std::array<Lp::UI::TextSetter *, s_NewTextSetterPtrArraySize> s_NewTextSetterPtrArray;
 
-void patchTextSetterBufferSize() {
+void patchTextSetterPtrArraySize() {
 	exl::patch::CodePatcher codePatcher(0x18CBFD0);
-	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W1, s_NewTextSetterBufferSize));
+	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W1, s_NewTextSetterPtrArraySize));
 }
 
-/*void patchPopulateTextSetterBuffer() {
+/*void patchPopulateTextSetterPtrArray() {
 	exl::patch::CodePatcher codePatcher(0x18D02C0);
-	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X24, s_NewTextSetterBufferSize));
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X24, s_NewTextSetterPtrArraySize));
 
 	codePatcher.Seek(0x18D0548);
-	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X23, s_NewTextSetterBufferSize));
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X23, s_NewTextSetterPtrArraySize));
 }*/
 
-/*void patchTextSetterBuffer() {
-	auto TextSetterBuffer = exl::util::pointer_path::Follow<std::array<Lp::UI::TextSetter *, s_TextSetterBufferSize>, 0x2CD99A8>();
-	for (auto i = 0; i < s_TextSetterBufferSize; ++i) {
-		s_NewTextSetterBuffer[i] = TextSetterBuffer[i];
-		//Logging.Log("[patchTextSetterBuffer] %d: %s", i, s_NewTextSetterBuffer[i].mStringTop);
+/*void patchTextSetterPtrArray() {
+	auto TextSetterPtrArray = exl::util::pointer_path::Follow<std::array<Lp::UI::TextSetter *, s_TextSetterPtrArraySize>, 0x2CD99A8>();
+	for (auto i = 0; i < s_TextSetterPtrArraySize; ++i) {
+		s_NewTextSetterPtrArray[i] = TextSetterPtrArray[i];
+		//Logging.Log("[patchTextSetterPtrArray] %d: %s", i, s_NewTextSetterPtrArray[i].mStringTop);
 	}
-	for (auto i = s_TextSetterBufferSize; i < s_NewTextSetterBufferSize; ++i) {
-		s_NewTextSetterBuffer[i] = TextSetterBuffer[L_LeftParts_00__L_SceneListBtn_00];
-		Logging.Log("[patchTextSetterBuffer] %d: %s", i, s_NewTextSetterBuffer[i].mStringTop);
+	for (auto i = s_TextSetterPtrArraySize; i < s_NewTextSetterPtrArraySize; ++i) {
+		s_NewTextSetterPtrArray[i] = TextSetterPtrArray[L_LeftParts_00__L_SceneListBtn_00];
+		Logging.Log("[patchTextSetterPtrArray] %d: %s", i, s_NewTextSetterPtrArray[i].mStringTop);
 	}
 
-	WriteAdrlInst(exl::armv8::reg::X23, 0x18CF7B4, reinterpret_cast<uintptr_t>(s_NewTextSetterBuffer.data()));
+	WriteAdrlInst(exl::armv8::reg::X23, 0x18CF7B4, reinterpret_cast<uintptr_t>(s_NewTextSetterPtrArray.data()));
 }*/
 
 #pragma endregion
@@ -299,7 +302,38 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_74) {
 
 HOOK_DEFINE_INLINE(DebugHook) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
-		Logging.Log("[DebugHook] %d", ctx->X[8]);
+		sead::PtrArrayImpl* ptrArray = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[0]+0x9A8);
+		int mPtrNum = ptrArray->mPtrNum;
+		int mPtrNumMax = ptrArray->mPtrNumMax;
+		void** mPtrs = ptrArray->mPtrs;
+		Logging.Log("[DebugHook] mPtrNum: %d, mPtrNumMax: %d, mPtrs: %d", mPtrNum, mPtrNumMax, mPtrs);
+	}
+};
+HOOK_DEFINE_INLINE(DebugHook1) {
+	static void Callback(exl::hook::InlineCtx* ctx) {
+		Logging.Log("[DebugHook 1] %s", ctx->X[10]);
+		std::string str = (char *)ctx->X[10];
+		if (str.contains("L_SceneListBtn_1")) {
+			Logging.Log("[DebugHook 1] YEP! %s", ctx->X[10]);
+		}
+	}
+};
+HOOK_DEFINE_INLINE(DebugHook2) {
+	static void Callback(exl::hook::InlineCtx* ctx) {
+		if (s_TEMP) {
+			Logging.Log("[DebugHook 2] reached TextSetter creation");
+		}
+	}
+};
+HOOK_DEFINE_INLINE(DebugHook3) {
+	static void Callback(exl::hook::InlineCtx* ctx) {
+		sead::SafeString* temp = reinterpret_cast<sead::SafeString*>(ctx->X[2]);
+		std::string str = temp->mStringTop;
+		s_TEMP = false;
+		if (str.contains("L_SceneListBtn_")){
+			s_TEMP = true;
+			Logging.Log("[DebugHook 3] %s", temp->mStringTop);
+		}
 	}
 };
 
@@ -314,7 +348,7 @@ extern "C" void exl_main(void *x0, void *x1) {
 	patchBtnPartsCtrlBufferSize();
 	patchPopulateBtnPartsCtrlBuffer();
 
-	patchTextSetterBufferSize();
+	patchTextSetterPtrArraySize();
 
 	Init::InstallAtOffset(0x30);
 	printFromStartTime::InstallAtOffset(0x620B90);
@@ -322,7 +356,12 @@ extern "C" void exl_main(void *x0, void *x1) {
 	UIEditLeftMenuSeq_sub_68::InstallAtOffset(0x18C9E30);
 	UIEditLeftMenuSeq_sub_74::InstallAtOffset(0x18CA930);
 
-	DebugHook::InstallAtOffset(0x18C9120);
+	// 00000071018D3D58 COMPARE WITH 58, LIMITS TO DEFAULT THEME BUTTONS.
+
+	DebugHook::InstallAtOffset(0x18C911C);
+	DebugHook1::InstallAtOffset(0x18D3C90);
+	DebugHook2::InstallAtOffset(0x18D3E74);
+	DebugHook3::InstallAtOffset(0x766270);
 
 	codePatcher.Seek(0x00DA0B00); // Remap Theme Indexes
 	codePatcher.Write(0x5280004A);
