@@ -126,16 +126,19 @@ class EditUIClass_intermediate : public UISys::SequenceBase {
 	int64_t gapFill4;
 	int64_t gapFill5;
 	
-	sead::PtrArray<Lp::UI::TextureInfo>	SkinButtons_TextureInfo;
-	sead::PtrArray<agl::TextureData>	SkinButtons_TextureData;
-	sead::PtrArray<Lp::UI::TextureInfo>	SceneButtons_TextureInfo;
-	sead::PtrArray<agl::TextureData>	SceneButtons_TextureData;
-	Lp::UI::TextureInfo*				SceneSmallButton_TextureInfo;
+	sead::PtrArray<Lp::UI::TextureInfo>	SkinButtons_TextureInfo;		//	0x2A0
+	sead::PtrArray<agl::TextureData>	SkinButtons_TextureData;		//	0x2B0
+	sead::PtrArray<Lp::UI::TextureInfo>	SceneButtons_TextureInfo;		//	0x2C0
+	sead::PtrArray<agl::TextureData>	SceneButtons_TextureData;		//	0x2D0
+	Lp::UI::TextureInfo*				SceneSmallButton_TextureInfo;	//	0x2E0
 	long long temp_6; // what are you?
 	long long temp_7; // what are you?
 	long long temp_8; // what are you?
-	agl::TextureData*					SceneSmallButton_TextureData;
+	agl::TextureData*					SceneSmallButton_TextureData;	//	0x300
 	long long temp_10; // what are you?
+
+	// 0x790 is a TextureInfo
+	// 0x7B0 is a TextureData
 
 	char gap_2f[0x48];
 	long long temp1;

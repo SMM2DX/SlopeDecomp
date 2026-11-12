@@ -72,7 +72,6 @@ void WriteAdrlInst(exl::armv8::reg::Register reg, uintptr_t source, uintptr_t de
 
 static constexpr u16 s_NewButtonIndexMax					= 0x72;
 static constexpr u16 s_NewSceneCount						= 0x14;
-static bool s_TEMP	= false;
 
 void patchGetButton() {
 	exl::patch::CodePatcher codePatcher(0x18CC450);
@@ -82,6 +81,13 @@ void patchGetButton() {
 void patchGetButtonIndex() {
 	exl::patch::CodePatcher codePatcher(0x18CC514);
 	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X0, s_NewButtonIndexMax));
+}
+
+void patchGetButtonIconLoop() {
+	exl::patch::CodePatcher codePatcher(0x18C90D4);
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X28, s_NewSceneCount));
+	codePatcher.Seek(0x18C8F80);
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::W23, s_NewSceneCount));
 }
 
 void patchGetButtonLabelLoop() {
@@ -139,38 +145,46 @@ void patchBtnPartsCtrlBuffer() {
 }
 
 #pragma endregion
+#pragma region IconPtrArray
+
+static constexpr u16 s_NewIconPtrArraySize					= s_NewSceneCount;
+
+void patchIconPtrArraySize() {
+	exl::patch::CodePatcher codePatcher(0x18CBFBC);
+	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W1, s_NewIconPtrArraySize));
+}
+
+#pragma endregion
 #pragma region TextSetterPtrArray
 
-static constexpr u16 s_TextSetterPtrArraySize				= 0x0A;
 static constexpr u16 s_NewTextSetterPtrArraySize			= s_NewSceneCount;
-//static std::array<Lp::UI::TextSetter *, s_NewTextSetterPtrArraySize> s_NewTextSetterPtrArray;
 
 void patchTextSetterPtrArraySize() {
 	exl::patch::CodePatcher codePatcher(0x18CBFD0);
 	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W1, s_NewTextSetterPtrArraySize));
 }
 
-/*void patchPopulateTextSetterPtrArray() {
-	exl::patch::CodePatcher codePatcher(0x18D02C0);
-	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X24, s_NewTextSetterPtrArraySize));
+#pragma endregion
+#pragma region ButtonIndexToSceneSetArray
 
-	codePatcher.Seek(0x18D0548);
-	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X23, s_NewTextSetterPtrArraySize));
-}*/
+static constexpr u16 s_ButtonIndexToSceneSetArraySize		= 0x0A;
+static constexpr u16 s_NewButtonIndexToSceneSetArraySize	= 0x14;
+static std::array<SceneSet, s_NewButtonIndexToSceneSetArraySize> s_NewButtonIndexToSceneSetArray;
 
-/*void patchTextSetterPtrArray() {
-	auto TextSetterPtrArray = exl::util::pointer_path::Follow<std::array<Lp::UI::TextSetter *, s_TextSetterPtrArraySize>, 0x2CD99A8>();
-	for (auto i = 0; i < s_TextSetterPtrArraySize; ++i) {
-		s_NewTextSetterPtrArray[i] = TextSetterPtrArray[i];
-		//Logging.Log("[patchTextSetterPtrArray] %d: %s", i, s_NewTextSetterPtrArray[i].mStringTop);
+void patchButtonIndexToSceneSetArray() {
+	auto ButtonIndexToSceneSetArray = exl::util::pointer_path::Follow<std::array<SceneSet, s_ButtonIndexToSceneSetArraySize>, 0x2CEA780>();
+	for (auto i = 0; i < s_ButtonIndexToSceneSetArraySize; ++i) {
+		s_NewButtonIndexToSceneSetArray[i] = ButtonIndexToSceneSetArray[i];
+		//Logging.Log("[patchButtonIndexToSceneSetArray] %02d: %02d", i, s_NewButtonIndexToSceneSetArray[i]);
 	}
-	for (auto i = s_TextSetterPtrArraySize; i < s_NewTextSetterPtrArraySize; ++i) {
-		s_NewTextSetterPtrArray[i] = TextSetterPtrArray[L_LeftParts_00__L_SceneListBtn_00];
-		Logging.Log("[patchTextSetterPtrArray] %d: %s", i, s_NewTextSetterPtrArray[i].mStringTop);
+	for (auto i = s_ButtonIndexToSceneSetArraySize; i < s_NewButtonIndexToSceneSetArraySize; ++i) {
+		//s_NewButtonIndexToSceneSetArray[i] = (SceneSet)i;
+		s_NewButtonIndexToSceneSetArray[i] = (SceneSet)0;
+		Logging.Log("[patchButtonIndexToSceneSetArray] %02d: %02d", i, s_NewButtonIndexToSceneSetArray[i]);
 	}
 
-	WriteAdrlInst(exl::armv8::reg::X23, 0x18CF7B4, reinterpret_cast<uintptr_t>(s_NewTextSetterPtrArray.data()));
-}*/
+	WriteAdrlInst(exl::armv8::reg::X27, 0x18C8F20, reinterpret_cast<uintptr_t>(s_NewButtonIndexToSceneSetArray.data()));
+}
 
 #pragma endregion
 #pragma region SceneSetToSceneNameArray
@@ -195,34 +209,14 @@ void patchSceneSetToSceneNameArray() {
 }
 
 #pragma endregion
-#pragma region ButtonIndexToSceneSetArray
-
-static constexpr u16 s_ButtonIndexToSceneSetArraySize		= 0x0A;
-static constexpr u16 s_NewButtonIndexToSceneSetArraySize	= 0x14;
-static std::array<SceneSet, s_NewButtonIndexToSceneSetArraySize> s_NewButtonIndexToSceneSetArray;
-
-void patchButtonIndexToSceneSetArray() {
-	auto ButtonIndexToSceneSetArray = exl::util::pointer_path::Follow<std::array<SceneSet, s_ButtonIndexToSceneSetArraySize>, 0x2CEA780>();
-	for (auto i = 0; i < s_ButtonIndexToSceneSetArraySize; ++i) {
-		s_NewButtonIndexToSceneSetArray[i] = ButtonIndexToSceneSetArray[i];
-		//Logging.Log("[patchButtonIndexToSceneSetArray] %02d: %02d", i, s_NewButtonIndexToSceneSetArray[i]);
-	}
-	for (auto i = s_ButtonIndexToSceneSetArraySize; i < s_NewButtonIndexToSceneSetArraySize; ++i) {
-		s_NewButtonIndexToSceneSetArray[i] = (SceneSet)i;
-		Logging.Log("[patchButtonIndexToSceneSetArray] %02d: %02d", i, s_NewButtonIndexToSceneSetArray[i]);
-	}
-
-	WriteAdrlInst(exl::armv8::reg::X27, 0x18C8F20, reinterpret_cast<uintptr_t>(s_NewButtonIndexToSceneSetArray.data()));
-}
-
-#pragma endregion
 
 HOOK_DEFINE_TRAMPOLINE(Init) {
 	static void Callback() {
 		Orig();
 		patchBtnPartsCtrlBuffer();
-		patchSceneSetToSceneNameArray();
 		patchButtonIndexToSceneSetArray();
+		//patchSceneSetEnum();
+		patchSceneSetToSceneNameArray();
 	}
 };
 
@@ -304,10 +298,10 @@ HOOK_DEFINE_INLINE(DisgustingTextSetterHook) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
 		std::string str = (char *)ctx->X[10];
 		if (str.contains("L_SceneListBtn_")) {
-			Logging.Log("[DisgustingTextSetterHook]	YEP!	%s", ctx->X[10]);
+			//Logging.Log("[DisgustingTextSetterHook]	YEP!	%s", ctx->X[10]);
 			ctx->X[22] = true;
 		} else {
-			Logging.Log("[DisgustingTextSetterHook]	NOPE!	%s", ctx->X[10]);
+			//Logging.Log("[DisgustingTextSetterHook]	NOPE!	%s", ctx->X[10]);
 			ctx->X[22] = false;
 		}
 	}
@@ -329,27 +323,23 @@ void DisgustingTextSetterPatch() {
 
 HOOK_DEFINE_INLINE(DebugHook) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
-		sead::PtrArrayImpl* ptrArray = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[0]+0x9A8);
-		int mPtrNum = ptrArray->mPtrNum;
-		int mPtrNumMax = ptrArray->mPtrNumMax;
-		void** mPtrs = ptrArray->mPtrs;
-		Logging.Log("[DebugHook]		mPtrNum: %d, mPtrNumMax: %d, mPtrs: %d", mPtrNum, mPtrNumMax, mPtrs);
+		sead::PtrArrayImpl* iconPtrArray = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[0]+0x998);
+		sead::PtrArrayImpl* textSetterPtrArray = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[0]+0x9A8);
+		Logging.Log("[DebugHook]\
+			\nicons?:		mPtrNum: %d, mPtrNumMax: %d, mPtrs: %d\
+			\ntextSetter:	mPtrNum: %d, mPtrNumMax: %d, mPtrs: %d", 
+			iconPtrArray->mPtrNum,			iconPtrArray->mPtrNumMax,		iconPtrArray->mPtrs, 
+			textSetterPtrArray->mPtrNum,	textSetterPtrArray->mPtrNumMax,	textSetterPtrArray->mPtrs);
 	}
 };
 HOOK_DEFINE_INLINE(DebugHook1) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
 		Logging.Log("[DebugHook 1]		%s", ctx->X[10]);
-		if (s_TEMP) {
-			Logging.Log("[DebugHook 1]		passed ButtonIndex stuff");
-		}
 	}
 };
 HOOK_DEFINE_INLINE(DebugHook2) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
 		Logging.Log("[DebugHook 2]		%s", ctx->X[10]);
-		if (s_TEMP) {
-			Logging.Log("[DebugHook 2]		reached TextSetter creation");
-		}
 	}
 };
 
@@ -359,11 +349,14 @@ extern "C" void exl_main(void *x0, void *x1) {
 
 	patchGetButton();
 	patchGetButtonIndex();
+
+	patchGetButtonIconLoop();
 	patchGetButtonLabelLoop();
 
 	patchBtnPartsCtrlBufferSize();
 	patchPopulateBtnPartsCtrlBuffer();
 
+	patchIconPtrArraySize();
 	patchTextSetterPtrArraySize();
 
 	Init::InstallAtOffset(0x30);
