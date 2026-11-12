@@ -187,7 +187,7 @@ void patchSceneSetToSceneNameArray() {
 	}
 	for (auto i = s_SceneSetToSceneNameArraySize; i < s_NewSceneSetToSceneNameArraySize; ++i) {
 		s_NewSceneSetToSceneNameArray[i] = SceneSetToSceneNameArray[0];
-		if (i == 0x0A) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Plain";
+		if (i == 0x0A) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Sewer";
 		Logging.Log("[patchSceneSetToSceneNameArray] %02d: %s", i, s_NewSceneSetToSceneNameArray[i].mStringTop);
 	}
 
@@ -300,39 +300,55 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_74) {
 	}
 };
 
+HOOK_DEFINE_INLINE(DisgustingTextSetterHook) {
+	static void Callback(exl::hook::InlineCtx* ctx) {
+		std::string str = (char *)ctx->X[10];
+		if (str.contains("L_SceneListBtn_")) {
+			Logging.Log("[DisgustingTextSetterHook]	YEP!	%s", ctx->X[10]);
+			ctx->X[22] = true;
+		} else {
+			Logging.Log("[DisgustingTextSetterHook]	NOPE!	%s", ctx->X[10]);
+			ctx->X[22] = false;
+		}
+	}
+};
+void DisgustingTextSetterPatch() {
+	//	CMP		x19,	#0x1
+	exl::patch::CodePatcher codePatcher(0x18D3CA4);
+	// \x7f\x06\x00\xf1
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X22, true));
+	//	B.LO	#0x18D38D8
+	codePatcher.Seek(0x18D3CA8);
+	// \x83\xe1\xff\x54
+	codePatcher.Write(0x54FFE183); // exlaunch usess bytes in reverse order?
+	//	B		#0x18D3D64
+	codePatcher.Seek(0x18D3CAC);
+	// \x2e\x00\x00\x14
+	codePatcher.BranchInst(0x18D3D64);
+}
+
 HOOK_DEFINE_INLINE(DebugHook) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
 		sead::PtrArrayImpl* ptrArray = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[0]+0x9A8);
 		int mPtrNum = ptrArray->mPtrNum;
 		int mPtrNumMax = ptrArray->mPtrNumMax;
 		void** mPtrs = ptrArray->mPtrs;
-		Logging.Log("[DebugHook] mPtrNum: %d, mPtrNumMax: %d, mPtrs: %d", mPtrNum, mPtrNumMax, mPtrs);
+		Logging.Log("[DebugHook]		mPtrNum: %d, mPtrNumMax: %d, mPtrs: %d", mPtrNum, mPtrNumMax, mPtrs);
 	}
 };
 HOOK_DEFINE_INLINE(DebugHook1) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
-		Logging.Log("[DebugHook 1] %s", ctx->X[10]);
-		std::string str = (char *)ctx->X[10];
-		if (str.contains("L_SceneListBtn_1")) {
-			Logging.Log("[DebugHook 1] YEP! %s", ctx->X[10]);
+		Logging.Log("[DebugHook 1]		%s", ctx->X[10]);
+		if (s_TEMP) {
+			Logging.Log("[DebugHook 1]		passed ButtonIndex stuff");
 		}
 	}
 };
 HOOK_DEFINE_INLINE(DebugHook2) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
+		Logging.Log("[DebugHook 2]		%s", ctx->X[10]);
 		if (s_TEMP) {
-			Logging.Log("[DebugHook 2] reached TextSetter creation");
-		}
-	}
-};
-HOOK_DEFINE_INLINE(DebugHook3) {
-	static void Callback(exl::hook::InlineCtx* ctx) {
-		sead::SafeString* temp = reinterpret_cast<sead::SafeString*>(ctx->X[2]);
-		std::string str = temp->mStringTop;
-		s_TEMP = false;
-		if (str.contains("L_SceneListBtn_")){
-			s_TEMP = true;
-			Logging.Log("[DebugHook 3] %s", temp->mStringTop);
+			Logging.Log("[DebugHook 2]		reached TextSetter creation");
 		}
 	}
 };
@@ -356,12 +372,12 @@ extern "C" void exl_main(void *x0, void *x1) {
 	UIEditLeftMenuSeq_sub_68::InstallAtOffset(0x18C9E30);
 	UIEditLeftMenuSeq_sub_74::InstallAtOffset(0x18CA930);
 
-	// 00000071018D3D58 COMPARE WITH 58, LIMITS TO DEFAULT THEME BUTTONS.
+	DisgustingTextSetterHook::InstallAtOffset(0x18D3CA0);
+	DisgustingTextSetterPatch();
 
 	DebugHook::InstallAtOffset(0x18C911C);
-	DebugHook1::InstallAtOffset(0x18D3C90);
-	DebugHook2::InstallAtOffset(0x18D3E74);
-	DebugHook3::InstallAtOffset(0x766270);
+	//DebugHook1::InstallAtOffset(0x18D3D64);
+	//DebugHook2::InstallAtOffset(0x18D3E74);
 
 	codePatcher.Seek(0x00DA0B00); // Remap Theme Indexes
 	codePatcher.Write(0x5280004A);
