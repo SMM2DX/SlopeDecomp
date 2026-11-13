@@ -197,7 +197,7 @@ class EditUIClass_intermediate : public UISys::SequenceBase {
 	unsigned long long qword680;
 	unsigned long long qword688;
 	unsigned long long qword690;
-	unsigned long long qword698;
+	unsigned long long qword698; // Used in Small Icon function?
 	unsigned long long qword6A0;
 	unsigned long long qword6A8;
 	unsigned long long qword6B0;

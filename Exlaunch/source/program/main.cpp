@@ -93,6 +93,13 @@ void patchGetButtonIconLoop() {
 	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::W23, s_NewSceneCount));
 }
 
+void patchGetButtonSmallIconLoop() {
+	exl::patch::CodePatcher codePatcher(0x18CB08C);
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X25, s_NewSceneCount-1));
+	codePatcher.Seek(0x18CB09C);
+	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::W21, s_NewSceneCount));
+}
+
 void patchSceneButtonTextureHolderTextureInfoArraySize() {
 	exl::patch::CodePatcher codePatcher(0x18C8648);
 	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W1, s_NewSceneCount));
@@ -185,7 +192,6 @@ void patchButtonIndexToSceneSetArray() {
 	}
 	for (auto i = s_ButtonIndexToSceneSetArraySize; i < s_NewButtonIndexToSceneSetArraySize; ++i) {
 		s_NewButtonIndexToSceneSetArray[i] = (SceneSet)i;
-		//s_NewButtonIndexToSceneSetArray[i] = (SceneSet)0;
 		Logging.Log("[patchButtonIndexToSceneSetArray] %02d: %02d", i, s_NewButtonIndexToSceneSetArray[i]);
 	}
 
@@ -210,7 +216,7 @@ HOOK_DEFINE_REPLACE(ReplaceSceneSetEnum) {
 			"athletic",
 			"woods",
 			"sewer",
-			"plain"
+			"sewer"
 		};
 		return s_pArray;
 	}
@@ -415,9 +421,10 @@ extern "C" void exl_main(void *x0, void *x1) {
 	patchGetButton();
 	patchGetButtonIndex();
 
-	patchGetButtonIconLoop();
-	patchGetButtonLabelLoop();
 	patchSceneButtonTextureHolderTextureInfoArraySize();
+	patchGetButtonIconLoop();
+	patchGetButtonSmallIconLoop();
+	patchGetButtonLabelLoop();
 
 	patchBtnPartsCtrlBufferSize();
 	patchPopulateBtnPartsCtrlBuffer();
