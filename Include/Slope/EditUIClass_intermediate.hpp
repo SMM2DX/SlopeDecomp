@@ -6,6 +6,7 @@
 #include <sead/seadPtrArray.hpp>
 
 #include <Lp/Utl/StateMachine.hpp>
+#include <Lp/Utl/TextureHolder.hpp>
 #include <Lp/UI/BtnPartsCtrl.hpp>
 #include <Lp/UI/TextureInfo.hpp>
 
@@ -126,15 +127,15 @@ class EditUIClass_intermediate : public UISys::SequenceBase {
 	int64_t gapFill4;
 	int64_t gapFill5;
 	
-	sead::PtrArray<Lp::UI::TextureInfo>	SkinButtons_TextureInfo;		//	0x2A0
-	sead::PtrArray<agl::TextureData>	SkinButtons_TextureData;		//	0x2B0
-	sead::PtrArray<Lp::UI::TextureInfo>	SceneButtons_TextureInfo;		//	0x2C0
-	sead::PtrArray<agl::TextureData>	SceneButtons_TextureData;		//	0x2D0
-	Lp::UI::TextureInfo*				SceneSmallButton_TextureInfo;	//	0x2E0
+	sead::PtrArray<Lp::UI::TextureInfo>		SkinButtons_TextureInfo;		//	0x2A0
+	sead::PtrArray<Lp::Utl::TextureHolder>	SkinButtons_TextureHolder;		//	0x2B0
+	sead::PtrArray<Lp::UI::TextureInfo>		SceneButtons_TextureInfo;		//	0x2C0
+	sead::PtrArray<Lp::Utl::TextureHolder>	SceneButtons_TextureHolder;		//	0x2D0
+	Lp::UI::TextureInfo*					SceneSmallButton_TextureInfo;	//	0x2E0
 	long long temp_6; // what are you?
 	long long temp_7; // what are you?
 	long long temp_8; // what are you?
-	agl::TextureData*					SceneSmallButton_TextureData;	//	0x300
+	Lp::Utl::TextureHolder*					SceneSmallButton_TextureHolder;	//	0x300
 	long long temp_10; // what are you?
 
 	// 0x790 is a TextureInfo

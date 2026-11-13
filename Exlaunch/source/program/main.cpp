@@ -5,12 +5,15 @@
 
 #include <Lp/UI/BtnPartsCtrl.hpp>
 #include <Lp/UI/TextSetter.hpp>
+#include <Lp/UI/TextureInfo.hpp>
+#include <Lp/Utl/TextureHolder.hpp>
 
 //#include <UISys/ButtonActionCallbackArg.hpp>
 #include <UISys/SequenceBase.hpp>
 
 #include <Slope/CustomEnums.hpp>
 //#include <Slope/UIEditMainPage.hpp>
+//#include <Slope/UIEditLeftMenuSeq.hpp>
 
 struct ButtonNameStruct {
 	void *__vftable;
@@ -90,6 +93,13 @@ void patchGetButtonIconLoop() {
 	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::W23, s_NewSceneCount));
 }
 
+void patchSceneButtonTextureHolderTextureInfoArraySize() {
+	exl::patch::CodePatcher codePatcher(0x18C8648);
+	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W1, s_NewSceneCount));
+	codePatcher.Seek(0x18C865C);
+	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W1, s_NewSceneCount));
+}
+
 void patchGetButtonLabelLoop() {
 	exl::patch::CodePatcher codePatcher(0x18C9168);
 	codePatcher.WriteInst(exl::armv8::inst::CmpImmediate(exl::armv8::reg::X20, s_NewSceneCount));
@@ -147,28 +157,24 @@ void patchBtnPartsCtrlBuffer() {
 #pragma endregion
 #pragma region IconPtrArray
 
-static constexpr u16 s_NewIconPtrArraySize					= s_NewSceneCount;
-
 void patchIconPtrArraySize() {
 	exl::patch::CodePatcher codePatcher(0x18CBFBC);
-	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W1, s_NewIconPtrArraySize));
+	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W1, s_NewSceneCount));
 }
 
 #pragma endregion
 #pragma region TextSetterPtrArray
 
-static constexpr u16 s_NewTextSetterPtrArraySize			= s_NewSceneCount;
-
 void patchTextSetterPtrArraySize() {
 	exl::patch::CodePatcher codePatcher(0x18CBFD0);
-	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W1, s_NewTextSetterPtrArraySize));
+	codePatcher.WriteInst(exl::armv8::inst::Movz(exl::armv8::reg::W1, s_NewSceneCount));
 }
 
 #pragma endregion
 #pragma region ButtonIndexToSceneSetArray
 
 static constexpr u16 s_ButtonIndexToSceneSetArraySize		= 0x0A;
-static constexpr u16 s_NewButtonIndexToSceneSetArraySize	= 0x14;
+static constexpr u16 s_NewButtonIndexToSceneSetArraySize	= s_NewSceneCount;
 static std::array<SceneSet, s_NewButtonIndexToSceneSetArraySize> s_NewButtonIndexToSceneSetArray;
 
 void patchButtonIndexToSceneSetArray() {
@@ -178,8 +184,8 @@ void patchButtonIndexToSceneSetArray() {
 		//Logging.Log("[patchButtonIndexToSceneSetArray] %02d: %02d", i, s_NewButtonIndexToSceneSetArray[i]);
 	}
 	for (auto i = s_ButtonIndexToSceneSetArraySize; i < s_NewButtonIndexToSceneSetArraySize; ++i) {
-		//s_NewButtonIndexToSceneSetArray[i] = (SceneSet)i;
-		s_NewButtonIndexToSceneSetArray[i] = (SceneSet)0;
+		s_NewButtonIndexToSceneSetArray[i] = (SceneSet)i;
+		//s_NewButtonIndexToSceneSetArray[i] = (SceneSet)0;
 		Logging.Log("[patchButtonIndexToSceneSetArray] %02d: %02d", i, s_NewButtonIndexToSceneSetArray[i]);
 	}
 
@@ -187,10 +193,34 @@ void patchButtonIndexToSceneSetArray() {
 }
 
 #pragma endregion
+#pragma region SceneSetEnum
+
+HOOK_DEFINE_REPLACE(ReplaceSceneSetEnum) {
+	static const char** Callback() {
+		static const char *s_pArray[] = {
+			"Invalid",
+			"plain",
+			"underground",
+			"castle",
+			"airship",
+			"water",
+			"hauntedhouse",
+			"snow",
+			"desert",
+			"athletic",
+			"woods",
+			"sewer",
+			"plain"
+		};
+		return s_pArray;
+	}
+};
+
+#pragma endregion
 #pragma region SceneSetToSceneNameArray
 
 static constexpr u16 s_SceneSetToSceneNameArraySize		= 0x0A;
-static constexpr u16 s_NewSceneSetToSceneNameArraySize	= 0x14;
+static constexpr u16 s_NewSceneSetToSceneNameArraySize	= s_NewSceneCount;
 static std::array<sead::SafeString, s_NewSceneSetToSceneNameArraySize> s_NewSceneSetToSceneNameArray;
 
 void patchSceneSetToSceneNameArray() {
@@ -215,7 +245,6 @@ HOOK_DEFINE_TRAMPOLINE(Init) {
 		Orig();
 		patchBtnPartsCtrlBuffer();
 		patchButtonIndexToSceneSetArray();
-		//patchSceneSetEnum();
 		patchSceneSetToSceneNameArray();
 	}
 };
@@ -269,6 +298,10 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_74) {
 			temp_9_t *temp_9 = thisPtr->temp_09;
 
 			if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
+				// Use ButtonIndex directly
+				//SceneSet new_theme_index = (SceneSet)(buttonActionCallbackArg->buttonIndex - s_BtnPartsCtrlBufferSize + 0xA);
+				
+				// Use ButtonIndexToSceneSetArray
 				SceneSet new_theme_index = s_NewButtonIndexToSceneSetArray[buttonActionCallbackArg->buttonIndex - s_BtnPartsCtrlBufferSize + 0xA];
 				
 				if (temp_9->prevSceneSet != new_theme_index) {
@@ -321,6 +354,42 @@ void DisgustingTextSetterPatch() {
 	codePatcher.BranchInst(0x18D3D64);
 }
 
+HOOK_DEFINE_INLINE(DisgustingTextureHolderTextureInfoHook) {
+	static void Callback(exl::hook::InlineCtx* ctx) {
+		using operator_new_t = uintptr_t (int);
+		using TextureInfo_constructor_t = void (Lp::UI::TextureInfo *);
+		using TextureHolder_constructor_t = void (Lp::Utl::TextureHolder *);
+		operator_new_t *operator_new = reinterpret_cast<operator_new_t *>(exl::util::modules::GetTargetOffset(0x262790));
+		TextureInfo_constructor_t *TextureInfo_constructor = reinterpret_cast<TextureInfo_constructor_t *>(exl::util::modules::GetTargetOffset(0x6B58A0));
+		TextureHolder_constructor_t *TextureHolder_constructor = reinterpret_cast<TextureHolder_constructor_t *>(exl::util::modules::GetTargetOffset(0x8B1590));
+
+		Logging.Log("[DisgustingTextureHolderTextureInfoHook]");
+
+		sead::PtrArrayImpl* SceneButtons_TextureInfo = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[19]+0x2C0);
+		Logging.Log("[DisgustingTextureHolderTextureInfoHook]	TextureInfo->mPtrNumMax: %d", SceneButtons_TextureInfo->mPtrNumMax);
+		while (SceneButtons_TextureInfo->mPtrNum < SceneButtons_TextureInfo->mPtrNumMax) {
+			Lp::UI::TextureInfo* textureInfo = (Lp::UI::TextureInfo*)operator_new(0x20);
+			TextureInfo_constructor(textureInfo);
+			SceneButtons_TextureInfo->mPtrs[SceneButtons_TextureInfo->mPtrNum] = textureInfo;
+			SceneButtons_TextureInfo->mPtrNum++;
+			Logging.Log("[DisgustingTextureHolderTextureInfoHook]	TextureInfo->mPtrNum   : %d", SceneButtons_TextureInfo->mPtrNum);
+		}
+		sead::PtrArrayImpl* SceneButtons_TextureHolder = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[19]+0x2D0);
+		Logging.Log("[DisgustingTextureHolderTextureInfoHook]	TextureHolder->mPtrNumMax: %d", SceneButtons_TextureHolder->mPtrNumMax);
+		while (SceneButtons_TextureHolder->mPtrNum < SceneButtons_TextureHolder->mPtrNumMax) {
+			Lp::Utl::TextureHolder* textureholder = (Lp::Utl::TextureHolder*)operator_new(0x490);
+			TextureHolder_constructor(textureholder);
+			SceneButtons_TextureHolder->mPtrs[SceneButtons_TextureHolder->mPtrNum] = textureholder;
+			SceneButtons_TextureHolder->mPtrNum++;
+			Logging.Log("[DisgustingTextureHolderTextureInfoHook]	TextureHolder->mPtrNum   : %d", SceneButtons_TextureHolder->mPtrNum);
+		}
+	}
+};
+void DisgustingTextureHolderTextureInfoPatch() {
+	exl::patch::CodePatcher codePatcher(0x18C8674);
+	codePatcher.BranchInst(0x18C8A78);
+}
+
 HOOK_DEFINE_INLINE(DebugHook) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
 		sead::PtrArrayImpl* iconPtrArray = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[0]+0x998);
@@ -334,12 +403,8 @@ HOOK_DEFINE_INLINE(DebugHook) {
 };
 HOOK_DEFINE_INLINE(DebugHook1) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
-		Logging.Log("[DebugHook 1]		%s", ctx->X[10]);
-	}
-};
-HOOK_DEFINE_INLINE(DebugHook2) {
-	static void Callback(exl::hook::InlineCtx* ctx) {
-		Logging.Log("[DebugHook 2]		%s", ctx->X[10]);
+		sead::PtrArrayImpl* a = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[0]);
+		Logging.Log("[DebugHook 1]	mPtrNumMax: %d", a->mPtrNumMax);
 	}
 };
 
@@ -352,6 +417,7 @@ extern "C" void exl_main(void *x0, void *x1) {
 
 	patchGetButtonIconLoop();
 	patchGetButtonLabelLoop();
+	patchSceneButtonTextureHolderTextureInfoArraySize();
 
 	patchBtnPartsCtrlBufferSize();
 	patchPopulateBtnPartsCtrlBuffer();
@@ -365,12 +431,16 @@ extern "C" void exl_main(void *x0, void *x1) {
 	UIEditLeftMenuSeq_sub_68::InstallAtOffset(0x18C9E30);
 	UIEditLeftMenuSeq_sub_74::InstallAtOffset(0x18CA930);
 
+	ReplaceSceneSetEnum::InstallAtOffset(0xD92220);
+
+	DisgustingTextureHolderTextureInfoHook::InstallAtOffset(0x18C8670);
+	DisgustingTextureHolderTextureInfoPatch();
+
 	DisgustingTextSetterHook::InstallAtOffset(0x18D3CA0);
 	DisgustingTextSetterPatch();
 
-	DebugHook::InstallAtOffset(0x18C911C);
-	//DebugHook1::InstallAtOffset(0x18D3D64);
-	//DebugHook2::InstallAtOffset(0x18D3E74);
+	//DebugHook::InstallAtOffset(0x18C911C);
+	//DebugHook1::InstallAtOffset(0x18C8668);
 
 	codePatcher.Seek(0x00DA0B00); // Remap Theme Indexes
 	codePatcher.Write(0x5280004A);
