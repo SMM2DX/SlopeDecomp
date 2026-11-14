@@ -1,3 +1,6 @@
+
+#include <oead/prim/seadRuntimeTypeInfo.h>
+/*
 #pragma once
 
 namespace sead::RuntimeTypeInfo {
@@ -71,3 +74,4 @@ public:																								\
 	{																								\
 		return getRuntimeTypeInfoStatic();															\
 	}
+*/

@@ -18,10 +18,10 @@ struct temp_9_t {
 	u8 _1[0xB0];
 	int64_t changeBitFlag;
 	u8 _2[0x13CC];
-	Skin		prevSkin;
+	Skin		curSkin;
 	Skin		nextSkin;
-	SceneSet	prevSceneSet;
-	SceneHour	prevSceneHour;
+	SceneSet	curSceneSet;
+	SceneHour	curSceneHour;
 	SceneSet	nextSceneSet;
 	SceneHour	nextSceneHour;
 };

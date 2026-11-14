@@ -1,7 +1,7 @@
 #ifndef SEAD_RUNTIMETYPEINFO_H_
 #define SEAD_RUNTIMETYPEINFO_H_
 
-#include "../seadVersion.h"
+#include <oead/seadVersion.h>
 
 namespace sead
 {

@@ -12,8 +12,8 @@
 #include <UISys/SequenceBase.hpp>
 
 #include <Slope/CustomEnums.hpp>
-//#include <Slope/UIEditMainPage.hpp>
-//#include <Slope/UIEditLeftMenuSeq.hpp>
+#include <Slope/UIEditMainPage.hpp>
+#include <Slope/UIEditLeftMenuSeq.hpp>
 
 struct ButtonNameStruct {
 	void *__vftable;
@@ -153,7 +153,7 @@ void patchBtnPartsCtrlBuffer() {
 		if (i == 0x6F) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_17";
 		if (i == 0x70) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_18";
 		if (i == 0x71) s_NewBtnPartsCtrlBuffer[i].mStringTop = "/L_LeftParts_00/L_SceneListBtn_19";
-		Logging.Log("[patchBtnPartsCtrlBuffer] %d: %s", i, s_NewBtnPartsCtrlBuffer[i].mStringTop);
+		//Logging.Log("[patchBtnPartsCtrlBuffer] %d: %s", i, s_NewBtnPartsCtrlBuffer[i].mStringTop);
 	}
 
 	WriteAdrlInst(exl::armv8::reg::X23, 0x18CF7B4, reinterpret_cast<uintptr_t>(s_NewBtnPartsCtrlBuffer.data()));
@@ -192,7 +192,7 @@ void patchButtonIndexToSceneSetArray() {
 	}
 	for (auto i = s_ButtonIndexToSceneSetArraySize; i < s_NewButtonIndexToSceneSetArraySize; ++i) {
 		s_NewButtonIndexToSceneSetArray[i] = (SceneSet)i;
-		Logging.Log("[patchButtonIndexToSceneSetArray] %02d: %02d", i, s_NewButtonIndexToSceneSetArray[i]);
+		//Logging.Log("[patchButtonIndexToSceneSetArray] %02d: %02d", i, s_NewButtonIndexToSceneSetArray[i]);
 	}
 
 	WriteAdrlInst(exl::armv8::reg::X27, 0x18C8F20, reinterpret_cast<uintptr_t>(s_NewButtonIndexToSceneSetArray.data()));
@@ -215,8 +215,11 @@ HOOK_DEFINE_REPLACE(ReplaceSceneSetEnum) {
 			"desert",
 			"athletic",
 			"woods",
+			// Custom Themes
 			"sewer",
-			"sewer"
+			"magma",
+			"tower",
+			"beach"
 		};
 		return s_pArray;
 	}
@@ -238,7 +241,10 @@ void patchSceneSetToSceneNameArray() {
 	for (auto i = s_SceneSetToSceneNameArraySize; i < s_NewSceneSetToSceneNameArraySize; ++i) {
 		s_NewSceneSetToSceneNameArray[i] = SceneSetToSceneNameArray[0];
 		if (i == 0x0A) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Sewer";
-		Logging.Log("[patchSceneSetToSceneNameArray] %02d: %s", i, s_NewSceneSetToSceneNameArray[i].mStringTop);
+		if (i == 0x0B) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Magma";
+		if (i == 0x0C) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Tower";
+		if (i == 0x0D) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Beach";
+		//Logging.Log("[patchSceneSetToSceneNameArray] %02d: %s", i, s_NewSceneSetToSceneNameArray[i].mStringTop);
 	}
 
 	WriteAdrlInst(exl::armv8::reg::X22, 0x18C90F4, reinterpret_cast<uintptr_t>(s_NewSceneSetToSceneNameArray.data()));
@@ -258,13 +264,13 @@ HOOK_DEFINE_TRAMPOLINE(Init) {
 HOOK_DEFINE_TRAMPOLINE(printFromStartTime) {
 	static void Callback(sead::SafeString *a1) {
 		Orig(a1);
-		Logging.Log("[printFromStartTime] %s", a1->mStringTop);
+		Logging.Log("[printFromStartTime]	%s", a1->mStringTop);
 	}
 };
 
 HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_67) {
 	static void Callback(UISys::SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
-		Logging.Log("[UIEditLeftMenuSeq_sub_67] %u", buttonActionCallbackArg->buttonIndex);
+		//Logging.Log("[UIEditLeftMenuSeq_sub_67] %u", buttonActionCallbackArg->buttonIndex);
 		
 		Orig(thisPtr, buttonActionCallbackArg);
 	}
@@ -275,14 +281,14 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_68) {
 		using sub_71018C7C10_t = void (void *);
 		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
 
-		Logging.Log("[UIEditLeftMenuSeq_sub_68] %u", buttonActionCallbackArg->buttonIndex);
+		//Logging.Log("[UIEditLeftMenuSeq_sub_68] %u", buttonActionCallbackArg->buttonIndex);
 		
 		if (buttonActionCallbackArg->buttonIndex == L_LeftParts_00__L_ChangeHourBtn_00) {
 			temp_9_t *temp_9 = thisPtr->temp_09;
 
 			if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)
-				temp_9->nextSceneHour = (SceneHour)(temp_9->prevSceneHour ^ 1);
-				temp_9->nextSceneSet = temp_9->prevSceneSet;
+				temp_9->nextSceneHour = (SceneHour)(temp_9->curSceneHour ^ 1);
+				temp_9->nextSceneSet = temp_9->curSceneSet;
 				temp_9->changeBitFlag = temp_9->changeBitFlag | LeftPartsState_ChangeSceneHour;
 			}
 
@@ -298,7 +304,7 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_74) {
 		using sub_71018C7C10_t = void (void *);
 		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
 
-		Logging.Log("[UIEditLeftMenuSeq_sub_74] %u", buttonActionCallbackArg->buttonIndex);
+		//Logging.Log("[UIEditLeftMenuSeq_sub_74] %u", buttonActionCallbackArg->buttonIndex);
 		
 		if (buttonActionCallbackArg->buttonIndex >= s_BtnPartsCtrlBufferSize) {
 			temp_9_t *temp_9 = thisPtr->temp_09;
@@ -310,8 +316,8 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_74) {
 				// Use ButtonIndexToSceneSetArray
 				SceneSet new_theme_index = s_NewButtonIndexToSceneSetArray[buttonActionCallbackArg->buttonIndex - s_BtnPartsCtrlBufferSize + 0xA];
 				
-				if (temp_9->prevSceneSet != new_theme_index) {
-					temp_9->nextSceneHour = temp_9->prevSceneHour;
+				if (temp_9->curSceneSet != new_theme_index) {
+					temp_9->nextSceneHour = temp_9->curSceneHour;
 					temp_9->nextSceneSet = new_theme_index;
 					temp_9->changeBitFlag = temp_9->changeBitFlag | LeftPartsState_ChangeSceneSet;
 				} else {
@@ -369,31 +375,39 @@ HOOK_DEFINE_INLINE(DisgustingTextureHolderTextureInfoHook) {
 		TextureInfo_constructor_t *TextureInfo_constructor = reinterpret_cast<TextureInfo_constructor_t *>(exl::util::modules::GetTargetOffset(0x6B58A0));
 		TextureHolder_constructor_t *TextureHolder_constructor = reinterpret_cast<TextureHolder_constructor_t *>(exl::util::modules::GetTargetOffset(0x8B1590));
 
-		Logging.Log("[DisgustingTextureHolderTextureInfoHook]");
-
 		sead::PtrArrayImpl* SceneButtons_TextureInfo = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[19]+0x2C0);
-		Logging.Log("[DisgustingTextureHolderTextureInfoHook]	TextureInfo->mPtrNumMax: %d", SceneButtons_TextureInfo->mPtrNumMax);
 		while (SceneButtons_TextureInfo->mPtrNum < SceneButtons_TextureInfo->mPtrNumMax) {
 			Lp::UI::TextureInfo* textureInfo = (Lp::UI::TextureInfo*)operator_new(0x20);
 			TextureInfo_constructor(textureInfo);
 			SceneButtons_TextureInfo->mPtrs[SceneButtons_TextureInfo->mPtrNum] = textureInfo;
 			SceneButtons_TextureInfo->mPtrNum++;
-			Logging.Log("[DisgustingTextureHolderTextureInfoHook]	TextureInfo->mPtrNum   : %d", SceneButtons_TextureInfo->mPtrNum);
+			//Logging.Log("[DisgustingTextureHolderTextureInfoHook]	TextureInfo->mPtrNum   : %d", SceneButtons_TextureInfo->mPtrNum);
 		}
 		sead::PtrArrayImpl* SceneButtons_TextureHolder = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[19]+0x2D0);
-		Logging.Log("[DisgustingTextureHolderTextureInfoHook]	TextureHolder->mPtrNumMax: %d", SceneButtons_TextureHolder->mPtrNumMax);
 		while (SceneButtons_TextureHolder->mPtrNum < SceneButtons_TextureHolder->mPtrNumMax) {
 			Lp::Utl::TextureHolder* textureholder = (Lp::Utl::TextureHolder*)operator_new(0x490);
 			TextureHolder_constructor(textureholder);
 			SceneButtons_TextureHolder->mPtrs[SceneButtons_TextureHolder->mPtrNum] = textureholder;
 			SceneButtons_TextureHolder->mPtrNum++;
-			Logging.Log("[DisgustingTextureHolderTextureInfoHook]	TextureHolder->mPtrNum   : %d", SceneButtons_TextureHolder->mPtrNum);
+			//Logging.Log("[DisgustingTextureHolderTextureInfoHook]	TextureHolder->mPtrNum   : %d", SceneButtons_TextureHolder->mPtrNum);
 		}
 	}
 };
 void DisgustingTextureHolderTextureInfoPatch() {
 	exl::patch::CodePatcher codePatcher(0x18C8674);
 	codePatcher.BranchInst(0x18C8A78);
+}
+
+HOOK_DEFINE_INLINE(DisgustingSmallSceneIconHook) {
+	static void Callback(exl::hook::InlineCtx* ctx) {
+		temp_9_t* temp_9 = reinterpret_cast<UIEditLeftMenuSeq*>(ctx->X[19])->temp_09;
+		//Logging.Log("[DisgustingSmallSceneIconHook]		curSceneSet: %d", temp_9->curSceneSet);
+		ctx->W[28] = temp_9->curSceneSet;
+	}
+};
+void DisgustingSmallSceneIconPatch() {
+	exl::patch::CodePatcher codePatcher(0x18CB020);
+	codePatcher.BranchInst(0x18CB098);
 }
 
 HOOK_DEFINE_INLINE(DebugHook) {
@@ -405,12 +419,6 @@ HOOK_DEFINE_INLINE(DebugHook) {
 			\ntextSetter:	mPtrNum: %d, mPtrNumMax: %d, mPtrs: %d", 
 			iconPtrArray->mPtrNum,			iconPtrArray->mPtrNumMax,		iconPtrArray->mPtrs, 
 			textSetterPtrArray->mPtrNum,	textSetterPtrArray->mPtrNumMax,	textSetterPtrArray->mPtrs);
-	}
-};
-HOOK_DEFINE_INLINE(DebugHook1) {
-	static void Callback(exl::hook::InlineCtx* ctx) {
-		sead::PtrArrayImpl* a = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[0]);
-		Logging.Log("[DebugHook 1]	mPtrNumMax: %d", a->mPtrNumMax);
 	}
 };
 
@@ -446,8 +454,10 @@ extern "C" void exl_main(void *x0, void *x1) {
 	DisgustingTextSetterHook::InstallAtOffset(0x18D3CA0);
 	DisgustingTextSetterPatch();
 
+	DisgustingSmallSceneIconHook::InstallAtOffset(0x18CB018);
+	DisgustingSmallSceneIconPatch();
+
 	//DebugHook::InstallAtOffset(0x18C911C);
-	//DebugHook1::InstallAtOffset(0x18C8668);
 
 	codePatcher.Seek(0x00DA0B00); // Remap Theme Indexes
 	codePatcher.Write(0x5280004A);

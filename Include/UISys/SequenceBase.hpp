@@ -59,7 +59,7 @@ namespace UISys {
 		long long temp_06;
 		long long temp_07;
 		long long temp_08;
-		temp_9_t *temp_09;
+		temp_9_t *temp_09;							// 0x48
 		sead::ListImpl listImpl1;					// 0x50
 		sead::ListImpl listImpl2;					// 0x68
 		Lp::UI::Impl::Name name;					// 0x80

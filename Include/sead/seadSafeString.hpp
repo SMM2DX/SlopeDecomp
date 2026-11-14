@@ -38,6 +38,13 @@ namespace sead {
 		char mBuffer[32];
 	};
 	using FixedSafeString_32 = FixedSafeStringBase_32<char>;
+	template <typename T> struct FixedSafeStringBase_64 : public BufferedSafeStringBase<T> {
+		~FixedSafeStringBase_64() override;
+		FixedSafeStringBase_64 &operator=(const FixedSafeStringBase_64 &) override;
+		
+		char mBuffer[64];
+	};
+	using FixedSafeString_64 = FixedSafeStringBase_64<char>;
 	#endif	//	SEAD_FIXEDSAFESTRING_HPP
 
 	#ifndef		SEAD_HEAPSAFESTRING_HPP
