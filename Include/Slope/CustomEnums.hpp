@@ -26,12 +26,12 @@ enum SceneHour : unsigned int {
 
 enum MyWorldSceneSkin : unsigned int {
 	MyWorldSceneSkin_Plain			= 0x0,
-	MyWorldSceneSkin_Underground	= 0x1,
-	MyWorldSceneSkin_Desert			= 0x2,
+	MyWorldSceneSkin_Athletic		= 0x1,
+	MyWorldSceneSkin_Underground	= 0x2,
 	MyWorldSceneSkin_Woods			= 0x3,
-	MyWorldSceneSkin_Snow			= 0x4,
-	MyWorldSceneSkin_Athletic		= 0x5,
-	MyWorldSceneSkin_Magma			= 0x6,
+	MyWorldSceneSkin_Desert			= 0x4,
+	MyWorldSceneSkin_Magma			= 0x5,
+	MyWorldSceneSkin_Snow			= 0x6,
 	MyWorldSceneSkin_Night			= 0x7,
 	MyWorldSceneSkin_COUNT			= 0x8,
 };
@@ -42,11 +42,11 @@ enum SceneSet : unsigned int {
 	SceneSet_Castle					= 0x2,
 	SceneSet_Airship				= 0x3,
 	SceneSet_Water					= 0x4,
-	SceneSet_GhostHouse				= 0x5,
+	SceneSet_HauntedHouse			= 0x5,
 	SceneSet_Snow					= 0x6,
 	SceneSet_Desert					= 0x7,
-	SceneSet_Sky					= 0x8,
-	SceneSet_Forest					= 0x9,
+	SceneSet_Athletic				= 0x8,
+	SceneSet_Woods					= 0x9,
 	SceneSet_COUNT					= 0xA,
 };
 

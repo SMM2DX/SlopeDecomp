@@ -196,6 +196,7 @@ void patchButtonIndexToSceneSetArray() {
 	}
 
 	WriteAdrlInst(exl::armv8::reg::X27, 0x18C8F20, reinterpret_cast<uintptr_t>(s_NewButtonIndexToSceneSetArray.data()));
+	WriteAdrlInst(exl::armv8::reg::X26, 0x18CAFFC, reinterpret_cast<uintptr_t>(s_NewButtonIndexToSceneSetArray.data()));
 }
 
 #pragma endregion
@@ -217,6 +218,7 @@ HOOK_DEFINE_REPLACE(ReplaceSceneSetEnum) {
 			"woods",
 			// Custom Themes
 			"sewer",
+			"mountain",
 			"magma",
 			"tower",
 			"beach"
@@ -241,9 +243,10 @@ void patchSceneSetToSceneNameArray() {
 	for (auto i = s_SceneSetToSceneNameArraySize; i < s_NewSceneSetToSceneNameArraySize; ++i) {
 		s_NewSceneSetToSceneNameArray[i] = SceneSetToSceneNameArray[0];
 		if (i == 0x0A) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Sewer";
-		if (i == 0x0B) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Magma";
-		if (i == 0x0C) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Tower";
-		if (i == 0x0D) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Beach";
+		if (i == 0x0B) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Mountain";
+		if (i == 0x0C) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Magma";
+		if (i == 0x0D) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Tower";
+		if (i == 0x0E) s_NewSceneSetToSceneNameArray[i].mStringTop = "SceneName_Beach";
 		//Logging.Log("[patchSceneSetToSceneNameArray] %02d: %s", i, s_NewSceneSetToSceneNameArray[i].mStringTop);
 	}
 
@@ -398,18 +401,6 @@ void DisgustingTextureHolderTextureInfoPatch() {
 	codePatcher.BranchInst(0x18C8A78);
 }
 
-HOOK_DEFINE_INLINE(DisgustingSmallSceneIconHook) {
-	static void Callback(exl::hook::InlineCtx* ctx) {
-		temp_9_t* temp_9 = reinterpret_cast<UIEditLeftMenuSeq*>(ctx->X[19])->temp_09;
-		//Logging.Log("[DisgustingSmallSceneIconHook]		curSceneSet: %d", temp_9->curSceneSet);
-		ctx->W[28] = temp_9->curSceneSet;
-	}
-};
-void DisgustingSmallSceneIconPatch() {
-	exl::patch::CodePatcher codePatcher(0x18CB020);
-	codePatcher.BranchInst(0x18CB098);
-}
-
 HOOK_DEFINE_INLINE(DebugHook) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
 		sead::PtrArrayImpl* iconPtrArray = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[0]+0x998);
@@ -453,9 +444,6 @@ extern "C" void exl_main(void *x0, void *x1) {
 
 	DisgustingTextSetterHook::InstallAtOffset(0x18D3CA0);
 	DisgustingTextSetterPatch();
-
-	DisgustingSmallSceneIconHook::InstallAtOffset(0x18CB018);
-	DisgustingSmallSceneIconPatch();
 
 	//DebugHook::InstallAtOffset(0x18C911C);
 
