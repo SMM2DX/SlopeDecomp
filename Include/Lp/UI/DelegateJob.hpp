@@ -1,5 +1,7 @@
 #pragma once
 
+#include <BasicTypes.hpp>
+
 #include <Lp/UI/Job.hpp>
 
 namespace Lp::UI{
@@ -12,7 +14,7 @@ namespace Lp::UI{
 		void* vtbl;
 		void* parent;
 		void* function;
-		int64_t number;
+		int64 number;
 	};
 	#endif	//	LP_UI_DELEGATEJOB_HPP
 	static_assert(sizeof(DelegateJob) == 0x98);

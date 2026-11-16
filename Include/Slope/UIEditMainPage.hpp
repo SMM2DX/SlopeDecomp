@@ -1,5 +1,7 @@
 #pragma once
 
+#include <BasicTypes.hpp>
+
 #include <sead/seadBuffer.hpp>
 #include <sead/seadPtrArray.hpp>
 #include <sead/seadRuntimeTypeInfo.hpp>
@@ -72,18 +74,18 @@ class UIEditMainPage : public UISys::ViewPage {
 	virtual void sub_131();
 	virtual void sub_132();
 
-	char _2[0x200];
+	char _0[0x208];
 	sead::Buffer<Lp::UI::BtnPartsCtrl> buttonBuffer;		//	0x770	//	104	Elements
 	sead::Buffer<Lp::UI::TempItemHandle> smallIconBuffer;	//	0x780	//	30	Elements
-	char _3[0x18];
+	char _1[0x18];
 	sead::Buffer<void> UNKBuffer_7A8;						//	0x7A8	//	16	Elements
 	sead::Buffer<void> UNKBuffer_7BB;						//	0x7B8	//	6	Elements
 	sead::Buffer<void> UNKBuffer_7CB;						//	0x7C8	//	10	Elements
-	char _4[0x40];
+	char _2[0x40];
 	sead::PtrArrayImpl UNKPtrArray_818;						//	0x818	//	4	Ptrs
-	char _5[0x48];
+	char _3[0x48];
 	sead::Buffer<void> UNKBuffer_870;						//	0x870	//	5	Elements
-	char _6[0x108];
+	char _4[0x108];
 	sead::PtrArrayImpl UNKPtrArray_988;						//	0x988	//	6	Ptrs
 	sead::PtrArray<Lp::UI::TempItemHandle> iconPtrArray;	//	0x998	//	10	Ptrs
 	sead::PtrArray<Lp::UI::TextSetter> textSetterPtrArray;	//	0x9A8	//	10	Ptrs

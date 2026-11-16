@@ -25,7 +25,7 @@ namespace Lp::Utl{
 		long long int qword_28;
 		char _1[0x2D8];
 		agl::TextureData* textureData;
-		char _2[0x174];
+		char _2[0x180];
 	};
 	#endif	//	LP_UI_TEXTUREHOLDER_HPP
 }

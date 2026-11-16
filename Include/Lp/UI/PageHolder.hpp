@@ -1,20 +1,22 @@
 #pragma once
 
+#include <BasicTypes.hpp>
+
 #include <sead/seadDisposer.hpp>
 #include <sead/seadListImpl.hpp>
 #include <sead/seadHeap.hpp>
-#include <oead/heap/seadExpHeap.h>
+//#include <oead/heap/seadExpHeap.h>
 
 #include <Lp/UI/PageBase.hpp>
 
-#include <LpOG/UI/Impl/DualHeapAdapter.hpp>
-#include <LpOG/UI/Impl/LayoutResourceMgr.hpp>
+//#include <LpOG/UI/Impl/DualHeapAdapter.hpp>
+//#include <LpOG/UI/Impl/LayoutResourceMgr.hpp>
 #include <Lp/UI/Impl/Name.hpp>
-#include <LpOG/UI/Impl/LayoutResourceAccessorHolder.hpp>
+//#include <LpOG/UI/Impl/LayoutResourceAccessorHolder.hpp>
 
 namespace Lp::UI {
-    struct PageHolder : public sead::IDisposer {
-        struct HeapSet {
+    struct PageHolder /*: public sead::IDisposer*/ {
+        /*struct HeapSet {
             sead::ListNode mListNode;
             sead::ExpHeap* mHeap;
             Impl::DualHeapAdapter* mDualHeapAdapter;
@@ -29,6 +31,6 @@ namespace Lp::UI {
         HeapSet* mRootHeapSet;
         bool field_70;
         sead::OffsetList<PageBase> mChildPages;
-        Impl::LayoutResourceAccessorHolder* pLayoutResourceAccessorHolder;
+        Impl::LayoutResourceAccessorHolder* pLayoutResourceAccessorHolder;*/
     };
 }

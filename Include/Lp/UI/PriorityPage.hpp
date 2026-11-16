@@ -1,17 +1,17 @@
 #pragma once
 
-#include <Lp/UI/PageBase.hpp>
+#include <BasicTypes.hpp>
+
+#include <Lp/UI/Page.hpp>
 
 namespace Lp::UI {
 	#ifndef		LP_UI_PRIORITYPAGE_HPP
 	#define		LP_UI_PRIORITYPAGE_HPP
-	struct PriorityPage : public PageBase {
-		SEAD_RTTI_OVERRIDE(PriorityPage, PageBase)
+	struct PriorityPage : public Page {
+		SEAD_RTTI_OVERRIDE(PriorityPage, Page)
 		~PriorityPage() override;
 
-		virtual void onPostAnimate();
-
-		unsigned int ID;						//	0x3F0
+		uint64 nextCreateID;					//	0x3E8
 	};
 	#endif	//	LP_UI_PRIORITYPAGE_HPP
 	static_assert(sizeof(PriorityPage) == 0x3F0);

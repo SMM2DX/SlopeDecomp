@@ -1,5 +1,9 @@
 #pragma once
 
+#include <BasicTypes.hpp>
+
+#include <sead/seadBuffer.hpp>
+
 #include <Lp/UI/PriorityPage.hpp>
 #include <Lp/UI/Control.hpp>
 #include <Lp/UI/PartsCtrl.hpp>
@@ -13,10 +17,12 @@ namespace UISys{
 	struct CursorActionCallbackArg;
 	struct StickActionCallbackArg;
 
+	#ifndef		UISYS_VIEWPAGE_HPP
+	#define		UISYS_VIEWPAGE_HPP
 	class ViewPage : public Lp::UI::PriorityPage {
 		SEAD_RTTI_OVERRIDE(ViewPage, Lp::UI::PriorityPage)
 		~ViewPage() override;
-		uintptr_t getClassInfo() override;
+		void* getClassInfo() override;
         void onPreCalc() override;
         void onPostCalc() override;
 
@@ -47,9 +53,9 @@ namespace UISys{
 	    virtual void getLayoutNameByIndex(int);
 	    virtual void getLayoutName();
 	    virtual Lp::UI::BtnPartsCtrl* getButton(int);
-	    virtual Lp::UI::BtnPartsCtrl* getButtton(int)const;
+	    virtual Lp::UI::BtnPartsCtrl* getButton(int) const;
 	    virtual Lp::UI::KeyItem* getKeyItem(int);
-	    virtual Lp::UI::KeyItem* getKeyItem(int)const;
+	    virtual Lp::UI::KeyItem* getKeyItem(int) const;
 	    virtual int sub_52();
 	    virtual void ctrlInitCallback_(Lp::UI::PartsCtrlBuilder::CtrlInitArg const&);
 
@@ -81,8 +87,49 @@ namespace UISys{
 		
 	    virtual void checkDecidedButton_(Lp::UI::Control const*);
 
-		char _0[0x218];
 		sead::Buffer<Lp::UI::Control> controlBuffer;			//	0x3F0
-		char _1[0x170];
+		int dword_400;
+		int64 qword_408;
+		int64 qword_410;
+		int64 qword_418;
+		int64 qword_420;
+		int64 qword_428;
+		int64 qword_430;
+		int64 qword_438;
+		int64 qword_440;
+		int dword_448;
+		int64 qword_450;
+		int64 qword_458;
+		int64 qword_460;
+		int64 qword_468;
+		int64 qword_470;
+		int64 qword_478;
+		int64 qword_480;
+		void* qword_488;
+		int64 qword_490;
+		int64 qword_498;
+		int64 qword_4A0;
+		void* qword_4A8;
+		int64 qword_4B0;
+		int64 qword_4B8;
+		int64 qword_4C0;
+		void* qword_4C8;
+		int64 qword_4D0;
+		int64 qword_4D8;
+		int64 qword_4E0;
+		void* qword_4E8;
+		int64 qword_4F0;
+		int64 qword_4F8;
+		int64 qword_500;
+		int64 qword_508;
+		int dword_510;
+		int64 dword_518;
+		int qword_520;
+		int64 dword_528;
+		int qword_530;
+		sead::OffsetList list_538;			//	0x538
+		sead::OffsetList list_550;			//	0x550
 	};
+	#endif	//	UISYS_VIEWPAGE_HPP
+	static_assert(sizeof(ViewPage) == 0x568);
 }

@@ -32,16 +32,10 @@ namespace sead {
 	#ifndef		SEAD_FIXEDSAFESTRING_HPP
 	#define		SEAD_FIXEDSAFESTRING_HPP
 	template <typename T> struct FixedSafeStringBase_32 : public BufferedSafeStringBase<T> {
-		~FixedSafeStringBase_32() override;
-		FixedSafeStringBase_32 &operator=(const FixedSafeStringBase_32 &) override;
-		
 		char mBuffer[32];
 	};
 	using FixedSafeString_32 = FixedSafeStringBase_32<char>;
 	template <typename T> struct FixedSafeStringBase_64 : public BufferedSafeStringBase<T> {
-		~FixedSafeStringBase_64() override;
-		FixedSafeStringBase_64 &operator=(const FixedSafeStringBase_64 &) override;
-		
 		char mBuffer[64];
 	};
 	using FixedSafeString_64 = FixedSafeStringBase_64<char>;
@@ -50,8 +44,6 @@ namespace sead {
 	#ifndef		SEAD_HEAPSAFESTRING_HPP
 	#define		SEAD_HEAPSAFESTRING_HPP
 	template <typename T> struct HeapSafeStringBase : public BufferedSafeStringBase<T> {
-		~HeapSafeStringBase() override;
-		HeapSafeStringBase &operator=(const HeapSafeStringBase &) override;
 	};
 	using HeapSafeString = HeapSafeStringBase<char>;
 	#endif	//	SEAD_HEAPSAFESTRING_HPP

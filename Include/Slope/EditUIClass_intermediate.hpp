@@ -1,5 +1,7 @@
 #pragma once
 
+#include <BasicTypes.hpp>
+
 #include <agl/TextureData.hpp>
 
 #include <sead/seadBuffer.hpp>
@@ -13,8 +15,8 @@
 #include <UISys/ButtonActionCallbackArg.hpp>
 #include <UISys/SequenceBase.hpp>
 
-#include <Slope/UIEditMainPage.hpp>
-
+#ifndef		EDITUICLASSINTERMEDIATE_HPP
+#define		EDITUICLASSINTERMEDIATE_HPP
 class EditUIClass_intermediate : public UISys::SequenceBase {
 	SEAD_RTTI_OVERRIDE(EditUIClass_intermediate, UISys::SequenceBase)
 	~EditUIClass_intermediate() override;
@@ -114,24 +116,16 @@ class EditUIClass_intermediate : public UISys::SequenceBase {
 	virtual void sub_105();	// nullsub
 	virtual void sub_106();	// nullsub
 
-	Lp::Utl::StateMachine* pStateMachine1;
-	uint64_t gapFill2;
-	bool unk_bool;
-	uint64_t gapFill3;
-	Lp::Utl::StateMachine stateMachine1;
-	char gapFill1[0x58];
-	Lp::Utl::StateMachine stateMachine2;
-	uint32_t gapFill4;
-	uint32_t gapFill5;
-	UISys::ViewPage* parentViewPage;
-	uint64_t gapFill6;
-	uint32_t subMenuIndex; // 0 = Skin, 1/2 = Scene, 3 = Timer, 4 = Scroll?	//	0x298
-	uint32_t gapFill7;
-	
-	sead::PtrArray<Lp::UI::TextureInfo>		SkinButtons_TextureInfo;		//	0x2A0
-	sead::PtrArray<Lp::Utl::TextureHolder>	SkinButtons_TextureHolder;		//	0x2B0
-	sead::PtrArray<Lp::UI::TextureInfo>		SceneButtons_TextureInfo;		//	0x2C0
-	sead::PtrArray<Lp::Utl::TextureHolder>	SceneButtons_TextureHolder;		//	0x2D0
-	Lp::UI::TextureInfo						SceneSmallButton_TextureInfo;	//	0x2E0
-	Lp::Utl::TextureHolder					SceneSmallButton_TextureHolder;	//	0x300
+	int64 qword_1A8;							//	0x1A8
+	Lp::Utl::StateMachine* pStateMachine1;		//	0x1B0
+	int64 qword_1B8;							//	0x1B8
+	bool bool_1C0;								//	0x1C0
+	int64 qword_1C8;							//	0x1C8
+	Lp::Utl::StateMachine stateMachine1;		//	0x1D0
+	int64 qword_220;							//	0x220
+	int64 qword_228;							//	0x228
+	int64 qword_230;							//	0x230
+	Lp::Utl::StateMachine stateMachine2;		//	0x238
 };
+#endif	//	EDITUICLASSINTERMEDIATE_HPP
+static_assert(sizeof(EditUIClass_intermediate) == 0x288);

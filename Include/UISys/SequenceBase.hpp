@@ -1,14 +1,14 @@
 #pragma once
 
+#include <BasicTypes.hpp>
+
 #include <sead/seadRuntimeTypeInfo.hpp>
 #include <sead/seadListImpl.hpp>
 #include <sead/seadCriticalSection.hpp>
+#include <sead/seadBuffer.hpp>
 
 #include <Lp/UI/Impl/Name.hpp>
-//#include <Lp/UI/PageHolder.hpp>
-namespace Lp::UI {
-	struct PageHolder{};
-} //TODO: IMPORTANT
+#include <Lp/UI/PageHolder.hpp>
 
 #include <UISys/SequenceHolder.hpp>
 #include <UISys/SequenceJob.hpp>
@@ -16,6 +16,8 @@ namespace Lp::UI {
 #include <UISys/struct_temp_09.hpp>
 
 namespace UISys {
+	#ifndef		UISYS_SEQUENCEBASE_HPP
+	#define		UISYS_SEQUENCEBASE_HPP
 	class SequenceBase {
 		SEAD_RTTI_BASE(SequenceBase)
 		virtual ~SequenceBase();
@@ -51,33 +53,31 @@ namespace UISys {
 		virtual void sub_34();	// returns 0
 		virtual void sub_35();	// nullsub
 
-		int temp_01;
-		void* temp_02;
-		long long temp_03;
-		long long temp_04;
-		long long temp_05;
-		long long temp_06;
-		long long temp_07;
-		long long temp_08;
-		temp_9_t *temp_09;							// 0x48
-		sead::ListImpl listImpl1;					// 0x50
-		sead::ListImpl listImpl2;					// 0x68
-		Lp::UI::Impl::Name name;					// 0x80
-		UISys::SequenceHolder* sequenceHolder;		// 0x98
-		Lp::UI::PageHolder* pageHolder;				// 0xA0
-		long long temp_10;							// MISSING IN LABO !
-		UISys::SequenceJob sequenceJob1;			// 0xB0
-		UISys::SequenceJob sequenceJob2;			// 0xE8
-		int temp_11;
-		UISys::SequenceJobList sequenceJobList1;	// 0x128 Scenes?
-		UISys::SequenceJobList sequenceJobList2;	// 0x140 Layouts?
-		int temp_12;
-		int temp_13;
-		int temp_14;
-		char temp_15;
-		char createLayoutResourceAccessorHolder;
-		char temp_16;
-		char temp_17;
-		sead::CriticalSection criticalsection;		// 0x168
+		sead::Buffer<void> buffer_8;				//	0x008
+		int64 qword_18;								//	0x018
+		int64 qword_20;								//	0x020
+		int64 qword_28;								//	0x028
+		int64 qword_30;								//	0x030
+		int64 qword_38;								//	0x038
+		int64 qword_40;								//	0x040
+		temp_9_t* temp_09;							//	0x048
+		sead::OffsetList list_50;					//	0x050
+		sead::OffsetList list_68;					//	0x068
+		Lp::UI::Impl::Name name;					//	0x080
+
+		UISys::SequenceHolder* sequenceHolder;		//	0x098
+		Lp::UI::PageHolder* pageHolder;				//	0x0A0
+		int32 dword_A8;								//	0x0A8	MISSING IN LABO !
+		UISys::SequenceJob sequenceJob1;			//	0x0B0
+		UISys::SequenceJob sequenceJob2;			//	0x0E8
+		int32 dword_120;							//	0x120
+		UISys::SequenceJobList sequenceJobList1;	//	0x128
+		UISys::SequenceJobList sequenceJobList2;	//	0x140
+		int32 nextCreateID;							//	0x158
+		int32 dword_15C;							//	0x15C
+		void* qword_160;							//	0x160
+		sead::CriticalSection criticalsection;		//	0x168
 	};
+	#endif	//	UISYS_SEQUENCEBASE_HPP
+	static_assert(sizeof(SequenceBase) == 0x1A8);
 }

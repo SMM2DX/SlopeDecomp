@@ -1,11 +1,13 @@
 #pragma once
 
+#include <BasicTypes.hpp>
+
 namespace sead{
 	#ifndef		SEAD_PTRARRAYIMPL_HPP
 	#define		SEAD_PTRARRAYIMPL_HPP
 	struct PtrArrayImpl{
-		int mPtrNum;
-		int mPtrNumMax;
+		int32 mPtrNum;
+		int32 mPtrNumMax;
 		void **mPtrs;
 	};
 	#endif	//	SEAD_PTRARRAYIMPL_HPP
@@ -14,8 +16,8 @@ namespace sead{
 	#ifndef		SEAD_PTRARRAY_HPP
 	#define		SEAD_PTRARRAY_HPP
 	template <typename T> struct PtrArray{
-		int mPtrNum;
-		int mPtrNumMax;
+		int32 mPtrNum;
+		int32 mPtrNumMax;
 		T **mPtrs;
 	};
 	#endif	//	SEAD_PTRARRAY_HPP
