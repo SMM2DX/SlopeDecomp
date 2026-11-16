@@ -16,7 +16,7 @@ namespace Lp::UI {
 		sead::OffsetList list_1C8;			//	0x1C8
 		sead::OffsetList list_1E0;			//	0x1E0
 		sead::OffsetList list_1F8;			//	0x1F8
-		int64 qword_210;					//	0x210
+		void* manipulator_210;				//	0x210	//	Lp::UI::Manipulator (0xA8)
 		int dword_218;						//	0x218
 		short word_21C;						//	0x21C
 		char byte_21E;						//	0x21E

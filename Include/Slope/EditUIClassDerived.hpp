@@ -1,8 +1,10 @@
 #pragma once
 
-#include <UISys/SequenceBase.hpp>
+#include <BasicTypes.hpp>
 
-class EditUIClassDerived : public UISys::SequenceBase {
+#include <Slope/EditUIClass_intermediate.hpp>
+
+class EditUIClassDerived : public EditUIClass_intermediate {
 	SEAD_RTTI_OVERRIDE(EditUIClassDerived, UISys::SequenceBase)
 	~EditUIClassDerived() override;
 };

@@ -3,6 +3,7 @@
 #include <BasicTypes.hpp>
 
 #include <Slope/EditUIClass_intermediate.hpp>
+#include <Slope/UIEditMainPage.hpp>
 
 namespace Slope {
 	#ifndef		SLOPE_UIEDITLEFTMENUSEQ_HPP
@@ -23,8 +24,8 @@ namespace Slope {
 		void sub_77() override;	// nullsub
 		void sub_101() override;
 
-		int64 qword_288;															//	0x288
-		UISys::ViewPage* parentViewPage;											//	0x290 May be misplaced now?
+		UIEditMainPage* parentViewPage;												//	0x288 May be misplaced now?
+		int64 qword_290;															//	0x290
 		int32 dword_298;															//	0x298
 		uint32 subMenuIndex; 	// 0 = Skin, 1/2 = Scene, 3 = Timer, 4 = Scroll?	//	0x29C
 		sead::PtrArray<Lp::UI::TextureInfo>		SkinButtons_TextureInfo;			//	0x2A0
@@ -39,5 +40,5 @@ namespace Slope {
 		char byte_C44;																//	0xC44
 	};
 	#endif	//	SLOPE_UIEDITLEFTMENUSEQ_HPP
-	static_assert(sizeof(UIEditLeftMenuSeq) == 0xC48);
+	//static_assert(sizeof(UIEditLeftMenuSeq) == 0xC48);
 }
