@@ -115,17 +115,18 @@ class EditUIClass_intermediate : public UISys::SequenceBase {
 	virtual void sub_106();	// nullsub
 
 	Lp::Utl::StateMachine* pStateMachine1;
-	long long unk_num1;
+	uint64_t gapFill2;
 	bool unk_bool;
-	long long unk_num2;
+	uint64_t gapFill3;
 	Lp::Utl::StateMachine stateMachine1;
 	char gapFill1[0x58];
 	Lp::Utl::StateMachine stateMachine2;
-	uint32_t gapFill2;
-	uint32_t gapFill3;
+	uint32_t gapFill4;
+	uint32_t gapFill5;
 	UISys::ViewPage* parentViewPage;
-	int64_t gapFill4;
-	int64_t gapFill5;
+	uint64_t gapFill6;
+	uint32_t subMenuIndex; // 0 = Skin, 1/2 = Scene, 3 = Timer, 4 = Scroll?	//	0x298
+	uint32_t gapFill7;
 	
 	sead::PtrArray<Lp::UI::TextureInfo>		SkinButtons_TextureInfo;		//	0x2A0
 	sead::PtrArray<Lp::Utl::TextureHolder>	SkinButtons_TextureHolder;		//	0x2B0
