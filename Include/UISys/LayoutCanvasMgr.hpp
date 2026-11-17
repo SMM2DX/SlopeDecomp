@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../oead/math/seadMatrix.h"
-#include "../oead/gfx/seadCamera.h"
+#include "../OLD/sead/math/seadMatrix.h"
+#include "../OLD/sead/gfx/seadCamera.h"
 #include <sead/seadDisposer.hpp>
 
 namespace UISys{

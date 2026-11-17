@@ -9,74 +9,17 @@
 #include <Lp/UI/TempItemHandle.hpp>
 #include <Lp/UI/TextSetter.hpp>
 
-#include <UISys/ViewPage.hpp>
 #include <UISys/SequenceJob.hpp>
 
+#include <Slope/UIPageBase.hpp>
+
 namespace Slope {
-	class UIEditMainPage : public UISys::ViewPage {
-		SEAD_RTTI_OVERRIDE(UIEditMainPage, ViewPage)
+	class UIEditMainPage : public UIPageBase {
+		SEAD_RTTI_OVERRIDE(UIEditMainPage, UIPageBase)
 		~UIEditMainPage() override;
 
-		virtual void sub_75();
-		virtual void sub_76();
-		virtual void sub_77();
-		virtual void sub_78();
-		virtual void sub_79();
-		virtual void sub_80();
-		virtual void sub_81();
-		virtual void sub_82();
-		virtual void sub_83();
-		virtual void sub_84();
-		virtual void sub_85();
-		virtual void sub_86();
-		virtual void sub_87();
-		virtual void sub_88();
-		virtual void sub_89();
-		virtual void sub_90();
-		virtual void sub_91();
-		virtual void sub_92();
-		virtual void sub_93();
-		virtual void sub_94(); // doInitialize_() ?
-		virtual void sub_95();
-		virtual void sub_96();
-		virtual void sub_97(); // smallIconBuffer
-		virtual void sub_98();
-		virtual void sub_99(); // sets up textSetterPtrArray 
-		virtual void sub_100();
-		virtual void sub_101();
-		virtual void sub_102();
-		virtual void sub_103();
-		virtual void sub_104();
-		virtual void sub_105();
-		virtual void sub_106();
-		virtual void sub_107();
-		virtual void sub_108();
-		virtual void sub_109();
-		virtual void sub_110();
-		virtual void sub_111();
-		virtual void sub_112();
-		virtual void sub_113();
-		virtual void sub_114();
-		virtual void sub_115();
-		virtual void sub_116();
-		virtual void sub_117();
-		virtual void sub_118();
-		virtual void sub_119();
-		virtual void sub_120();
-		virtual void sub_121();
-		virtual void sub_122();
-		virtual void sub_123();
-		virtual void sub_124();
-		virtual void sub_125();
-		virtual void sub_126();
-		virtual void sub_127();
-		virtual void sub_128();
-		virtual void sub_129();
-		virtual void sub_130();
-		virtual void sub_131();
-		virtual void sub_132();
-
-		char _0[0x208];	// Bro ICBA theyre all basically qwords
+		int32 dword_568;													//	0x568
+		char _0[0x200];		// Bro ICBA theyre all basically qwords
 		sead::Buffer<Lp::UI::BtnPartsCtrl> buttonBuffer;					//	0x770	//	104	Elements	//	0x8 Span
 		sead::Buffer<Lp::UI::TempItemHandle> UNKBuffer_780;					//	0x780	//	30	Elements	//	0x8 Span
 		UISys::SequenceJob* sequenceJob_790;								//	0x790
@@ -105,7 +48,7 @@ namespace Slope {
 		int64 qword_860;													//	0x860
 		int64 qword_868;													//	0x868
 		sead::Buffer<void> UNKBuffer_870;									//	0x870	//	5	Elements	//	0x4 Span
-		int64 qword_880;													//	0x880
+		int64 qword_880;													//	0x880	//	Something is happening here
 		int64 qword_888;													//	0x888
 		int64 qword_890;													//	0x890
 		int64 qword_898;													//	0x898

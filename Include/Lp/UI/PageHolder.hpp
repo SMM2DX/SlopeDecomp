@@ -5,14 +5,14 @@
 #include <sead/seadDisposer.hpp>
 #include <sead/seadListImpl.hpp>
 #include <sead/seadHeap.hpp>
-//#include <oead/heap/seadExpHeap.h>
+//#include <OLD/sead/heap/seadExpHeap.h>
 
 #include <Lp/UI/PageBase.hpp>
 
-//#include <LpOG/UI/Impl/DualHeapAdapter.hpp>
-//#include <LpOG/UI/Impl/LayoutResourceMgr.hpp>
+//#include <OLD/Lp/UI/Impl/DualHeapAdapter.hpp>
+//#include <OLD/Lp/UI/Impl/LayoutResourceMgr.hpp>
 #include <Lp/UI/Impl/Name.hpp>
-//#include <LpOG/UI/Impl/LayoutResourceAccessorHolder.hpp>
+//#include <OLD/Lp/UI/Impl/LayoutResourceAccessorHolder.hpp>
 
 namespace Lp::UI {
     struct PageHolder /*: public sead::IDisposer*/ {

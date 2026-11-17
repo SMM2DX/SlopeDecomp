@@ -2,9 +2,10 @@
 
 #include <ActorBase.hpp>
 
+#ifndef		ACTOR_HPP
+#define		ACTOR_HPP
 class Actor : public ActorBase {
 	SEAD_RTTI_OVERRIDE(Actor, ActorBase)
-	char* getClassName() override;
 	~Actor() override;
 
 	virtual void sub_37();
@@ -53,3 +54,4 @@ class Actor : public ActorBase {
 	virtual void sub_80();
 	virtual void sub_81();
 };
+#endif	//	ACTOR_HPP

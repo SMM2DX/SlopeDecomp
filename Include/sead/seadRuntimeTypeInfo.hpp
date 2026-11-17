@@ -1,5 +1,5 @@
 
-#include <oead/prim/seadRuntimeTypeInfo.h>
+#include <OLD/sead/prim/seadRuntimeTypeInfo.h>
 /*
 #pragma once
 

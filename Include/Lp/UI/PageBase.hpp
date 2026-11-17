@@ -4,9 +4,9 @@
 
 #include <sead/seadRuntimeTypeInfo.hpp>
 #include <sead/seadListImpl.hpp>
-//#include <oead/thread/seadReadWriteLock.h>
+//#include <OLD/sead/thread/seadReadWriteLock.h>
 
-#include <LpOG/UI/Input/InputContext.hpp>
+#include <OLD/Lp/UI/Input/InputContext.hpp>
 #include <Lp/UI/Impl/Name.hpp>
 #include <Lp/UI/DelegateJob.hpp>
 

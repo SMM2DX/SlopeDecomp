@@ -1,8 +1,8 @@
 #pragma once
 
 //#include <agl/lyr/DrawMethod.hpp> TEMP
-#include <oead/framework/seadCalculateTask.h>
-#include <oead/framework/seadMethodTree.h>
+#include <OLD/sead/framework/seadCalculateTask.h>
+#include <OLD/sead/framework/seadMethodTree.h>
 
 namespace agl::lyr {
     struct RenderInfo;
