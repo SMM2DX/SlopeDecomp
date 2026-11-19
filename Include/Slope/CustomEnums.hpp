@@ -288,5 +288,4 @@ enum RingItemSound : RingItem {
 	SuperMarioGalaxy	= 0x29,
 };
 
-
 #endif	//	CUSTOMENUMS_HPP
