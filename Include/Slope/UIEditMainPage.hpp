@@ -14,6 +14,8 @@
 #include <Slope/UIPageBase.hpp>
 
 namespace Slope {
+	#ifndef		SLOPE_UIEDITMAINPAGE_HPP
+	#define		SLOPE_UIEDITMAINPAGE_HPP
 	class UIEditMainPage : public UIPageBase {
 		SEAD_RTTI_OVERRIDE(UIEditMainPage, UIPageBase)
 		~UIEditMainPage() override;
@@ -95,4 +97,5 @@ namespace Slope {
 		int64 qword_A18;													//	0xA18
 		char byte_A20;														//	0xA20
 	};
+	#endif	//	SLOPE_UIEDITMAINPAGE_HPP
 }

@@ -2,14 +2,14 @@
 
 #include <BasicTypes.hpp>
 
-#include <Slope/EditUIClass_intermediate.hpp>
+#include <Slope/UISequenceBase.hpp>
 #include <Slope/UIEditMainPage.hpp>
 
 namespace Slope {
 	#ifndef		SLOPE_UIEDITLEFTMENUSEQ_HPP
 	#define		SLOPE_UIEDITLEFTMENUSEQ_HPP
-	class UIEditLeftMenuSeq : public EditUIClass_intermediate {
-		SEAD_RTTI_OVERRIDE(UIEditLeftMenuSeq, EditUIClass_intermediate)
+	class UIEditLeftMenuSeq : public UISequenceBase {
+		SEAD_RTTI_OVERRIDE(UIEditLeftMenuSeq, UISequenceBase)
 		~UIEditLeftMenuSeq() override;
 
 		void sub_40() override;	// Lyt_E_Scene_[scene]_00
@@ -40,5 +40,5 @@ namespace Slope {
 		char byte_C44;																//	0xC44
 	};
 	#endif	//	SLOPE_UIEDITLEFTMENUSEQ_HPP
-	//static_assert(sizeof(UIEditLeftMenuSeq) == 0xC48);
+	static_assert(sizeof(UIEditLeftMenuSeq) == 0xC48);
 }

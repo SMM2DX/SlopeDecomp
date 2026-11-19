@@ -223,4 +223,70 @@ enum LeftPartsState : unsigned int {
 	LeftPartsState_ChangeSceneSet	= 0x40000,
 	LeftPartsState_ChangeSceneHour	= 0x80000,
 };
+
+using RingItem = unsigned int;
+
+enum RingItemObject : RingItem {
+	A					= 0x0,
+};
+
+enum RingItemSound : RingItem {
+	// Page 1
+	Shock				= 0x0,
+	Scream				= 0x1,
+	Laughter			= 0x2,
+	Guffaw				= 0x3,
+	Booo				= 0x8,
+	// Page 2
+	Cheer				= 0x5,
+	Baby				= 0x6,
+	PartyPopper			= 0x7,
+	Applause			= 0x4,
+	NearMiss			= 0x9,
+	// Page 3
+	Clatter				= 0xA,
+	Drama				= 0xB,
+	Kick				= 0xC,
+	Jump				= 0xD,
+	HonkHonk			= 0xE,
+	Punch				= 0xF,
+	// Page 4
+	Oink				= 0x10,
+	KuhThunk			= 0x11,
+	Beep				= 0x12,
+	NinjaAttack			= 0x13,
+	Zap					= 0x18,
+	// Page 5
+	DingDong			= 0x14,
+	Bzzzt				= 0x15,
+	Glory				= 0x16,
+	Doom				= 0x17,
+	Yeah				= 0x1A,
+	Aww					= 0x1B,
+	// Page 6
+	Fireworks			= 0x1C,
+	Audience			= 0x1D,
+	Scatting			= 0x1E,
+	Spark				= 0x1F,
+	Traditional			= 0x20,
+	ElectricGuitar		= 0x21,
+	TwistyTurny			= 0x2D,
+	Woozy				= 0x2E,
+	Flash				= 0x19,
+	// Page 7
+	Peaceful			= 0x27,
+	Horror				= 0x28,
+	BonusMusic			= 0x23,
+	Heartbeat			= 0x24,
+	Silence				= 0x25,
+	// Page 8
+	BossMusic			= 0x22,
+	FinalBoss			= 0x26,
+	SuperMarioKart		= 0x2C,
+	SuperMario64		= 0x2A,
+	SuperMarioSunshine	= 0x2B,
+	SuperMarioGalaxy	= 0x29,
+};
+
+
 #endif	//	CUSTOMENUMS_HPP
