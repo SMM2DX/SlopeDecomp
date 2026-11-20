@@ -3,15 +3,16 @@
 #include <BasicTypes.hpp>
 
 #include <Lp/UI/Control.hpp>
+#include <Lp/UI/PartsCtrl.hpp>
 
 namespace Lp::UI {
 	#ifndef		LP_UI_CONTROLINITIALIZERBASE_HPP
 	#define		LP_UI_CONTROLINITIALIZERBASE_HPP
 	struct ControlInitializerBase {
 		virtual ~ControlInitializerBase();
-		int64 qword_8;					//	0x008
+		PartsCtrl* partsCtrl;			//	0x008
 		int64 qword_10;					//	0x010
-		Control* parentControl;				//	0x018
+		Control* parentControl;			//	0x018
 		int64 qword_20;					//	0x020
 		int64 qword_28;					//	0x028
 		int64 qword_30;					//	0x030
