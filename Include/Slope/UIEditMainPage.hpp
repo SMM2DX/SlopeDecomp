@@ -22,14 +22,14 @@ namespace Slope {
 
 		int32 dword_568;													//	0x568
 		char _0[0x200];		// Bro ICBA theyre all basically qwords
-		sead::Buffer<Lp::UI::BtnPartsCtrl> buttonBuffer;					//	0x770	//	104	Elements	//	0x8 Span
+		sead::Buffer<Lp::UI::BtnPartsCtrl*> buttonBuffer;					//	0x770	//	104	Elements	//	0x8 Span
 		sead::Buffer<Lp::UI::TempItemHandle> UNKBuffer_780;					//	0x780	//	30	Elements	//	0x8 Span
 		UISys::SequenceJob* sequenceJob_790;								//	0x790
 		UISys::SequenceJob* sequenceJob_798;								//	0x798
 		UISys::SequenceJob* sequenceJob_7A0;								//	0x7A0
 		sead::Buffer<Lp::UI::TempItemHandle> smallButtonIconBuffer;			//	0x7A8	//	16	Elements	//	0x8 Span
 		sead::Buffer<void> UNKBuffer_7BB;									//	0x7B8	//	6	Elements	//	0x8 Span
-		sead::Buffer<void> UNKBuffer_7CB;									//	0x7C8	//	10	Elements	//	0x8 Span
+		sead::Buffer<Lp::UI::TempItemHandle> UNKBuffer_7CB;					//	0x7C8	//	10	Elements	//	0x8 Span	// NOTE: USES AN ANIMATION PROPERTY ID AND HAS 10 ELEMENTS, ANIMATED BUTTONS? (sub 91)
 		int64 qword_7D8;													//	0x7D8
 		int64 qword_7E0;													//	0x7E0
 		int64 qword_7E8;													//	0x7E8

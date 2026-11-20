@@ -87,7 +87,7 @@ namespace UISys{
 		
 	    virtual void checkDecidedButton_(Lp::UI::Control const*);
 
-		sead::Buffer<Lp::UI::Control> controlBuffer;			//	0x3F0
+		sead::Buffer<Lp::UI::Control*> controlBuffer;			//	0x3F0
 		int dword_400;
 		int64 qword_408;
 		int64 qword_410;

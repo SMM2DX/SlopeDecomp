@@ -12,7 +12,7 @@ namespace Slope {
 		SEAD_RTTI_OVERRIDE(UIEditLeftMenuSeq, UISequenceBase)
 		~UIEditLeftMenuSeq() override;
 
-		void sub_40() override;	// Lyt_E_Scene_[scene]_00
+		void sub_40() override;	// Set up Scene & Skin Buttons' textures
 		void sub_56() override;
 		void sub_59() override;	// stateMachine2.field_50 |= 1
 		void sub_60() override;	// nullsub
