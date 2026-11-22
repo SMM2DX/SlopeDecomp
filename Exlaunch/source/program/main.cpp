@@ -8,7 +8,7 @@
 #include <Lp/UI/TextureInfo.hpp>
 #include <Lp/Utl/TextureHolder.hpp>
 
-//#include <UISys/ButtonActionCallbackArg.hpp>
+#include <UISys/ButtonActionCallbackArg.hpp>
 #include <UISys/SequenceBase.hpp>
 
 #include <Slope/CustomEnums.hpp>
@@ -23,23 +23,6 @@ struct ButtonNameStruct {
 	long long qword_18;
 	int int_20;
 	signed int int_24;
-};
-
-struct struct_UIEditMainPage {
-	u8 _0[0x770];
-	u32 m_BtnPartsCtrlBuffer;
-};
-
-struct ButtonActionCallbackArg {
-	void *viewPage;
-	void *btnPartsCtrl;
-	unsigned int buttonIndex;
-	unsigned int dword14;
-	unsigned int dword18;
-	unsigned int dword1C;
-	unsigned int dword20;
-	unsigned int dword24;
-	unsigned long long qword28;
 };
 
 class Difference final {
@@ -272,7 +255,7 @@ HOOK_DEFINE_TRAMPOLINE(printFromStartTime) {
 };
 
 HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_67) {
-	static void Callback(UISys::SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
+	static void Callback(UISys::SequenceBase *thisPtr, UISys::ButtonActionCallbackArg *buttonActionCallbackArg) {
 		//Logging.Log("[UIEditLeftMenuSeq_sub_67] %u", buttonActionCallbackArg->buttonIndex);
 		
 		Orig(thisPtr, buttonActionCallbackArg);
@@ -280,7 +263,7 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_67) {
 };
 
 HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_68) {
-	static void Callback(UISys::SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
+	static void Callback(UISys::SequenceBase *thisPtr, UISys::ButtonActionCallbackArg *buttonActionCallbackArg) {
 		using sub_71018C7C10_t = void (void *);
 		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
 
@@ -303,7 +286,7 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_68) {
 };
 
 HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_74) {
-	static void Callback(UISys::SequenceBase *thisPtr, ButtonActionCallbackArg *buttonActionCallbackArg) {
+	static void Callback(UISys::SequenceBase *thisPtr, UISys::ButtonActionCallbackArg *buttonActionCallbackArg) {
 		using sub_71018C7C10_t = void (void *);
 		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
 
@@ -401,6 +384,96 @@ void DisgustingTextureHolderTextureInfoPatch() {
 	codePatcher.BranchInst(0x18C8A78);
 }
 
+enum EditRingPage {
+    cEditRingPage_Terrain1 = 0,
+    cEditRingPage_Terrain2 = 1,
+    cEditRingPage_Items1   = 2,
+    cEditRingPage_Enemies1 = 3,
+    cEditRingPage_Enemies2 = 4,
+    cEditRingPage_Enemies3 = 5,
+    cEditRingPage_Enemies4 = 6,
+    cEditRingPage_Enemies5 = 7,
+    cEditRingPage_Gizmos1  = 8,
+    cEditRingPage_Gizmos2  = 9,
+    cEditRingPage_Gizmos3  = 10,
+    cEditRingPage_Gizmos4  = 11,
+};
+
+// -- Modded rings --
+static const EditorObjectID cModdedTerrain1PartsTable[9] {
+    EditorObjectID_Ground,
+    EditorObjectID_slope_l45,
+    EditorObjectID_slope_l30,
+    EditorObjectID_Dokan,
+    EditorObjectID_ToumeiDokan,
+    EditorObjectID_Toge,
+    EditorObjectID_GroundMushroom,
+    EditorObjectID_GroundBox,
+    EditorObjectID_Bridge,
+};
+static const EditorObjectID cModdedGizmos3PartsTable[8] {
+    EditorObjectID_Lift,
+    EditorObjectID_YouganLift,
+    EditorObjectID_Seesaw,
+    EditorObjectID_Saw,
+    EditorObjectID_Marumaru,
+    EditorObjectID_TogeKonbo,
+    EditorObjectID_BurankoCrane,
+    EditorObjectID_Stone,
+};
+static const EditorObjectID cModdedGizmos4PartsTable[11] {
+    EditorObjectID_OnOffSwitch,
+    EditorObjectID_OnOffBlock,
+    EditorObjectID_SnakeBlock,
+    EditorObjectID_FireBar,
+    EditorObjectID_Hanatari,
+    EditorObjectID_BeltConveyor,
+    EditorObjectID_Rail,
+    EditorObjectID_TogeBlock,
+    EditorObjectID_OrbitBlock,
+    EditorObjectID_DashBlock,
+    EditorObjectID_Chikachika,
+};
+
+// Global variable needed, as the patchExtraItemsIn2DRings hook returns a pointer which does not exist for local variables
+static EditorObjectID currentPart;
+
+HOOK_DEFINE_TRAMPOLINE(patchExtraItemsIn2DRings) {
+    static EditorObjectID* Callback(EditRingPage ringEntry, u32 ringPartSlot) {
+        // Also, ensure to patch the size limit in the smm2 executable by making additional extraItems_ CodePatchers.
+        // To add more entries, just add another case to this switch-case and add another modded parts table, just as above.
+        switch (ringEntry) {
+            case cEditRingPage_Terrain1: {
+                if (ringPartSlot > (sizeof(cModdedTerrain1PartsTable) / sizeof(cModdedTerrain1PartsTable[0]))) {
+                    currentPart = cModdedTerrain1PartsTable[0];
+                } else {
+                    currentPart = cModdedTerrain1PartsTable[ringPartSlot];
+                }
+                return &currentPart;
+            }
+            case cEditRingPage_Gizmos3: {
+               if (ringPartSlot > (sizeof(cModdedGizmos3PartsTable) / sizeof(cModdedGizmos3PartsTable[0]))) {
+                    currentPart = cModdedGizmos3PartsTable[0];
+                } else {
+                    currentPart = cModdedGizmos3PartsTable[ringPartSlot];
+                }
+                return &currentPart;
+            }
+            case cEditRingPage_Gizmos4: {
+              if (ringPartSlot > (sizeof(cModdedGizmos4PartsTable) / sizeof(cModdedGizmos4PartsTable[0]))) {
+                    currentPart = cModdedGizmos4PartsTable[0];
+                } else {
+                    currentPart = cModdedGizmos4PartsTable[ringPartSlot];
+                }
+                return &currentPart;
+            }
+            default: {
+                return Orig(ringEntry, ringPartSlot);
+            }
+        }
+    }
+};
+
 HOOK_DEFINE_INLINE(DebugHook) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
 		sead::PtrArrayImpl* iconPtrArray = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[0]+0x998);
@@ -451,6 +524,7 @@ extern "C" void exl_main(void *x0, void *x1) {
 	codePatcher.Write(0x5280004A);
 	codePatcher.Seek(0x00DA0B04);
 	codePatcher.Write(0x1B0A2502);
+
 	codePatcher.Seek(0x00DA1D58);
 	codePatcher.Write(0x5280004A);
 	codePatcher.Seek(0x00DA1D5C);
@@ -458,8 +532,18 @@ extern "C" void exl_main(void *x0, void *x1) {
 
 	codePatcher.Seek(0x017A60E0); // Prevent indexing play song type arrays
 	codePatcher.Write(0xF9400129);
+
 	codePatcher.Seek(0x017A603C); // Prevent indexing edit song type arrays
 	codePatcher.Write(0xF9400149);
+
+	// Dom/Glimbo/Captain Ring patch
+	patchExtraItemsIn2DRings::InstallAtOffset(0x1922B20);
+	codePatcher.Seek(0x23D85E4);
+	codePatcher.Write<uint32>(0x9);
+	codePatcher.Seek(0x23D860C);
+	codePatcher.Write<uint32>(0x8);
+	codePatcher.Seek(0x23D8610);
+	codePatcher.Write<uint32>(0xB);
 }
 
 extern "C" NORETURN void exl_exception_entry() {

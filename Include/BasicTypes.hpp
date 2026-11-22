@@ -3,8 +3,10 @@
 #ifndef		BASIC_TYPES_HPP
 #define		BASIC_TYPES_HPP
 
-using int64		= long long int;
-using uint64	= unsigned long long int;
+using ptr_t		= void*;
+
+using int64		= long int;
+using uint64	= unsigned long int;
 using int32		= int;
 using uint32	= unsigned int;
 using int16		= short int;

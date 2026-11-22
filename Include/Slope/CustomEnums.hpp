@@ -4,6 +4,7 @@
 
 #ifndef		CUSTOMENUMS_HPP
 #define		CUSTOMENUMS_HPP
+
 enum Skin : uint32 {
 	Skin_M1											=	0x0,
 	Skin_M3											=	0x1,
@@ -239,135 +240,135 @@ enum LeftPartsState : uint32 {
 };
 
 enum EditorObjectID : uint32 {
-	EditorObjectID_Ground,
-	EditorObjectID_slope_l30,
-	EditorObjectID_slope_l45,
-	EditorObjectID_Dokan,
-	EditorObjectID_Toge,
-	EditorObjectID_GroundMushroom,
-	EditorObjectID_GroundBox,
-	EditorObjectID_Bridge,
-	EditorObjectID_HatenaBlock,
-	EditorObjectID_RengaBlock,
-	EditorObjectID_HardBlock,
-	EditorObjectID_ClearBlock,
-	EditorObjectID_ChikuwaBlock,
-	EditorObjectID_OnpuBlock,
-	EditorObjectID_KumoBlock,
-	EditorObjectID_IceBlock,
-	EditorObjectID_Coin,
-	EditorObjectID_BigCoin,
-	EditorObjectID_PinkCoin,
-	EditorObjectID_SuperKinoko,
-	EditorObjectID_FireFlower,
-	EditorObjectID_SuperStar,
-	EditorObjectID_OneUpKinoko,
-	EditorObjectID_SpecialItem,
-	EditorObjectID_Kuribo,
-	EditorObjectID_Nokonoko,
-	EditorObjectID_Met,
-	EditorObjectID_TogeMet,
-	EditorObjectID_Togezo,
-	EditorObjectID_Gesso,
-	EditorObjectID_Pukupuku,
-	EditorObjectID_Pakkun,
-	EditorObjectID_BlackPakkun,
-	EditorObjectID_Dossun,
-	EditorObjectID_ChoroPoo,
-	EditorObjectID_Poo,
-	EditorObjectID_Bros,
-	EditorObjectID_Wanwan,
-	EditorObjectID_SunMoon,
-	EditorObjectID_Hanachan,
-	EditorObjectID_Teresa,
-	EditorObjectID_Bubble,
-	EditorObjectID_Bombhei,
-	EditorObjectID_Karon,
-	EditorObjectID_FishBone,
-	EditorObjectID_Kameck,
-	EditorObjectID_KoopaClown,
-	EditorObjectID_KutsuKuribo,
-	EditorObjectID_Jugem,
-	EditorObjectID_Bunbun,
-	EditorObjectID_Koopa,
-	EditorObjectID_KoopaJr,
-	EditorObjectID_PSwitch,
-	EditorObjectID_PowBlock,
-	EditorObjectID_JumpStep,
-	EditorObjectID_Key,
-	EditorObjectID_Door,
-	EditorObjectID_TsutaBlock,
-	EditorObjectID_Yajirushi,
-	EditorObjectID_MiddleFlag,
-	EditorObjectID_Lift,
-	EditorObjectID_YouganLift,
-	EditorObjectID_Seesaw,
-	EditorObjectID_Saw,
-	EditorObjectID_Marumaru,
-	EditorObjectID_TogeKonbo,
-	EditorObjectID_BurankoCrane,
-	EditorObjectID_Burner,
-	EditorObjectID_KillerHoudai,
-	EditorObjectID_MagnumKiller,
-	EditorObjectID_Houdai,
-	EditorObjectID_Icicle,
-	EditorObjectID_Tornado,
-	EditorObjectID_OnOffSwitch,
-	EditorObjectID_OnOffBlock,
-	EditorObjectID_SnakeBlock,
-	EditorObjectID_FireBar,
-	EditorObjectID_Hanatari,
-	EditorObjectID_BeltConveyor,
-	EditorObjectID_SlopeConveyor,
-	EditorObjectID_Rail,
-	EditorObjectID_ToumeiDokan,
-	EditorObjectID_TogeBlock,
-	EditorObjectID_GroundBox_3W,
-	EditorObjectID_SuperHammer,
-	EditorObjectID_Arihei,
-	EditorObjectID_Fugumannen,
-	EditorObjectID_PackunPipe,
-	EditorObjectID_Pyonchu,
-	EditorObjectID_Hacchin,
-	EditorObjectID_Hopper,
-	EditorObjectID_Donketsu,
-	EditorObjectID_KoopaCar,
-	EditorObjectID_MagmaFish,
-	EditorObjectID_WarpBox,
-	EditorObjectID_WoodBox,
-	EditorObjectID_BikkuriBlock,
-	EditorObjectID_OrbitBlock,
-	EditorObjectID_Chikachika,
-	EditorObjectID_BellTree,
-	EditorObjectID_Trampoline,
-	EditorObjectID_Gabon,
-	EditorObjectID_Sambo,
-	EditorObjectID_PBlock,
-	EditorObjectID_DashBlock,
-	EditorObjectID_SpecialItemExtra,
-	EditorObjectID_KoopaMecha,
-	EditorObjectID_Lemmy,
-	EditorObjectID_Morton,
-	EditorObjectID_Larry,
-	EditorObjectID_Wendy,
-	EditorObjectID_Iggy,
-	EditorObjectID_Roy,
-	EditorObjectID_Ludwig,
-	EditorObjectID_BoxKiller,
-	EditorObjectID_BoxPropeller,
-	EditorObjectID_BoxKuribo,
-	EditorObjectID_BoxKillerPlayer,
-	EditorObjectID_BoxPow,
-	EditorObjectID_OnOffTrampoline,
-	EditorObjectID_MegaBros,
-	EditorObjectID_DokuKinoko,
-	EditorObjectID_NokonokoShell,
-	EditorObjectID_Killer,
-	EditorObjectID_Stone,
-	EditorObjectID_Kinopio,
-	EditorObjectID_Wing,
-	EditorObjectID_parachute,
-	EditorObjectID_WaterSpeed,
+	EditorObjectID_Ground,							//	Ground
+	EditorObjectID_slope_l30,						//	Gentle Slope
+	EditorObjectID_slope_l45,						//	Steep Slope
+	EditorObjectID_Dokan,							//	Pipe
+	EditorObjectID_Toge,							//	Spike
+	EditorObjectID_GroundMushroom,					//	Mushroom Platform
+	EditorObjectID_GroundBox,						//	Semi-Solid
+	EditorObjectID_Bridge,							//	Bridge
+	EditorObjectID_HatenaBlock,						//	Brick Block
+	EditorObjectID_RengaBlock,						//	? Block
+	EditorObjectID_HardBlock,						//	Hard Block
+	EditorObjectID_ClearBlock,						//	Kaizo Block
+	EditorObjectID_ChikuwaBlock,					//	Donut Block
+	EditorObjectID_OnpuBlock,						//	Note Block
+	EditorObjectID_KumoBlock,						//	Cloud Block
+	EditorObjectID_IceBlock,						//	Ice Block
+	EditorObjectID_Coin,							//	Coin
+	EditorObjectID_BigCoin,							//	10/30/50 Coin
+	EditorObjectID_PinkCoin,						//	Key Coin
+	EditorObjectID_SuperKinoko,						//	Super Mushroom
+	EditorObjectID_FireFlower,						//	Fire Flower
+	EditorObjectID_SuperStar,						//	Super Star
+	EditorObjectID_OneUpKinoko,						//	1-Up Mushroom
+	EditorObjectID_SpecialItem,						//	Style PowerUp 1
+	EditorObjectID_Kuribo,							//	Goomba
+	EditorObjectID_Nokonoko,						//	Koopa
+	EditorObjectID_Met,								//	Buzzy Bettle
+	EditorObjectID_TogeMet,							//	Spike Top
+	EditorObjectID_Togezo,							//	Spiny
+	EditorObjectID_Gesso,							//	Blooper
+	EditorObjectID_Pukupuku,						//	Cheep Cheep
+	EditorObjectID_Pakkun,							//	Piranha Plant
+	EditorObjectID_BlackPakkun,						//	Muncher
+	EditorObjectID_Dossun,							//	Thwomp
+	EditorObjectID_ChoroPoo,						//	Monty Mole
+	EditorObjectID_Poo,								//	Rocky Wrench
+	EditorObjectID_Bros,							//	Hammer Bro
+	EditorObjectID_Wanwan,							//	Chain-Chomp
+	EditorObjectID_SunMoon,							//	Sun/Moon
+	EditorObjectID_Hanachan,						//	Wiggler
+	EditorObjectID_Teresa,							//	Boo
+	EditorObjectID_Bubble,							//	Poboboo
+	EditorObjectID_Bombhei,							//	Bomb-Omb
+	EditorObjectID_Karon,							//	Dry Bones
+	EditorObjectID_FishBone,						//	Fish Bone
+	EditorObjectID_Kameck,							//	Kamek
+	EditorObjectID_KoopaClown,						//	Clown Car
+	EditorObjectID_KutsuKuribo,						//	Kuribo's Shoe
+	EditorObjectID_Jugem,							//	Lakitu
+	EditorObjectID_Bunbun,							//	Boom-Boom
+	EditorObjectID_Koopa,							//	Bowser
+	EditorObjectID_KoopaJr,							//	Bowser Jr.
+	EditorObjectID_PSwitch,							//	P-Switch
+	EditorObjectID_PowBlock,						//	POW Block
+	EditorObjectID_JumpStep,						//	Spring
+	EditorObjectID_Key,								//	Key
+	EditorObjectID_Door,							//	Door
+	EditorObjectID_TsutaBlock,						//	Vine ?
+	EditorObjectID_Yajirushi,						//	Arrow Sign
+	EditorObjectID_MiddleFlag,						//	Checkpoint
+	EditorObjectID_Lift,							//	Lift
+	EditorObjectID_YouganLift,						//	Lava Lift
+	EditorObjectID_Seesaw,							//	Seesaw
+	EditorObjectID_Saw,								//	Saw
+	EditorObjectID_Marumaru,						//	Bumper
+	EditorObjectID_TogeKonbo,						//	Skewer
+	EditorObjectID_BurankoCrane,					//	Swinging Claw
+	EditorObjectID_Burner,							//	Burner
+	EditorObjectID_KillerHoudai,					//	Bullet-Bill Launcher
+	EditorObjectID_MagnumKiller,					//	Bonzai-Bill
+	EditorObjectID_Houdai,							//	Cannon
+	EditorObjectID_Icicle,							//	Icicle
+	EditorObjectID_Tornado,							//	Twister
+	EditorObjectID_OnOffSwitch,						//	On/Off Switch
+	EditorObjectID_OnOffBlock,						//	On/Off Block
+	EditorObjectID_SnakeBlock,						//	Snake Block
+	EditorObjectID_FireBar,							//	Fire Bar
+	EditorObjectID_Hanatari,						//	One-Way Platform
+	EditorObjectID_BeltConveyor,					//	Conveyor Belt
+	EditorObjectID_SlopeConveyor,					//	Sloped Conveyor Belt
+	EditorObjectID_Rail,							//	Rail
+	EditorObjectID_ToumeiDokan,						//	Clear Pipe
+	EditorObjectID_TogeBlock,						//	Spike Block (3DW)
+	EditorObjectID_GroundBox_3W,					//	Semi-Solid (3DW)
+	EditorObjectID_SuperHammer,						//	Super Hammer
+	EditorObjectID_Arihei,							//	Ant Trooper
+	EditorObjectID_Fugumannen,						//	Porcupuffer
+	EditorObjectID_PackunPipe,						//	Piranha Creeper
+	EditorObjectID_Pyonchu,							//	Skipsqeak
+	EditorObjectID_Hacchin,							//	Stingby
+	EditorObjectID_Hopper,							//	Hop-Chop
+	EditorObjectID_Donketsu,						//	Bully
+	EditorObjectID_KoopaCar,						//	Car
+	EditorObjectID_MagmaFish,						//	Charvaargh ?
+	EditorObjectID_WarpBox,							//	Warp Box
+	EditorObjectID_WoodBox,							//	Crate
+	EditorObjectID_BikkuriBlock,					//	! Block
+	EditorObjectID_OrbitBlock,						//	Track Block ?
+	EditorObjectID_Chikachika,						//	Blinking Block
+	EditorObjectID_BellTree,						//	Tree
+	EditorObjectID_Trampoline,						//	Trampoline
+	EditorObjectID_Gabon,							//	Spike
+	EditorObjectID_Sambo,							//	Pokey
+	EditorObjectID_PBlock,							//	P-Block
+	EditorObjectID_DashBlock,						//	Dash Block
+	EditorObjectID_SpecialItemExtra,				//	Style PowerUp 2
+	EditorObjectID_KoopaMecha,						//	Mechakoopa
+	EditorObjectID_Lemmy,							//	Lemmy
+	EditorObjectID_Morton,							//	Morton
+	EditorObjectID_Larry,							//	Larry
+	EditorObjectID_Wendy,							//	Wendy
+	EditorObjectID_Iggy,							//	Iggy
+	EditorObjectID_Roy,								//	Roy
+	EditorObjectID_Ludwig,							//	Ludwig
+	EditorObjectID_BoxKiller,						//	Cannon Headdress (Bullet-Bill?)
+	EditorObjectID_BoxPropeller,					//	Propeller Headdress
+	EditorObjectID_BoxKuribo,						//	Goomba Headdress
+	EditorObjectID_BoxKillerPlayer,					//	Bullet-Bill Headdress (Cannon?)
+	EditorObjectID_BoxPow,							//	POW Headdress
+	EditorObjectID_OnOffTrampoline,					//	On/Off Trampoline
+	EditorObjectID_MegaBros,						//	Standalone Sledge Bro (Crashes)
+	EditorObjectID_DokuKinoko,						//	Standalone Rotten Mushroom (Crashes)
+	EditorObjectID_NokonokoShell,					//	Standalone Koopa Shell (Crashes)
+	EditorObjectID_Killer,							//	Standalone Bullet-Bill (Crashes)
+	EditorObjectID_Stone,							//	Stone (Crashes)
+	EditorObjectID_Kinopio,							//	Toad (Crashes)
+	EditorObjectID_Wing,							//	Wing?
+	EditorObjectID_parachute,						//	Parachute?
+	EditorObjectID_WaterSpeed,						//	Water Speed?
 };
 
 enum SoundEffectID : uint32 {
@@ -417,6 +418,7 @@ enum SoundEffectID : uint32 {
 	SoundEffectID_Mario02,							//	Super Mario Sunshine
 	SoundEffectID_Mario03,							//	Super Mario Kart
 	SoundEffectID_Filter,							//	Twisty Turny
+	SoundEffectID_Woozy,							//	???
 };
 
 enum PowerUpID : uint32 {

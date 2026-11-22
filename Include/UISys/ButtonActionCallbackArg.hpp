@@ -5,7 +5,7 @@
 #include <UISys/ViewPage.hpp>
 
 namespace UISys{
-	class ButtonActionCallbackArg {
+	struct ButtonActionCallbackArg {
 		UISys::ViewPage *viewPage;
 		Lp::UI::BtnPartsCtrl *btnPartsCtrl;
 		uint32 buttonIndex;
