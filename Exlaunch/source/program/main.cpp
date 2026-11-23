@@ -474,6 +474,20 @@ HOOK_DEFINE_TRAMPOLINE(patchExtraItemsIn2DRings) {
     }
 };
 
+HOOK_DEFINE_TRAMPOLINE(IndexTrampolineHook) {
+	static void Callback(void *x0) {
+		Orig(x0);
+		auto pPlaceIndex = exl::util::pointer_path::FollowSafe<s32, 0x2A93D88, 0x28 + (EditorObjectID_Stone << 3)>();
+		if (pPlaceIndex && *pPlaceIndex != 0x4B) {
+			*pPlaceIndex = 0x4B;
+		}
+		pPlaceIndex = exl::util::pointer_path::FollowSafe<s32, 0x2A93D88, 0x28 + (EditorObjectID_Kinopio << 3)>();
+		if (pPlaceIndex && *pPlaceIndex != 0x4B) {
+			*pPlaceIndex = 0x4B;
+		}
+	}
+};
+
 HOOK_DEFINE_INLINE(DebugHook) {
 	static void Callback(exl::hook::InlineCtx* ctx) {
 		sead::PtrArrayImpl* iconPtrArray = reinterpret_cast<sead::PtrArrayImpl*>(ctx->X[0]+0x998);
@@ -544,6 +558,9 @@ extern "C" void exl_main(void *x0, void *x1) {
 	codePatcher.Write<uint32>(0x8);
 	codePatcher.Seek(0x23D8610);
 	codePatcher.Write<uint32>(0xB);
+
+	// Stone Fix?
+	IndexTrampolineHook::InstallAtOffset(0x16AAC20);
 }
 
 extern "C" NORETURN void exl_exception_entry() {

@@ -244,7 +244,7 @@ enum EditorObjectID : uint32 {
 	EditorObjectID_slope_l30,						//	Gentle Slope
 	EditorObjectID_slope_l45,						//	Steep Slope
 	EditorObjectID_Dokan,							//	Pipe
-	EditorObjectID_Toge,							//	Spike
+	EditorObjectID_Toge,							//	Spike Block
 	EditorObjectID_GroundMushroom,					//	Mushroom Platform
 	EditorObjectID_GroundBox,						//	Semi-Solid
 	EditorObjectID_Bridge,							//	Bridge
@@ -297,7 +297,7 @@ enum EditorObjectID : uint32 {
 	EditorObjectID_JumpStep,						//	Spring
 	EditorObjectID_Key,								//	Key
 	EditorObjectID_Door,							//	Door
-	EditorObjectID_TsutaBlock,						//	Vine ?
+	EditorObjectID_TsutaBlock,						//	Vine
 	EditorObjectID_Yajirushi,						//	Arrow Sign
 	EditorObjectID_MiddleFlag,						//	Checkpoint
 	EditorObjectID_Lift,							//	Lift
@@ -322,8 +322,8 @@ enum EditorObjectID : uint32 {
 	EditorObjectID_SlopeConveyor,					//	Sloped Conveyor Belt
 	EditorObjectID_Rail,							//	Rail
 	EditorObjectID_ToumeiDokan,						//	Clear Pipe
-	EditorObjectID_TogeBlock,						//	Spike Block (3DW)
-	EditorObjectID_GroundBox_3W,					//	Semi-Solid (3DW)
+	EditorObjectID_TogeBlock,						//	Spike Block					(3DW)
+	EditorObjectID_GroundBox_3W,					//	Semi-Solid					(3DW)
 	EditorObjectID_SuperHammer,						//	Super Hammer
 	EditorObjectID_Arihei,							//	Ant Trooper
 	EditorObjectID_Fugumannen,						//	Porcupuffer
@@ -333,11 +333,11 @@ enum EditorObjectID : uint32 {
 	EditorObjectID_Hopper,							//	Hop-Chop
 	EditorObjectID_Donketsu,						//	Bully
 	EditorObjectID_KoopaCar,						//	Car
-	EditorObjectID_MagmaFish,						//	Charvaargh ?
+	EditorObjectID_MagmaFish,						//	Charvaargh
 	EditorObjectID_WarpBox,							//	Warp Box
 	EditorObjectID_WoodBox,							//	Crate
 	EditorObjectID_BikkuriBlock,					//	! Block
-	EditorObjectID_OrbitBlock,						//	Track Block ?
+	EditorObjectID_OrbitBlock,						//	Track Block
 	EditorObjectID_Chikachika,						//	Blinking Block
 	EditorObjectID_BellTree,						//	Tree
 	EditorObjectID_Trampoline,						//	Trampoline
@@ -354,21 +354,21 @@ enum EditorObjectID : uint32 {
 	EditorObjectID_Iggy,							//	Iggy
 	EditorObjectID_Roy,								//	Roy
 	EditorObjectID_Ludwig,							//	Ludwig
-	EditorObjectID_BoxKiller,						//	Cannon Headdress (Bullet-Bill?)
+	EditorObjectID_BoxKiller,						//	Cannon Headdress
 	EditorObjectID_BoxPropeller,					//	Propeller Headdress
 	EditorObjectID_BoxKuribo,						//	Goomba Headdress
-	EditorObjectID_BoxKillerPlayer,					//	Bullet-Bill Headdress (Cannon?)
+	EditorObjectID_BoxKillerPlayer,					//	Bullet-Bill Headdress
 	EditorObjectID_BoxPow,							//	POW Headdress
 	EditorObjectID_OnOffTrampoline,					//	On/Off Trampoline
-	EditorObjectID_MegaBros,						//	Standalone Sledge Bro (Crashes)
-	EditorObjectID_DokuKinoko,						//	Standalone Rotten Mushroom (Crashes)
-	EditorObjectID_NokonokoShell,					//	Standalone Koopa Shell (Crashes)
-	EditorObjectID_Killer,							//	Standalone Bullet-Bill (Crashes)
-	EditorObjectID_Stone,							//	Stone (Crashes)
-	EditorObjectID_Kinopio,							//	Toad (Crashes)
-	EditorObjectID_Wing,							//	Wing?
-	EditorObjectID_parachute,						//	Parachute?
-	EditorObjectID_WaterSpeed,						//	Water Speed?
+	EditorObjectID_MegaBros,						//	Standalone Sledge Bro		(Crashes in Vanilla)
+	EditorObjectID_DokuKinoko,						//	Standalone Rotten Mushroom	(Crashes in Vanilla)
+	EditorObjectID_NokonokoShell,					//	Standalone Koopa Shell		(Crashes in Vanilla)
+	EditorObjectID_Killer,							//	Standalone Bullet-Bill		(Crashes in Vanilla)
+	EditorObjectID_Stone,							//	Stone						(Crashes in Vanilla)
+	EditorObjectID_Kinopio,							//	Toad						(Crashes in Vanilla)
+	EditorObjectID_Wing,							//	Wing						(Crashes in Vanilla ?)
+	EditorObjectID_parachute,						//	Parachute					(Crashes in Vanilla ?)
+	EditorObjectID_WaterSpeed,						//	Water Rise Height			(Crashes in Vanilla ?)
 };
 
 enum SoundEffectID : uint32 {
