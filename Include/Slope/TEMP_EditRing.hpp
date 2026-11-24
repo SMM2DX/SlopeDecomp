@@ -26,9 +26,9 @@ namespace Slope {
 		Lp::UI::TextureInfo textureInfo;
 		Lp::Utl::TextureHolder textureHolder;
 		char _aa[0xEE0];
-		uint32 ringIndex;
-		int32 unk_1;
-		uint32 ringCount;
+		uint32 curRingIndex;
+		uint32 newRingIndex;
+		uint32 maxRingIndex;
 		int32* ringItemCountArray;
 		int32 unk_2;
 		Skin curSkin;
