@@ -14,4 +14,7 @@ using uint16	= unsigned short int;
 using int8		= char;
 using uint8		= unsigned char;
 
+#define ARRAY_LENGTH(ARRAY)				\
+	sizeof(ARRAY) / sizeof(ARRAY[0])
+
 #endif	//	BASIC_TYPES_HPP

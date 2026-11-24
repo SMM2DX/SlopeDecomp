@@ -33,6 +33,8 @@ namespace Slope {
 		SEAD_RTTI_OVERRIDE(EditActor, ActorBase)
 		~EditActor() override;
 
+		// sub_18 related to edit actor deletion?
+
 		virtual void sub_37();
 		virtual void sub_38();
 		virtual void sub_39();

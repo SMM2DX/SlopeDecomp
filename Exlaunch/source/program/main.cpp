@@ -384,23 +384,190 @@ void DisgustingTextureHolderTextureInfoPatch() {
 	codePatcher.BranchInst(0x18C8A78);
 }
 
-enum EditRingPage {
-    cEditRingPage_Terrain1 = 0,
-    cEditRingPage_Terrain2 = 1,
-    cEditRingPage_Items1   = 2,
-    cEditRingPage_Enemies1 = 3,
-    cEditRingPage_Enemies2 = 4,
-    cEditRingPage_Enemies3 = 5,
-    cEditRingPage_Enemies4 = 6,
-    cEditRingPage_Enemies5 = 7,
-    cEditRingPage_Gizmos1  = 8,
-    cEditRingPage_Gizmos2  = 9,
-    cEditRingPage_Gizmos3  = 10,
-    cEditRingPage_Gizmos4  = 11,
+/*
+static SoundEffectID* cModdedSoundEffectRingTable[] {
+	{
+		SoundEffectID_Shock,
+		SoundEffectID_Scream,
+		SoundEffectID_Laughter,
+		SoundEffectID_LoudLaughter,
+		SoundEffectID_Boo,
+	},
+	{
+		SoundEffectID_Cheer,
+		SoundEffectID_Baby,
+		SoundEffectID_Cracker,
+		SoundEffectID_Applause,
+		SoundEffectID_Incident,
+	},
+	{
+		SoundEffectID_Clatter,
+		SoundEffectID_Drama,
+		SoundEffectID_Kick,
+		SoundEffectID_Jump,
+		SoundEffectID_Honk,
+		SoundEffectID_Punch,
+	},
+	{
+		SoundEffectID_Whoopee,
+		SoundEffectID_Focus,
+		SoundEffectID_Glitch,
+		SoundEffectID_Uproar,
+		SoundEffectID_Discord,
+	},
+	{
+		SoundEffectID_Ding,
+		SoundEffectID_Bzzzt,
+		SoundEffectID_Glory,
+		SoundEffectID_Doom,
+		SoundEffectID_Admiration,
+		SoundEffectID_Anguish,
+	},
+	{
+		SoundEffectID_Fireworks,
+		SoundEffectID_Audience,
+		SoundEffectID_Scat,
+		SoundEffectID_Firecracker,
+		SoundEffectID_Ohayasi,
+		SoundEffectID_ElectricGuitar,
+		SoundEffectID_Filter,
+		SoundEffectID_Woozy,
+		SoundEffectID_Halo,
+	},
+	{
+		SoundEffectID_Calm,
+		SoundEffectID_Unrest,
+		SoundEffectID_Bonus,
+		SoundEffectID_Heartbeat,
+		SoundEffectID_Silence,
+	},
+	{
+		SoundEffectID_Boss,
+		SoundEffectID_LastBoss,
+		SoundEffectID_Mario03,
+		SoundEffectID_Mario01,
+		SoundEffectID_Mario02,
+		SoundEffectID_Mario00,
+	},
 };
+static EditorObjectID* cModded2DRingTable[] {
+	{
+		EditorObjectID_Ground,				//	Ground
+		EditorObjectID_slope_l45,			//	Steep Slope
+		EditorObjectID_slope_l30,			//	Gentle Slope
+		EditorObjectID_Dokan,				//	Pipe
+    	EditorObjectID_ToumeiDokan,			//	Clear Pipe
+		EditorObjectID_Toge,				//	Spike
+		EditorObjectID_GroundMushroom,		//	Mushroom Platform
+		EditorObjectID_GroundBox,			//	Semi-solid (Non-3DW)
+		EditorObjectID_Bridge,				//	Bridge
+	},
+	{
+		EditorObjectID_RengaBlock,			//	Question Block
+		EditorObjectID_HatenaBlock,			//	Brick Block
+		EditorObjectID_HardBlock,			//	Hard Block
+		EditorObjectID_ClearBlock,			//	Kaizo Block
+		EditorObjectID_ChikuwaBlock,		//	Donut Block
+		EditorObjectID_OnpuBlock,			//	Note Block
+		EditorObjectID_KumoBlock,			//	Cloud Block
+		EditorObjectID_IceBlock,			//	Ice Block
+	},
+	{
+		EditorObjectID_Coin,				//	Coin
+		EditorObjectID_10Coin,				//	10/30/50 Coin
+		EditorObjectID_PinkCoin,			//	Key Coin
+		EditorObjectID_SuperKinoko,			//	Super Mushroom
+		EditorObjectID_FireFlower,			//	Fire Flower
+		EditorObjectID_SpecialItem,			//	Style Power-Up 1
+		EditorObjectID_SpecialItemExtra,	//	Style Power-Up 2
+		//EditorObjectID_SuperHammer,		//	Super Hammer
+		EditorObjectID_SuperStar,			//	Super Star
+		EditorObjectID_OneUpKinoko,			//	1-Up Mushroom
+		EditorObjectID_KutsuKuribo,			//	Kuribo's Shoe
+	},
+	{
+		EditorObjectID_BoxKiller,			//	Cannon Headdress
+		EditorObjectID_BoxPropeller,		//	Propeller Headdress
+		EditorObjectID_BoxKuribo,			//	Goomba Headdress
+		EditorObjectID_BoxKillerPlayer,		//	Bullet-Bill Headdress
+		EditorObjectID_BoxPow,				//	POW Headdress
+	},
+};
+static EditorObjectID* cModded3DRingTable[] {
+	{
+		EditorObjectID_Kuribo,
+		EditorObjectID_Nokonoko,
+		EditorObjectID_Arihei,
+		EditorObjectID_Togezo,
+		EditorObjectID_Gesso,
+		EditorObjectID_Pukupuku,
+		EditorObjectID_Gabon,
+	},
+	{
+		EditorObjectID_Pyonchu,
+		EditorObjectID_Hacchin,
+		EditorObjectID_Pakkun,
+		EditorObjectID_PackunPipe,
+		EditorObjectID_Dossun,
+		EditorObjectID_Bros,
+		EditorObjectID_Hopper,
+	},
+	{
+		EditorObjectID_Teresa,
+		EditorObjectID_Bubble,
+		EditorObjectID_Bombhei,
+		EditorObjectID_Karon,
+		EditorObjectID_FishBone,
+		EditorObjectID_Kameck,
+		EditorObjectID_Sambo,
+	},
+	{
+		EditorObjectID_Koopa,
+		EditorObjectID_Bunbun,
+		EditorObjectID_MagmaFish,
+		EditorObjectID_Donketsu,
+		EditorObjectID_Fugumannen,
+		EditorObjectID_KoopaCar,
+	},
+	{
+		EditorObjectID_KillerHoudai,
+		EditorObjectID_MagnumKiller,
+		EditorObjectID_Icicle,
+		EditorObjectID_Tornado,
+		EditorObjectID_BikkuriBlock,
+		EditorObjectID_SnakeBlock,
+		EditorObjectID_BellTree,
+		EditorObjectID_BeltConveyor,
+		EditorObjectID_WoodBox,
+	},
+
+	{
+		EditorObjectID_Key,
+		EditorObjectID_Door,
+		EditorObjectID_WarpBox,
+		EditorObjectID_PBlock,
+		EditorObjectID_PSwitch,
+		EditorObjectID_PowBlock,
+		EditorObjectID_JumpStep,
+		EditorObjectID_Yajirushi,
+		EditorObjectID_MiddleFlag,
+	},
+	{
+		EditorObjectID_OnOffSwitch,
+		EditorObjectID_OnOffBlock,
+		EditorObjectID_TogeBlock,
+		EditorObjectID_OrbitBlock,
+		EditorObjectID_OnOffTrampoline,
+		EditorObjectID_Trampoline,
+		EditorObjectID_Lift,
+		EditorObjectID_DashBlock,
+		EditorObjectID_Chikachika,
+	},
+};
+*/
 
 // -- Modded rings --
-static const EditorObjectID cModdedTerrain1PartsTable[9] {
+static const EditorObjectID cModdedTerrain1PartsTable[] {
     EditorObjectID_Ground,
     EditorObjectID_slope_l45,
     EditorObjectID_slope_l30,
@@ -411,7 +578,7 @@ static const EditorObjectID cModdedTerrain1PartsTable[9] {
     EditorObjectID_GroundBox,
     EditorObjectID_Bridge,
 };
-static const EditorObjectID cModdedGizmos3PartsTable[8] {
+static const EditorObjectID cModdedGizmos3PartsTable[] {
     EditorObjectID_Lift,
     EditorObjectID_YouganLift,
     EditorObjectID_Seesaw,
@@ -420,8 +587,12 @@ static const EditorObjectID cModdedGizmos3PartsTable[8] {
     EditorObjectID_TogeKonbo,
     EditorObjectID_BurankoCrane,
     EditorObjectID_Stone,
+	EditorObjectID_Kinopio,
+	EditorObjectID_MegaBros,
+	EditorObjectID_NokonokoShell,
+	EditorObjectID_Killer,
 };
-static const EditorObjectID cModdedGizmos4PartsTable[11] {
+static const EditorObjectID cModdedGizmos4PartsTable[] {
     EditorObjectID_OnOffSwitch,
     EditorObjectID_OnOffBlock,
     EditorObjectID_SnakeBlock,
@@ -439,28 +610,28 @@ static const EditorObjectID cModdedGizmos4PartsTable[11] {
 static EditorObjectID currentPart;
 
 HOOK_DEFINE_TRAMPOLINE(patchExtraItemsIn2DRings) {
-    static EditorObjectID* Callback(EditRingPage ringEntry, u32 ringPartSlot) {
+    static EditorObjectID* Callback(int32 ringEntry, u32 ringPartSlot) {
         // Also, ensure to patch the size limit in the smm2 executable by making additional extraItems_ CodePatchers.
         // To add more entries, just add another case to this switch-case and add another modded parts table, just as above.
         switch (ringEntry) {
-            case cEditRingPage_Terrain1: {
-                if (ringPartSlot > (sizeof(cModdedTerrain1PartsTable) / sizeof(cModdedTerrain1PartsTable[0]))) {
+            case 0: {
+                if (ringPartSlot > ARRAY_LENGTH(cModdedTerrain1PartsTable)) {
                     currentPart = cModdedTerrain1PartsTable[0];
                 } else {
                     currentPart = cModdedTerrain1PartsTable[ringPartSlot];
                 }
                 return &currentPart;
             }
-            case cEditRingPage_Gizmos3: {
-               if (ringPartSlot > (sizeof(cModdedGizmos3PartsTable) / sizeof(cModdedGizmos3PartsTable[0]))) {
+            case 10: {
+               if (ringPartSlot > ARRAY_LENGTH(cModdedGizmos3PartsTable)) {
                     currentPart = cModdedGizmos3PartsTable[0];
                 } else {
                     currentPart = cModdedGizmos3PartsTable[ringPartSlot];
                 }
                 return &currentPart;
             }
-            case cEditRingPage_Gizmos4: {
-              if (ringPartSlot > (sizeof(cModdedGizmos4PartsTable) / sizeof(cModdedGizmos4PartsTable[0]))) {
+            case 11: {
+              if (ringPartSlot > ARRAY_LENGTH(cModdedGizmos4PartsTable)) {
                     currentPart = cModdedGizmos4PartsTable[0];
                 } else {
                     currentPart = cModdedGizmos4PartsTable[ringPartSlot];
@@ -478,12 +649,12 @@ HOOK_DEFINE_TRAMPOLINE(IndexTrampolineHook) {
 	static void Callback(void *x0) {
 		Orig(x0);
 		auto pPlaceIndex = exl::util::pointer_path::FollowSafe<s32, 0x2A93D88, 0x28 + (EditorObjectID_Stone << 3)>();
-		if (pPlaceIndex && *pPlaceIndex != 0x4B) {
-			*pPlaceIndex = 0x4B;
+		if (pPlaceIndex && *pPlaceIndex != SpriteObjectID_Stone) {
+			*pPlaceIndex = SpriteObjectID_Stone;
 		}
 		pPlaceIndex = exl::util::pointer_path::FollowSafe<s32, 0x2A93D88, 0x28 + (EditorObjectID_Kinopio << 3)>();
-		if (pPlaceIndex && *pPlaceIndex != 0x4B) {
-			*pPlaceIndex = 0x4B;
+		if (pPlaceIndex && *pPlaceIndex != SpriteObjectID_Toad) {
+			*pPlaceIndex = SpriteObjectID_Toad;
 		}
 	}
 };
@@ -550,14 +721,14 @@ extern "C" void exl_main(void *x0, void *x1) {
 	codePatcher.Seek(0x017A603C); // Prevent indexing edit song type arrays
 	codePatcher.Write(0xF9400149);
 
-	// Dom/Glimbo/Captain Ring patch
+	// Ring patch
 	patchExtraItemsIn2DRings::InstallAtOffset(0x1922B20);
 	codePatcher.Seek(0x23D85E4);
-	codePatcher.Write<uint32>(0x9);
+	codePatcher.Write<uint32>(ARRAY_LENGTH(cModdedTerrain1PartsTable));
 	codePatcher.Seek(0x23D860C);
-	codePatcher.Write<uint32>(0x8);
+	codePatcher.Write<uint32>(ARRAY_LENGTH(cModdedGizmos3PartsTable));
 	codePatcher.Seek(0x23D8610);
-	codePatcher.Write<uint32>(0xB);
+	codePatcher.Write<uint32>(ARRAY_LENGTH(cModdedGizmos4PartsTable));
 
 	// Stone Fix?
 	IndexTrampolineHook::InstallAtOffset(0x16AAC20);

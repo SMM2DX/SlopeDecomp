@@ -13,6 +13,7 @@
 
 #include <Slope/CustomEnums.hpp>
 
+
 namespace Slope {
 	#ifndef		SLOPE_EDITRING_HPP
 	#define		SLOPE_EDITRING_HPP
@@ -31,7 +32,10 @@ namespace Slope {
 		int32* ringItemCountArray;
 		int32 unk_2;
 		Skin curSkin;
-		char _2[0x24];
+		char _2a[0x4];
+		SceneSet curSceneSet;
+		SceneHour curSceneHour;
+		char _2[0x18];
 		int32 isSoundEffects;
 		char _3[0x50];
 		temp_9_t* resFile;

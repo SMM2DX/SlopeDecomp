@@ -249,7 +249,7 @@ enum EditorObjectID : uint32 {
 	EditorObjectID_GroundBox,						//	Semi-Solid
 	EditorObjectID_Bridge,							//	Bridge
 	EditorObjectID_HatenaBlock,						//	Brick Block
-	EditorObjectID_RengaBlock,						//	? Block
+	EditorObjectID_RengaBlock,						//	Question Block
 	EditorObjectID_HardBlock,						//	Hard Block
 	EditorObjectID_ClearBlock,						//	Kaizo Block
 	EditorObjectID_ChikuwaBlock,					//	Donut Block
@@ -257,13 +257,13 @@ enum EditorObjectID : uint32 {
 	EditorObjectID_KumoBlock,						//	Cloud Block
 	EditorObjectID_IceBlock,						//	Ice Block
 	EditorObjectID_Coin,							//	Coin
-	EditorObjectID_BigCoin,							//	10/30/50 Coin
+	EditorObjectID_10Coin,							//	10/30/50 Coin
 	EditorObjectID_PinkCoin,						//	Key Coin
 	EditorObjectID_SuperKinoko,						//	Super Mushroom
 	EditorObjectID_FireFlower,						//	Fire Flower
 	EditorObjectID_SuperStar,						//	Super Star
 	EditorObjectID_OneUpKinoko,						//	1-Up Mushroom
-	EditorObjectID_SpecialItem,						//	Style PowerUp 1
+	EditorObjectID_SpecialItem,						//	Style Power-Up 1
 	EditorObjectID_Kuribo,							//	Goomba
 	EditorObjectID_Nokonoko,						//	Koopa
 	EditorObjectID_Met,								//	Buzzy Bettle
@@ -282,12 +282,12 @@ enum EditorObjectID : uint32 {
 	EditorObjectID_Hanachan,						//	Wiggler
 	EditorObjectID_Teresa,							//	Boo
 	EditorObjectID_Bubble,							//	Poboboo
-	EditorObjectID_Bombhei,							//	Bomb-Omb
+	EditorObjectID_Bombhei,							//	Bob-omb
 	EditorObjectID_Karon,							//	Dry Bones
 	EditorObjectID_FishBone,						//	Fish Bone
-	EditorObjectID_Kameck,							//	Kamek
+	EditorObjectID_Kameck,							//	Magikoopa
 	EditorObjectID_KoopaClown,						//	Clown Car
-	EditorObjectID_KutsuKuribo,						//	Kuribo's Shoe
+	EditorObjectID_KutsuKuribo,						//	Kuribo's Shoe / Yoshi
 	EditorObjectID_Jugem,							//	Lakitu
 	EditorObjectID_Bunbun,							//	Boom-Boom
 	EditorObjectID_Koopa,							//	Bowser
@@ -336,7 +336,7 @@ enum EditorObjectID : uint32 {
 	EditorObjectID_MagmaFish,						//	Charvaargh
 	EditorObjectID_WarpBox,							//	Warp Box
 	EditorObjectID_WoodBox,							//	Crate
-	EditorObjectID_BikkuriBlock,					//	! Block
+	EditorObjectID_BikkuriBlock,					//	Exclamation Block
 	EditorObjectID_OrbitBlock,						//	Track Block
 	EditorObjectID_Chikachika,						//	Blinking Block
 	EditorObjectID_BellTree,						//	Tree
@@ -345,7 +345,7 @@ enum EditorObjectID : uint32 {
 	EditorObjectID_Sambo,							//	Pokey
 	EditorObjectID_PBlock,							//	P-Block
 	EditorObjectID_DashBlock,						//	Dash Block
-	EditorObjectID_SpecialItemExtra,				//	Style PowerUp 2
+	EditorObjectID_SpecialItemExtra,				//	Style Power-Up 2
 	EditorObjectID_KoopaMecha,						//	Mechakoopa
 	EditorObjectID_Lemmy,							//	Lemmy
 	EditorObjectID_Morton,							//	Morton
@@ -368,7 +368,8 @@ enum EditorObjectID : uint32 {
 	EditorObjectID_Kinopio,							//	Toad						(Crashes in Vanilla)
 	EditorObjectID_Wing,							//	Wing						(Crashes in Vanilla ?)
 	EditorObjectID_parachute,						//	Parachute					(Crashes in Vanilla ?)
-	EditorObjectID_WaterSpeed,						//	Water Rise Height			(Crashes in Vanilla ?)
+	EditorObjectID_WaterSpeed,						//	Liquid Rise Height			(Crashes in Vanilla ?)
+	EditorObjectID_SIZE,
 };
 
 enum SoundEffectID : uint32 {
@@ -425,13 +426,149 @@ enum PowerUpID : uint32 {
 	PowerUpID_DekaKinoko,							//	Big Mushroom
 	PowerUpID_SuperKonoha,							//	Super Leaf
 	PowerUpID_MantleWing,							//	Cape Feather
-	PowerUpID_PowerUpID_PropellerKinoko,			//	Propeller Mushroom
+	PowerUpID_PropellerKinoko,						//	Propeller Mushroom
 	PowerUpID_SuperBell,							//	Super Bell
 	PowerUpID_KinokoUSA,							//	SMB2 Mushroom
 	PowerUpID_FrogSuit,								//	Frog Suit
 	PowerUpID_PowerBalloon,							//	Power Balloon
 	PowerUpID_SuperDonguri,							//	Super Acorn
 	PowerUpID_BoomerangFlower,						//	Boomerang Flower
+};
+
+enum SpriteObjectID : uint32 {
+	SpriteObjectID_Goomba,//	Goomba
+	SpriteObjectID_Koopa,//	Koopa
+	SpriteObjectID_Piranha,//	Piranha Plant
+	SpriteObjectID_HammerBro,//	Hammer Bro
+	SpriteObjectID_BrickBlock,//	Brick Block
+	SpriteObjectID_QuestionBlock,//	Question Block
+	SpriteObjectID_HardBlock,//	Hard Block
+	SpriteObjectID_Ground,//	Ground
+	SpriteObjectID_Coin,//	Coin
+	SpriteObjectID_Pipe,//	Pipe
+	SpriteObjectID_Spring,//	Spring
+	SpriteObjectID_Lift,//	Lift
+	SpriteObjectID_Thwomp,//	Thwomp
+	SpriteObjectID_BillBlaster,//	Bullet-Bill Launcher
+	SpriteObjectID_MushroomPlatform,//	Mushroom Platform
+	SpriteObjectID_Bobomb,//	Bob-omb
+	SpriteObjectID_Semisolid2D,//	Semi-Solid
+	SpriteObjectID_Bridge,//	Bridge
+	SpriteObjectID_PSwitch,//	P-Switch
+	SpriteObjectID_POWBlock,//	POW Block
+	SpriteObjectID_SuperMushroom,//	Super Mushroom
+	SpriteObjectID_DonutBlock,//	Donut Block
+	SpriteObjectID_CloudBlock,//	Cloud Block
+	SpriteObjectID_NoteBlock,//	Note Block
+	SpriteObjectID_FireBar,//	Fire Bar
+	SpriteObjectID_Spiny,//	Spiny
+	SpriteObjectID_GoalGround,//	Goal Ground
+	SpriteObjectID_GoalPole,//	Goal Pole
+	SpriteObjectID_BuzzyBeetle,//	Buzzy Beetle
+	SpriteObjectID_HiddenBlock,//	Kaizo Block
+	SpriteObjectID_Lakitu,//	Lakitu
+	SpriteObjectID_LakituCloud,//	Lakitu Cloud
+	SpriteObjectID_BanziBill,//	Banzai Bill
+	SpriteObjectID_LifeMushroom,//	1-Up Mushroom
+	SpriteObjectID_FireFlower,//	Fire Flower
+	SpriteObjectID_SuperStar,//	Super Star
+	SpriteObjectID_LavaLift,//	Lava Lift
+	SpriteObjectID_StartGround,//	Start Ground
+	SpriteObjectID_StartSignboard,//	Start Sign
+	SpriteObjectID_Magikoopa,//	Magikoopa
+	SpriteObjectID_SpikeTop,//	Spike-Top
+	SpriteObjectID_Boo,//	Boo
+	SpriteObjectID_KoopaClownCar,//	Clown Car
+	SpriteObjectID_SpikeTrap,//	Spike Block
+	SpriteObjectID_SpecialItem1,//	Style Power-Up 1
+	SpriteObjectID_ShoeorYoshiEgg,//	Kuribo's Shoe / Yoshi
+	SpriteObjectID_DryBones,//	Dry Bones
+	SpriteObjectID_Cannon,//	Cannon
+	SpriteObjectID_Blooper,//	Blooper
+	SpriteObjectID_CastleBridge,//	Castle Bridge
+	SpriteObjectID_HopChops,//	Hop-Chop
+	SpriteObjectID_Skipsqueak,//	SkipSqueak
+	SpriteObjectID_Wiggler,//	Wiggler
+	SpriteObjectID_Conveyor,//	Conveyor
+	SpriteObjectID_Burner,//	Burner
+	SpriteObjectID_WarpDoor,//	Door
+	SpriteObjectID_CheepCheep,//	Cheep Cheep
+	SpriteObjectID_Muncher,//	Muncher
+	SpriteObjectID_RockyWrench,//	Rocky Wrench
+	SpriteObjectID_Track,//	Track
+	SpriteObjectID_LavaBubble,//	Podoboo
+	SpriteObjectID_ChainChomp,//	Chain Chomp
+	SpriteObjectID_Bowser,//	Bowser
+	SpriteObjectID_IceBlock,//	Ice Block
+	SpriteObjectID_Vine,//	Vine
+	SpriteObjectID_Stingby,//	Vine
+	SpriteObjectID_ArrowSign,//	Arrow Sign
+	SpriteObjectID_OneWayWall,//	One-Way Platform
+	SpriteObjectID_Grinder,//	Saw
+	SpriteObjectID_Player,//	Player
+	SpriteObjectID_BigCoin,//	10/30/50 Coin
+	SpriteObjectID_3DWSemisolid,//	Semi-Solid						(3DW)
+	SpriteObjectID_KoopaTroopaCar,//	Koopa Car
+	SpriteObjectID_Toad,//	Toad
+	SpriteObjectID_Spike,//	Spike
+	SpriteObjectID_Stone,//	Stone
+	SpriteObjectID_Twister,//	Twister
+	SpriteObjectID_Boomboom,//	Boom-Boom
+	SpriteObjectID_Pokey,//	Pokey
+	SpriteObjectID_PBlock,//	P-Block
+	SpriteObjectID_DashBlock,//	Dash Block
+	SpriteObjectID_SpecialItem2,//	Style Power-Up 2
+	SpriteObjectID_Bumper,//	Bumper
+	SpriteObjectID_Skewer,//	Skewer
+	SpriteObjectID_SnakeBlock,//	Snake Block
+	SpriteObjectID_TrackBlock,//	Track Block
+	SpriteObjectID_Charvaargh,//	Charvaargh
+	SpriteObjectID_GentleSlope,//	Gentle Slope
+	SpriteObjectID_SteepSlope,//	Steep Slope
+	SpriteObjectID_AutoscrollCamera,//	Autoscroll Camera
+	SpriteObjectID_Checkpoint,//	Checkpoint
+	SpriteObjectID_Seesaw,//	Seesaw
+	SpriteObjectID_PinkCoin,//	Key Coin
+	SpriteObjectID_ClearPipe,//	Clear Pipe
+	SpriteObjectID_ConveyorBeltSlope,//	Sloped Conveyor Belt
+	SpriteObjectID_Key,//	Key
+	SpriteObjectID_AntTrooper,//	Ant-Trooper
+	SpriteObjectID_WarpBox,//	Warp Box
+	SpriteObjectID_BowserJr,//	Bowser Jr.
+	SpriteObjectID_ONOFFSwitch,//	On/Off Switch
+	SpriteObjectID_DottedLineBlock,//	On/Off Block
+	SpriteObjectID_LavaEditor,//	Liquid Rise Height				(?)
+	SpriteObjectID_MontyMole,//	Monty Mole
+	SpriteObjectID_FishBone,//	Fish Bone
+	SpriteObjectID_AngrySun,//	Sun/Moon
+	SpriteObjectID_SwingingClaw,//	Swinging Claw
+	SpriteObjectID_Tree,//	Tree
+	SpriteObjectID_PiranhaCreeper,//	Piranha Creeper
+	SpriteObjectID_BlinkingBlock,//	Blinking Block
+	SpriteObjectID_SoundEffect,//	Sound Effect
+	SpriteObjectID_SpikeBlock,//	Spike Block						(3DW)
+	SpriteObjectID_Mechakoopa,//	Mechakoopa
+	SpriteObjectID_Crate,//	Crate
+	SpriteObjectID_MushroomTrampoline,//	Trampoline
+	SpriteObjectID_Porcupuffer,//	Porcupuffer
+	SpriteObjectID_GoalToadette,//	Goal Toadette
+	SpriteObjectID_SpecialItemEX,//	Super Hammer					(?)
+	SpriteObjectID_Bully,//	Bully
+	SpriteObjectID_Icicle,//	Icicle
+	SpriteObjectID_ExclamationBlock,//	Exclamation Block
+	SpriteObjectID_Lemmy,//	Lemmy
+	SpriteObjectID_Morton,//	Morton
+	SpriteObjectID_Larry,//	Larry
+	SpriteObjectID_Wendy,//	Wendy
+	SpriteObjectID_Iggy,//	Iggy
+	SpriteObjectID_Roy,//	Roy
+	SpriteObjectID_Ludwig,//	Ludwig
+	SpriteObjectID_CannonBox,//	Cannon Headdress
+	SpriteObjectID_PropellerBox,//	Propeller Headdress
+	SpriteObjectID_GoombaMask,//	Goomba Headdress
+	SpriteObjectID_BulletBillMask,//	Bullet-Bill Headdress
+	SpriteObjectID_RedPOWBox,//	Red POW Block					(?)
+	SpriteObjectID_ONOFFTrampoline,//	On/Off Trampoline
 };
 
 enum LocalCourseLocation : uint32 {
