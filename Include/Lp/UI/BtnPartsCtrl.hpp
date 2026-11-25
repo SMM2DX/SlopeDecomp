@@ -8,6 +8,17 @@ namespace Lp::UI{
 	#ifndef		LP_UI_BTNPARTSCTRL_HPP
 	#define		LP_UI_BTNPARTSCTRL_HPP
 	struct BtnPartsCtrl : public PartsCtrl {
+		virtual void isSelect();
+		virtual void isDecide();
+		virtual void isDecideTrig();
+		virtual void isEndDecide();
+		virtual void forceDecide();
+		virtual void cancelDecide();
+		virtual void onCursorHandler();
+		virtual void onCursorKeyHandler();
+		virtual void onPointHandler();
+		virtual void onKeyHandler();
+		
 		struct BtnEventArg{};
 		struct DisplayCursorEvent{};
 

@@ -15,6 +15,8 @@
 #include <Slope/UIEditMainPage.hpp>
 #include <Slope/UIEditLeftMenuSeq.hpp>
 
+#include <TEMP_ChangeHourBtn.hpp>
+
 struct ButtonNameStruct {
 	void *__vftable;
 	const char *mStringTop;
@@ -263,13 +265,20 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_67) {
 };
 
 HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_68) {
-	static void Callback(UISys::SequenceBase *thisPtr, UISys::ButtonActionCallbackArg *buttonActionCallbackArg) {
+	static void Callback(Slope::UIEditLeftMenuSeq *thisPtr, UISys::ButtonActionCallbackArg *buttonActionCallbackArg) {
 		using sub_71018C7C10_t = void (void *);
 		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
 
 		//Logging.Log("[UIEditLeftMenuSeq_sub_68] %u", buttonActionCallbackArg->buttonIndex);
 		
 		if (buttonActionCallbackArg->buttonIndex == L_LeftParts_00__L_ChangeHourBtn_00) {
+			TEMP_ChangeHourBtn* changeHourButton = (TEMP_ChangeHourBtn*)thisPtr->parentViewPage->getButton(L_LeftParts_00__L_ChangeHourBtn_00);
+			uint64 offset = (uint64)exl::util::modules::GetSelfStart();
+			uint64 location = (uint64)&changeHourButton;
+			Logging.Log("[UIEditLeftMenuSeq_sub_68]	sub_37: 0x%X", location-offset);
+			int64 usedForHour = changeHourButton->usedForHour;
+			Logging.Log("[UIEditLeftMenuSeq_sub_68]	usedForHour: 0x%X", usedForHour);
+
 			temp_9_t *temp_9 = thisPtr->temp_09;
 
 			if (temp_9) { // temp_9.checkDerivedRuntimeTypeInfo(Slope::EditUIClasssDerived::getRuntimeTypeInfoStatic(void)::typeInfo)

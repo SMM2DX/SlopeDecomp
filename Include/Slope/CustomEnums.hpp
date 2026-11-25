@@ -173,6 +173,7 @@ enum ButtonIndex : uint32 {
 	L_RightParts_00__L_BdRightSet_00				=	0x65,
 	L_PullBtnSlider_00								=	0x66,
 	L_BdEdit_00										=	0x67,
+	ButtonIndex_MAX									=	0x68,
 };
 
 enum TilemapIndex : uint32 {						//	Not Exhaustive.

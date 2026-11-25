@@ -8,6 +8,25 @@ namespace Lp::UI{
 	#ifndef		LP_UI_PARTSCTRL_HPP
 	#define		LP_UI_PARTSCTRL_HPP
 	struct PartsCtrl : public Control {
+		virtual void isFadeIn();
+		virtual void isFadeOut();
+		virtual void sub_15();
+		virtual void playLoopAnim();
+		virtual void playCurrentLoopAnim();
+		virtual void stopLoopAnim();
+		virtual void stopCurrentLoopAnim();
+		virtual void playLoopRandomAnim();
+		virtual void stopLoopRandomAnim();
+		virtual void playLoopAnimForIn();
+		virtual void playWaitAnim();
+		virtual void playCurrentWaitAnim();
+		virtual void stopWaitAnim();
+		virtual void stopCurrentWaitAnim();
+		virtual void onCreateClonePartsCtrlInner();
+		virtual void onInitializeXLinkInner();
+		virtual void onInitializeXLinkInnerOld();
+		virtual void onInitializedChild();
+
 		int64 qword_1B0;					//	0x1B0
 		int64 qword_1B8;					//	0x1B8
 		int64 qword_1C0;					//	0x1C0
