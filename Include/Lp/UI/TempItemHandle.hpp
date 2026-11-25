@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Lp/UI/Handle.hpp>
+
 namespace Lp::UI {
 	template <typename T> struct ID {
 		virtual char* getName() const;
@@ -95,7 +97,9 @@ namespace Lp::UI {
 		IPID_cIsCaptureDoneOnDraw,
 		IPID_cTotalLength,
 	};
-	struct ItemPropertyID : public ID<ItemPropertyID_> {};
+	struct ItemPropertyID : public ID<ItemPropertyID_> {
+		//	0000007102945E28
+	};
 
 	enum ItemMethodID_ : int {
 		IMID_cAdjustPaneSizeToTextSize,
@@ -121,7 +125,9 @@ namespace Lp::UI {
 		IMID_cRequestAlign,
 		IMID_cRequestScroll,
 	};
-	struct ItemMethodID : public ID<ItemMethodID_> {};
+	struct ItemMethodID : public ID<ItemMethodID_> {
+		//	00000071029682B8
+	};
 
 	enum AnimPropertyID_ : int {
 		APID_cTargetName,
@@ -148,7 +154,9 @@ namespace Lp::UI {
 		APID_cStopRate,
 		APID_cBeatCount,
 	};
-	struct AnimPropertyID : public ID<AnimPropertyID_> {};
+	struct AnimPropertyID : public ID<AnimPropertyID_> {
+		//	0000007102965D20
+	};
 
 	enum AnimMethodID_ : int {
 		AMID_cTargetName,
@@ -175,7 +183,9 @@ namespace Lp::UI {
 		AMID_cStopRate,
 		AMID_cBeatCount,
 	};
-	struct AnimMethodID : public ID<AnimMethodID_> {};
+	struct AnimMethodID : public ID<AnimMethodID_> {
+		//	0000007102965DA0
+	};
 
 	struct TempItemHandleSubClass {
 		virtual void sub_1();
@@ -185,8 +195,9 @@ namespace Lp::UI {
 
 	#ifndef		LP_UI_TEMPITEMHANDLE_HPP
 	#define		LP_UI_TEMPITEMHANDLE_HPP
-	struct TempItemHandle {
-		virtual ~TempItemHandle();
+	struct TempItemHandle : public Handle {
+		//	0000007102827618
+		~TempItemHandle() override;
 		virtual void sub_3();
 		virtual void getSetter(ID<int>);
 		virtual void getGetter(ID<int>);

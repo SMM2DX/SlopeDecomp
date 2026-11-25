@@ -15,7 +15,8 @@
 //#include <OLD/Lp/UI/Impl/LayoutResourceAccessorHolder.hpp>
 
 namespace Lp::UI {
-    struct PageHolder /*: public sead::IDisposer*/ {
+    struct PageHolder : public sead::IDisposer {
+        //  00000071028378F0
         /*struct HeapSet {
             sead::ListNode mListNode;
             sead::ExpHeap* mHeap;

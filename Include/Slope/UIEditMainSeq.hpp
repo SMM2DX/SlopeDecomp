@@ -8,7 +8,8 @@ namespace Slope {
 	#ifndef		SLOPE_UIEDITMAINSEQ_HPP
 	#define		SLOPE_UIEDITMAINSEQ_HPP
 	class UIEditMainSeq : public UISequenceBase {
-		SEAD_RTTI_OVERRIDE(UIEditMainSeq, UISys::SequenceBase)
+		//	000000710298A7C8
+		SEAD_RTTI_OVERRIDE(UIEditMainSeq, UISequenceBase)
 		~UIEditMainSeq() override;
 
 		char _0[0x10];

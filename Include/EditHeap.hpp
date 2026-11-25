@@ -10,7 +10,9 @@
 #ifndef		EDITHEAP_HPP
 #define		EDITHEAP_HPP
 struct EditHeap {
+	//	000000710286D8B0
 	virtual ~EditHeap();
+
 	sead::IDisposer disposer;				//	0x008
 	SpriteObjectID array[421];				//	0x028	//	even indexes map to actual objects, odd indexes... ???
 	char _Z[4];								//	0x6BC	//	why is this not just lumped in with the above ???

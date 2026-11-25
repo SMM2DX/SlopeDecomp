@@ -8,6 +8,7 @@ namespace Lp::UI{
 	#ifndef		LP_UI_DELEGATEJOB_HPP
 	#define		LP_UI_DELEGATEJOB_HPP
 	struct DelegateJob : public Job {
+		//	0000007102837820 (?)
 		~DelegateJob() override;
 		virtual void onProcess();
 

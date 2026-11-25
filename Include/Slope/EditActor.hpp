@@ -30,6 +30,7 @@ namespace Slope {
 	#ifndef		SLOPE_EDITACTOR_HPP
 	#define		SLOPE_EDITACTOR_HPP
 	class EditActor : public ActorBase {
+		//	000000710286D0E8
 		SEAD_RTTI_OVERRIDE(EditActor, ActorBase)
 		~EditActor() override;
 

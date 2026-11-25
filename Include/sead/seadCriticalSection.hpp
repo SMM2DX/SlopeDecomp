@@ -8,6 +8,7 @@ namespace sead {
 	#ifndef		SEAD_CRITICALSECTION_HPP
 	#define		SEAD_CRITICALSECTION_HPP
 	struct CriticalSection : sead::IDisposer {
+		//	00000071027D8B48
 		~CriticalSection() override;
 		#ifndef		IDACLANG_DESTRUCTOR_FIX
 		void destructor_2() override;

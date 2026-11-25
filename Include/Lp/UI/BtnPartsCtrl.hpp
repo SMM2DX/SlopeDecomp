@@ -8,6 +8,9 @@ namespace Lp::UI{
 	#ifndef		LP_UI_BTNPARTSCTRL_HPP
 	#define		LP_UI_BTNPARTSCTRL_HPP
 	struct BtnPartsCtrl : public PartsCtrl {
+		//	0000007102837B28
+		SEAD_RTTI_OVERRIDE(BtnPartsCtrl, PartsCtrl);
+		~BtnPartsCtrl() override;
 		virtual void isSelect();
 		virtual void isDecide();
 		virtual void isDecideTrig();

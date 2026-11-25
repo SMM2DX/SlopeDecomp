@@ -5,6 +5,7 @@
 #ifndef		ACTOR_HPP
 #define		ACTOR_HPP
 class Actor : public ActorBase {
+	//	0000007102851FE8
 	SEAD_RTTI_OVERRIDE(Actor, ActorBase)
 	~Actor() override;
 

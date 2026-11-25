@@ -19,6 +19,7 @@ namespace UISys {
 	#ifndef		UISYS_SEQUENCEBASE_HPP
 	#define		UISYS_SEQUENCEBASE_HPP
 	class SequenceBase {
+		//	00000071029F7C48
 		SEAD_RTTI_BASE(SequenceBase)
 		virtual ~SequenceBase();
 		virtual void sub_5();	// if ???????? and sub_31() then sub_22()

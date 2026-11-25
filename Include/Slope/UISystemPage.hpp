@@ -8,6 +8,7 @@ namespace Slope {
 	#ifndef		SLOPE_UISYSTEMPAGE_HPP
 	#define		SLOPE_UISYSTEMPAGE_HPP
 	class UISystemPage : public Slope::UIPageBase {
+		//	00000071029F2E28
 		SEAD_RTTI_OVERRIDE(UISystemPage, Slope::UIPageBase)
 		~UISystemPage() override;
 	};

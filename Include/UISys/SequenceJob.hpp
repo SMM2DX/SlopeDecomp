@@ -8,6 +8,7 @@ namespace UISys{
 	#ifndef		UISYS_SEQUENCEJOB_HPP
 	#define		UISYS_SEQUENCEJOB_HPP
 	class SequenceJob {
+		//	00000071029869E8
 		virtual void invoke();
 		virtual void clone();
 		virtual void isNoDummy();

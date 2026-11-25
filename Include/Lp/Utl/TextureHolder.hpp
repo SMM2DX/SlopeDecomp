@@ -20,6 +20,9 @@ namespace Lp::Utl{
 	#ifndef		LP_UI_TEXTUREHOLDER_HPP
 	#define		LP_UI_TEXTUREHOLDER_HPP
 	struct TextureHolder{
+		//	0000007102968220
+		virtual ~TextureHolder();
+		
 		char _0[0x20];
 		bool bool_20;
 		long long int qword_28;

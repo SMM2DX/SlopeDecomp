@@ -6,6 +6,7 @@
 #ifndef		ACTORBASE_HPP
 #define		ACTORBASE_HPP
 class ActorBase {
+	//	00000071028522E0
 	SEAD_RTTI_BASE(ActorBase)
 	virtual char* getClassName();
 	virtual ~ActorBase();

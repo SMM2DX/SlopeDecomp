@@ -5,6 +5,7 @@
 #ifndef		PLAYEROBJECT_HPP
 #define		PLAYEROBJECT_HPP
 class PlayerObject : public Actor {
+	//	0000007102954498
 	SEAD_RTTI_OVERRIDE(PlayerObject, Actor)
 	~PlayerObject() override;
 

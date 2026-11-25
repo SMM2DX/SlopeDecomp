@@ -6,6 +6,7 @@ namespace Lp::UI{
 	#ifndef		LP_UI_JOB_HPP
 	#define		LP_UI_JOB_HPP
 	struct Job {
+		//	00000071028377F8
 		virtual ~Job();
 
 		int64 qword_00;

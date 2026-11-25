@@ -10,6 +10,7 @@ namespace Slope {
 	#ifndef		SLOPE_ENEMYUBER_HPP
 	#define		SLOPE_ENEMYUBER_HPP
 	class EnemyUber : public Actor {
+		//	00000071029147E0
 		SEAD_RTTI_OVERRIDE(EnemyUber, Actor)
 		~EnemyUber() override;
 

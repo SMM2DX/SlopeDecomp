@@ -5,6 +5,7 @@
 
 namespace UISys{
 	class SequenceMgr : public Lp::Sys::ProjTaskBase {
+		//	00000071029F7E18
 		~SequenceMgr() override;
 		SEAD_RTTI_OVERRIDE(SequenceMgr, Lp::Sys::ProjTaskBase)
 

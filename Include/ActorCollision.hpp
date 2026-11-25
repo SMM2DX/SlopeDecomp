@@ -5,6 +5,7 @@
 #ifndef		ACTORCOLLISION_HPP
 #define		ACTORCOLLISION_HPP
 class ActorCollision : public Actor {
+	//	00000071028524C0
 	SEAD_RTTI_OVERRIDE(ActorCollision, Actor)
 	~ActorCollision() override;
 

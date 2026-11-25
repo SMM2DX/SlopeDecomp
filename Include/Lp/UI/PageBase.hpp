@@ -14,6 +14,7 @@ namespace Lp::UI {
 	#ifndef		LP_UI_PAGEBASE_HPP
 	#define		LP_UI_PAGEBASE_HPP
 	struct PageBase {
+		//	0000007102837510
 		SEAD_RTTI_BASE(PageBase);
 		virtual ~PageBase();
 		

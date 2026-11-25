@@ -8,6 +8,7 @@ namespace Slope {
 	#ifndef		SLOPE_UIPAGEBASE_HPP
 	#define		SLOPE_UIPAGEBASE_HPP
 	class UIPageBase : public UISys::ViewPage {
+		//	0000007102966EA0
 		SEAD_RTTI_OVERRIDE(UIPageBase, UISys::ViewPage)
 		~UIPageBase() override;
 

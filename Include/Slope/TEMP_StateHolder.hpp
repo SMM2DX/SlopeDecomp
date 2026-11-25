@@ -37,6 +37,9 @@ struct level_info {
 };
 
 struct StateHolder : public sead::IDisposer {
+	//	0000007102965830
+	~StateHolder() override;
+
 	int64 qword_20;
 	int64 qword_28;
 	level_info* levelInfo;

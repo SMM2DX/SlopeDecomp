@@ -8,6 +8,9 @@ namespace Lp::UI{
 	#ifndef		LP_UI_UNITEBTNCTRL_HPP
 	#define		LP_UI_UNITEBTNCTRL_HPP
 	struct UniteBtnCtrl : public BtnPartsCtrl {
+		//	000000710283A910
+		SEAD_RTTI_OVERRIDE(UniteBtnCtrl, BtnPartsCtrl);
+		~UniteBtnCtrl() override;
 		virtual void sub_41();
 		virtual void sub_42();
 		

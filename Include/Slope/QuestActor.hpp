@@ -6,6 +6,7 @@ namespace Slope {
 	#ifndef		SLOPE_QUESTACTOR_HPP
 	#define		SLOPE_QUESTACTOR_HPP
 	class QuestActor : public ActorBase {
+		//	0000007102956510
 		SEAD_RTTI_OVERRIDE(QuestActor, ActorBase)
 		~QuestActor() override;
 

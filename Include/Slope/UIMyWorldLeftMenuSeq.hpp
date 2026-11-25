@@ -8,6 +8,7 @@ namespace Slope {
 	#ifndef		SLOPE_UIMYWORLDLEFTMENUSEQ_HPP
 	#define		SLOPE_UIMYWORLDLEFTMENUSEQ_HPP
 	class UIMyWorldLeftMenuSeq : public UISequenceBase {
+		//	00000071029A7040
 		SEAD_RTTI_OVERRIDE(UIMyWorldLeftMenuSeq, UISequenceBase)
 		~UIMyWorldLeftMenuSeq() override;
 

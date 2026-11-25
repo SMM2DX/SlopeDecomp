@@ -20,6 +20,7 @@ namespace UISys{
 	#ifndef		UISYS_VIEWPAGE_HPP
 	#define		UISYS_VIEWPAGE_HPP
 	class ViewPage : public Lp::UI::PriorityPage {
+		//	00000071029F6B60
 		SEAD_RTTI_OVERRIDE(ViewPage, Lp::UI::PriorityPage)
 		~ViewPage() override;
 		void* getClassInfo() override;

@@ -8,6 +8,7 @@ namespace Lp::UI {
 	#ifndef		LP_UI_PAGE_HPP
 	#define		LP_UI_PAGE_HPP
 	struct Page : public PageBase {
+		//	00000071028375D0
 		SEAD_RTTI_OVERRIDE(Page, PageBase)
 		~Page() override;
 

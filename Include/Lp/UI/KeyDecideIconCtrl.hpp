@@ -8,6 +8,7 @@ namespace Lp::UI{
 	#ifndef		LP_UI_KEYDECIDEICONCTRL_HPP
 	#define		LP_UI_KEYDECIDEICONCTRL_HPP
 	struct KeyDecideIconCtrl : public BtnPartsCtrl {
+		//	0000007102837EA8
 		int64 qword_280;							//	0x280
 		int dword_288;								//	0x288
 		int64 qword_290;							//	0x290

@@ -11,6 +11,7 @@ namespace Lp::Utl {
 	}
 	
 	struct StateMachine {
+		//	0000007102850B88
 		template<typename T>
 		struct Delegate {
 			using EnterFuncPtr = void (T::*)();

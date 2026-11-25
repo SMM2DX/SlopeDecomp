@@ -6,14 +6,11 @@
 
 namespace UISys{
 	class LayoutCanvasMgr {
+		//	00000071029F7FC8
 		~LayoutCanvasMgr();
 
-		class SingletonDisposer_ : public sead::IDisposer {
-			~SingletonDisposer_() override;
-		};
-
 		long long __vftable;
-		SingletonDisposer_ sStaticDisposer;
+		sead::IDisposer sStaticDisposer;
 		sead::Matrix44f matrix;
 		char camera[0x38];
 		//sead::Camera camera;

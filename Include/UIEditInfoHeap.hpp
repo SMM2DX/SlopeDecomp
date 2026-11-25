@@ -7,7 +7,9 @@
 #ifndef		UIEDITINFOHEAP_HPP
 #define		UIEDITINFOHEAP_HPP
 struct UIEditInfoHeap {
+	//	0000007102988F98
 	virtual ~UIEditInfoHeap();
+
 	Slope::UIEditMainSeq* pUIEditMainSeq;
 	char _Z[0x1000];
 };

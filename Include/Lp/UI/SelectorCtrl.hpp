@@ -8,6 +8,7 @@ namespace Lp::UI{
 	#ifndef		LP_UI_SELECTORCTRL_HPP
 	#define		LP_UI_SELECTORCTRL_HPP
 	struct SelectorCtrl : public BtnPartsCtrl {
+		//	0000007102839C98
 		int64 qword_280;						//	0x280
 		int64 qword_288;						//	0x288
 		int64 qword_290;						//	0x290

@@ -4,6 +4,7 @@
 
 namespace UISys {
 	class ISelectCursorSubSequence : public UISys::SequenceBase {
+		//	00000071029F7A60
 		SEAD_RTTI_OVERRIDE(ISelectCursorSubSequence, UISys::SequenceBase)
 		~ISelectCursorSubSequence() override;
 

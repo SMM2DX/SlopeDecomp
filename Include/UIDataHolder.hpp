@@ -9,7 +9,9 @@
 #ifndef		UIDATAHOLDER_HPP
 #define		UIDATAHOLDER_HPP
 struct UIDataHolder {
+	//	00000071029F2790
 	virtual ~UIDataHolder();
+	
 	sead::IDisposer disposer;
 	char _0[0x8];
 	void* pUNK1;

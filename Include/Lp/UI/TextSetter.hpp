@@ -9,6 +9,7 @@ namespace Lp::UI{
 	#ifndef		LP_UI_TEXTSETTER_HPP
 	#define		LP_UI_TEXTSETTER_HPP
 	struct TextSetter{
+		//	00000071029F78D8
 		SEAD_RTTI_BASE(TextSetter);
 		virtual void sub_3();
 		virtual void sub_4();

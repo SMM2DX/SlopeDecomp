@@ -19,6 +19,7 @@ namespace Slope {
 	#ifndef		SLOPE_UISEQUENCEBASE_HPP
 	#define		SLOPE_UISEQUENCEBASE_HPP
 	class UISequenceBase : public UISys::SequenceBase {
+		//	0000007102967430
 		SEAD_RTTI_OVERRIDE(UISequenceBase, UISys::SequenceBase)
 		~UISequenceBase() override;
 

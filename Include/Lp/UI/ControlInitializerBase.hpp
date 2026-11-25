@@ -9,6 +9,7 @@ namespace Lp::UI {
 	#ifndef		LP_UI_CONTROLINITIALIZERBASE_HPP
 	#define		LP_UI_CONTROLINITIALIZERBASE_HPP
 	struct ControlInitializerBase {
+		//	0000007102823E70
 		virtual ~ControlInitializerBase();
 		PartsCtrl* partsCtrl;			//	0x008
 		int64 qword_10;					//	0x010

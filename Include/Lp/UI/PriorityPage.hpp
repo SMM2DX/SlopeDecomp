@@ -8,6 +8,7 @@ namespace Lp::UI {
 	#ifndef		LP_UI_PRIORITYPAGE_HPP
 	#define		LP_UI_PRIORITYPAGE_HPP
 	struct PriorityPage : public Page {
+		//	0000007102837910
 		SEAD_RTTI_OVERRIDE(PriorityPage, Page)
 		~PriorityPage() override;
 

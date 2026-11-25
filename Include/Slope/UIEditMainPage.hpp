@@ -17,6 +17,7 @@ namespace Slope {
 	#ifndef		SLOPE_UIEDITMAINPAGE_HPP
 	#define		SLOPE_UIEDITMAINPAGE_HPP
 	class UIEditMainPage : public UIPageBase {
+		//	0000007102989B68
 		SEAD_RTTI_OVERRIDE(UIEditMainPage, UIPageBase)
 		~UIEditMainPage() override;
 

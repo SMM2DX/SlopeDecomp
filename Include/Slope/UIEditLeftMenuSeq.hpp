@@ -9,6 +9,7 @@ namespace Slope {
 	#ifndef		SLOPE_UIEDITLEFTMENUSEQ_HPP
 	#define		SLOPE_UIEDITLEFTMENUSEQ_HPP
 	class UIEditLeftMenuSeq : public UISequenceBase {
+		//	00000071029897E0
 		SEAD_RTTI_OVERRIDE(UIEditLeftMenuSeq, UISequenceBase)
 		~UIEditLeftMenuSeq() override;
 

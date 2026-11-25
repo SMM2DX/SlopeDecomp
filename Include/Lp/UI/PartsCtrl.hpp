@@ -8,6 +8,9 @@ namespace Lp::UI{
 	#ifndef		LP_UI_PARTSCTRL_HPP
 	#define		LP_UI_PARTSCTRL_HPP
 	struct PartsCtrl : public Control {
+		//	00000071028381A0
+		SEAD_RTTI_OVERRIDE(PartsCtrl, Control);
+		~PartsCtrl() override;
 		virtual void isFadeIn();
 		virtual void isFadeOut();
 		virtual void sub_15();

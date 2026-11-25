@@ -11,6 +11,7 @@ namespace Lp::UI {
 	#ifndef		LP_UI_CONTROL_HPP
 	#define		LP_UI_CONTROL_HPP
 	struct Control {
+		//	0000007102823288
 		SEAD_RTTI_BASE(Control);
 		virtual ~Control();
 		virtual void* getClassInfo() const;
