@@ -23,7 +23,7 @@ namespace Lp::Utl{
 		//	0000007102968220
 		virtual ~TextureHolder();
 		
-		char _0[0x20];
+		char _0[0x18];
 		bool bool_20;
 		long long int qword_28;
 		char _1[0x2D8];
