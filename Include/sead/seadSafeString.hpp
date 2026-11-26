@@ -6,14 +6,23 @@ namespace sead {
 	#ifndef		SEAD_SAFESTRING_HPP
 	#define		SEAD_SAFESTRING_HPP
 	template <typename T> struct SafeStringBase {
+		static const T cNullChar;
 		virtual ~SafeStringBase() = default;
 		#ifndef		IDACLANG_DESTRUCTOR_FIX
 		virtual void destructor_2();
 		#endif	//	IDACLANG_DESTRUCTOR_FIX
-		virtual SafeStringBase &operator=(const SafeStringBase &) = default;
+		virtual SafeStringBase<T>& operator=(const SafeStringBase<T>& other);
 		virtual void assureTerminationImpl_() const {};
 		
 		const T* mStringTop;
+
+		SafeStringBase() : mStringTop(&cNullChar) {
+			*reinterpret_cast<uintptr_t *>(this) = exl::util::modules::GetTargetOffset(0x28522B0);
+		}
+		
+		explicit SafeStringBase(const T* stringTop) : mStringTop(stringTop) {
+			*reinterpret_cast<uintptr_t *>(this) = exl::util::modules::GetTargetOffset(0x28522B0);
+		}
 	};
 	using SafeString = SafeStringBase<char>;
 	#endif	//	SEAD_SAFESTRING_HPP
@@ -21,10 +30,18 @@ namespace sead {
 	#ifndef		SEAD_BUFFEREDSAFESTRING_HPP
 	#define		SEAD_BUFFEREDSAFESTRING_HPP
 	template <typename T> struct BufferedSafeStringBase : public SafeStringBase<T> {
-		~BufferedSafeStringBase() override;
-		BufferedSafeStringBase &operator=(const BufferedSafeStringBase &) override;
+		~BufferedSafeStringBase() override = default;
+		BufferedSafeStringBase<T>& operator=(const SafeStringBase<T>& other) override;
 		
 		int mBufferSize;
+
+		BufferedSafeStringBase() : SafeStringBase<T>(), mBufferSize(0) {
+			*reinterpret_cast<uintptr_t *>(this) = exl::util::modules::GetTargetOffset(0x2852830);
+		}
+
+		explicit BufferedSafeStringBase(const T* stringTop, int bufferSize) : SafeStringBase<T>(stringTop), mBufferSize(bufferSize) {
+			*reinterpret_cast<uintptr_t *>(this) = exl::util::modules::GetTargetOffset(0x2852830);
+		}
 	};
 	using BufferedSafeString = BufferedSafeStringBase<char>;
 	#endif	//	SEAD_BUFFEREDSAFESTRING_HPP
