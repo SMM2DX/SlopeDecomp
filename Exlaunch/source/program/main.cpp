@@ -15,7 +15,7 @@
 #include <Slope/UIEditMainPage.hpp>
 #include <Slope/UIEditLeftMenuSeq.hpp>
 
-#include <TEMP_ChangeHourBtn.hpp>
+#include <ExpUniteBtnCtrl.hpp>
 
 struct ButtonNameStruct {
 	void *__vftable;
@@ -266,16 +266,15 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_67) {
 
 HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_68) {
 	static void Callback(Slope::UIEditLeftMenuSeq *thisPtr, UISys::ButtonActionCallbackArg *buttonActionCallbackArg) {
-		using sub_71018C7C10_t = void (void *);
-		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
+		DEFINE_TARGET_FUNCTION(sub_71018C7C10, 0x18C7C10, void, void*);
 
 		//Logging.Log("[UIEditLeftMenuSeq_sub_68] %u", buttonActionCallbackArg->buttonIndex);
 		
 		if (buttonActionCallbackArg->buttonIndex == L_LeftParts_00__L_ChangeHourBtn_00) {
-			TEMP_ChangeHourBtn* changeHourButton = (TEMP_ChangeHourBtn*)thisPtr->parentViewPage->getButton(L_LeftParts_00__L_ChangeHourBtn_00);
-			uint64 offset = (uint64)exl::util::modules::GetSelfStart();
-			uint64 location = (uint64)&changeHourButton;
-			Logging.Log("[UIEditLeftMenuSeq_sub_68]	sub_37: 0x%X", location-offset);
+			ExpUniteBtnCtrl* changeHourButton = (ExpUniteBtnCtrl*)thisPtr->parentViewPage->getButton(L_LeftParts_00__L_ChangeHourBtn_00);
+			uintptr_t slidLocation = *reinterpret_cast<uintptr_t *>(changeHourButton);
+			uintptr_t unSlidLocation = slidLocation - exl::util::modules::GetTargetStart() + 0x7100000000;
+			Logging.Log("[UIEditLeftMenuSeq_sub_68]	vtable: %016lx", unSlidLocation);
 			int64 usedForHour = changeHourButton->usedForHour;
 			Logging.Log("[UIEditLeftMenuSeq_sub_68]	usedForHour: 0x%X", usedForHour);
 
@@ -296,8 +295,7 @@ HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_68) {
 
 HOOK_DEFINE_TRAMPOLINE(UIEditLeftMenuSeq_sub_74) {
 	static void Callback(UISys::SequenceBase *thisPtr, UISys::ButtonActionCallbackArg *buttonActionCallbackArg) {
-		using sub_71018C7C10_t = void (void *);
-		sub_71018C7C10_t *sub_71018C7C10 = reinterpret_cast<sub_71018C7C10_t *>(exl::util::modules::GetTargetOffset(0x18C7C10));
+		DEFINE_TARGET_FUNCTION(sub_71018C7C10, 0x18C7C10, void, void*);
 
 		//Logging.Log("[UIEditLeftMenuSeq_sub_74] %u", buttonActionCallbackArg->buttonIndex);
 		

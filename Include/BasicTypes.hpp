@@ -19,6 +19,6 @@ using uint8		= unsigned char;
 
 #define DEFINE_TARGET_FUNCTION(NAME, OFFSET, RETURN, ...)										\
     using NAME##_t = RETURN (__VA_ARGS__);														\
-    NAME##_t *NAME = reinterpret_cast<NAME##_t*>(exl::util::modules::GetTargetOffset(OFFSET));	\
+    NAME##_t *NAME = reinterpret_cast<NAME##_t*>(exl::util::modules::GetTargetOffset(OFFSET));
 
 #endif	//	BASIC_TYPES_HPP
