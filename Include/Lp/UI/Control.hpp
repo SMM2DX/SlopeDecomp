@@ -23,13 +23,13 @@ namespace Lp::UI {
 		virtual void onPreCalc();
 		virtual void onPostCalc();
 
-		int64 qword_8;					//	0x008
-		int64 qword_10;					//	0x010
+		int64 qword_8;						//	0x008
+		int64 qword_10;						//	0x010
 		Lp::UI::Impl::Name name;			//	0x018
-		int64 qword_30;					//	0x030
+		int64 qword_30;						//	0x030
 		sead::OffsetList list_38;			//	0x038
-		int64 qword_50;					//	0x050
-		int64 qword_58;					//	0x058
+		int64 qword_50;						//	0x050
+		int64 qword_58;						//	0x058
 		sead::OffsetList list_60;			//	0x060
 		sead::OffsetList list_78;			//	0x078
 		char contentSet[0x60];				//	0x090
